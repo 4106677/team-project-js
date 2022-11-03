@@ -1,0 +1,57 @@
+.header {
+  height: 216px;
+  background-image: url(../images/header-bcg.jpg);
+
+  // opacity: 0.9;
+
+  padding-top: 40px;
+  align-items: baseline;
+}
+
+.logo {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  display: flex;
+  // align-items: center;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.nav {
+  margin-left: auto;
+  // outline: 2px solid red;
+  display: flex;
+}
+
+.nav--item {
+  &:not(:first-child) {
+    margin-left: 39px;
+  }
+}
+
+.nav--item a {
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  font-weight: 500;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.search-form {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-input {
+  background: transparent;
+  outline: none;
+}
