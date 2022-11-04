@@ -1,3 +1,4 @@
+
 {{#each this}}
 <li class="movie-card">
     <a href='' class="movie-link-wrapper" data-action="modal-open">
@@ -32,11 +33,12 @@
         <h2 class="movie-card__title">{{title}}</h2>
         <div class="movie-card__box">
           <p class="movie-card__info">
-            {{release_date}} <span  class="add-insert">|</span> {{genreFilm}} // тут потрібно буде вставити сам жанр - тобто потрібна функція, що буде парсити жанри з массиву ID жанрів + формат дати зробити тільки рік ( при необхідності поміняти назви цих змінних)
+                      
+            {{release_date}} <span  class="add-insert">|</span> {{genreFilm}} 
           </p>
           <p class="movie-card__vote visually-hidden">{{vote_average}}</p>
         </div>
         </a>
       </li>
 
-{{/each}}-
+{{/each}} 
