@@ -1,0 +1,30 @@
+.movies-popular-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 20px;
+  justify-items: center;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 32px;
+    grid-row-gap: 32px;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 16px;
+    grid-row-gap: 32px;
+  }
+}
+
+.movies-popular-container {
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  @include tablet {
+    padding-top: 60px;
+    padding-bottom: 50px;
+  }
+}

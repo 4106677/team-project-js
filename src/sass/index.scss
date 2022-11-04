@@ -1,4 +1,7 @@
+@import './utils/mixin';
 @import './base/reset';
 @import './base/common';
 @import './header';
 @import './base/container';
+@import './movie-gallery';
+@import './movieCard.scss';

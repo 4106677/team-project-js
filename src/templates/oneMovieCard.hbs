@@ -1,0 +1,42 @@
+{{#each this}}
+<li class="movie-card">
+    <a href='' class="movie-link-wrapper" data-action="modal-open">
+
+    {{#if poster_path}}
+    <picture>
+      <source
+                  srcset="https://image.tmdb.org/t/p/original{{poster_path}} 1x, https://image.tmdb.org/t/p/original{{poster_path}} 2x"
+                  media="(min-width: 1200px)"
+                />
+
+                <source
+                  srcset="
+                    https://image.tmdb.org/t/p/w500{{poster_path}}    1x,
+                   https://image.tmdb.org/t/p/w500{{poster_path}} 2x
+                  "
+                  media="(min-width: 768px)"
+                />
+
+                <source
+                  srcset="
+                    https://image.tmdb.org/t/p/w300{{poster_path}}    1x,
+                    https://image.tmdb.org/t/p/w300{{poster_path}} 2x
+                  "
+                  media="(min-width: 320px)"
+                />
+          <img src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="Poster for "{{title}}"" class="movie-card__img poster " loading='lazy'/>
+          </picture>
+    {{else}}
+        <img class="alt_image" src="./images/no-poster.jpg" alt="Poster not found" class="movie-card__img poster" loading='lazy'/>
+    {{/if}}
+        <h2 class="movie-card__title">{{title}}</h2>
+        <div class="movie-card__box">
+          <p class="movie-card__info">
+            {{release_date}} <span  class="add-insert">|</span> {{genreFilm}} // тут потрібно буде вставити сам жанр - тобто потрібна функція, що буде парсити жанри з массиву ID жанрів + формат дати зробити тільки рік ( при необхідності поміняти назви цих змінних)
+          </p>
+          <p class="movie-card__vote visually-hidden">{{vote_average}}</p>
+        </div>
+        </a>
+      </li>
+
+{{/each}}-
