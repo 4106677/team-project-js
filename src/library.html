@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page title</title>
+    <link rel="stylesheet" href="./sass/index.scss" />
+    <script type="module" src="./index.js"></script>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a class="logo" href="./index.html">Filmoteka</a>
+
+            <form>
+                <div role="group">
+                    <ul class="storage ">
+                        <li class="storage__item list">
+                            <label class="storage__label">
+                                <input type="radio" name="storage-btn" value="Watched"
+                                    class="storage__input visuallyhidden" checked />
+                                <span class="storage__btn" id="js-WatchedButton">Watched</span>
+                            </label>
+                        </li>
+
+                        <li class="storage__item list">
+                            <label class="storage__label">
+                                <input type="radio" name="storage-btn" value="Queue"
+                                    class="storage__input visuallyhidden" />
+                                <span class="storage__btn" id="js-QueueButton">Queue</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+
+            <!-- <ul class="library__header-list">
+                <li class="list "><button class="library__btn active" type="button">Watched</button></li>
+                <li class="list "><button class="library__btn" type=" button">queue</button></li>
+            </ul> -->
+
+            <ul class="nav list">
+
+                <li class="nav--item "><a href="./index.html">Home</a></li>
+
+                <li class="nav--item"><a class="current" href="./library.html">My Library</a></li>
+            </ul>
+        </div>
+    </header>
+    <include src="./partials/footer.html"></include>
+</body>
+
+</html>
