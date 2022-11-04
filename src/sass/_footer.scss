@@ -26,8 +26,10 @@
   }
 }
 
-.icon-like {
-  fill: #ff6b08;
+.icon {
+  width: 14px;
+  height: 14px;
+  margin: 0 5px;
 }
 
 .br-text {
@@ -35,6 +37,11 @@
     display: flex;
     justify-content: center;
   }
+}
+
+.text-with-svg {
+  display: inline-flex;
+  align-items: center;
 }
 
 .link {
