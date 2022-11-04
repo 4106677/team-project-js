@@ -1,2 +1,12 @@
+<<<<<<< Updated upstream
 @import './common';
 @import './example';
+=======
+@import './base/reset';
+@import './base/common';
+@import './header';
+@import './components/current';
+
+@import './base/container';
+@import './footer';
+>>>>>>> Stashed changes
