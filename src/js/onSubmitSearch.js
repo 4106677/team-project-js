@@ -18,6 +18,7 @@ function onClickSubmit(event) {
     .then(createGallery)
     // .then(resp => console.log('responce', resp))
     .catch(error => console.log(error));
+  event.target.reset();
 }
 
 export default onClickSubmit;
