@@ -2,11 +2,12 @@ import axios from 'axios';
 import Notiflix from 'notiflix';
 // import debounce from 'lodash.debounce';
 import galleryMarkup from '/src/templates/galleryMarkup.hbs';
+import oneMovieCard from '/src/templates/oneMovieCard.hbs';
 
 const refs = {
   form: document.querySelector('.search-form'),
   input: document.querySelector('#search-form'),
-  list: document.querySelector('.nav-list'),
+  list: document.querySelector('.movies-popular-list'),
 };
 
 console.log(refs.list);
@@ -45,5 +46,5 @@ function createGallery(data) {
   const array = data.data.results;
   console.log('createGallery array', array);
 
-  refs.list.insertAdjacentHTML('beforeend', galleryMarkup(array));
+  refs.list.innerHTML = oneMovieCard(array);
 }
