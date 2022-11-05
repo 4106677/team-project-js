@@ -29,13 +29,14 @@
 .icon {
   width: 14px;
   height: 14px;
-  margin: 0 5px;
+  margin: 0 10px;
 }
 
 .br-text {
   @media screen and (max-width: 450px) {
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
   }
 }
 
