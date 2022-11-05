@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Notiflix from 'notiflix';
 
 async function fetchSearchFilm(data, page = 1) {
   const API_KEY = '430ce39ddbb6d767664f5ab1d9d53645';
