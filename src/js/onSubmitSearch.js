@@ -3,6 +3,7 @@ import refs from './refs';
 // import oneMovieCard from '/src/templates/oneMovieCard.hbs';
 import Notiflix from 'notiflix';
 import createGallery from './createGallery';
+import checkInputData from './checkInputData';
 
 refs.form.addEventListener('submit', onClickSubmit);
 let value = null;
@@ -15,7 +16,7 @@ function onClickSubmit(event) {
   value = refs.input.value.toLowerCase().trim();
 
   fetchSearchFilm(value, page)
-    .then(createGallery)
+    .then(checkInputData)
     // .then(resp => console.log('responce', resp))
     .catch(error => console.log(error));
   event.target.reset();
