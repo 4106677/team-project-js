@@ -1,12 +1,66 @@
 .header {
   // max-width: 1280px;
-  height: 216px;
-  background-image: url(../images/header-bcg.jpg);
+  height: 230px;
 
   // opacity: 0.9;
   // display: flex;
   padding-top: 40px;
   align-items: baseline;
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(../images/mpbile_bgr_home.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/mobile_bgr_home@2x.jpg);
+  }
+  @media screen and (min-width: 768px) {
+    height: 216px;
+    padding-top: 40px;
+    align-items: baseline;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/tablet_bgr_home.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/tablet_bgr_home@2x.jpg);
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    height: 216px;
+    padding-top: 40px;
+    align-items: baseline;
+
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/desktop_bgr_home.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/desktop_bgr_home@2x.jpg);
+    }
+  }
 }
 
 .header .container {
