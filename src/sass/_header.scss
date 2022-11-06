@@ -168,3 +168,17 @@
   border: 1px solid #ff6b01;
   color: #ffffff;
 }
+.nav--item.login {
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.16667;
+  position: relative;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+}
