@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page title</title>
+    <link rel="stylesheet" href="./sass/index.scss" />
+    <script type="module" src="./index.js"></script>
+</head>
+
+<body>
+
+    <header class="header__lib">
+        <div class="container">
+            <div class="header__lib-nav">
+                <a class="logo" href="./index.html">Filmoteka</a>
+                <ul class="nav list">
+
+                    <li class="nav__item "><a href="./index.html">Home</a></li>
+
+                    <li class="nav__item"><a class="current" href="./library.html">My Library</a></li>
+                </ul>
+            </div>
+            <form>
+                <div role="group">
+                    <ul class="storage">
+                        <li class="storage__item list">
+                            <label class="storage__label">
+                                <input type="radio" name="storage__btn" value="Watched"
+                                    class="storage__input visually-hidden" checked>
+                                <span class="storage__btn" id="js-WatchedButton">Watched</span>
+                            </label>
+                        </li>
+
+                        <li class="storage__item list">
+                            <label class="storage__label">
+                                <input type="radio" name="storage__btn" value="Queue"
+                                    class="storage__input visually-hidden">
+                                <span class="storage__btn" id="js-QueueButton">Queue</span>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+
+
+        </div>
+    </header>
+    <include src="./partials/footer.html"></include>
+</body>
+
+</html>
