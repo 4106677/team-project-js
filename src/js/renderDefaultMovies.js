@@ -1,4 +1,6 @@
 import oneMovieCardTpl from '../templates/oneMovieCard.hbs';
+import smoothScroll from './smoothScrool';
+import updateResponce from './updateResponce';
 
 const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day';
 const API_KEY = '3ab3f6572c3def6f6cf5801fb6522013';
@@ -23,9 +25,12 @@ function fetchDefaultMoviesByApi() {
 
 export function renderDefaultMovies() {
   fetchDefaultMoviesByApi().then(data => {
-    // console.log(data);
+    console.log('data.results', data.results);
+    const responce = updateResponce(data.results);
+    console.log('updateResponce', responce);
+    ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(responce));
 
-    ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(data.results));
+    if (ul.childElementCount > 20) smoothScroll();
 
     if (data.page === 1000) {
       alert("We're sorry, but you've reached the end of films collection.");
