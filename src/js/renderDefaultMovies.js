@@ -1,4 +1,4 @@
-import oneMovieCardTpl from '../templates/oneMovieCard.hbs'
+import oneMovieCardTpl from '../templates/oneMovieCard.hbs';
 
 const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day';
 const API_KEY = '3ab3f6572c3def6f6cf5801fb6522013';
@@ -23,7 +23,7 @@ function fetchDefaultMoviesByApi() {
 
 export function renderDefaultMovies() {
   fetchDefaultMoviesByApi().then(data => {
-    console.log(data);
+    // console.log(data);
 
     ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(data.results));
 
@@ -34,4 +34,4 @@ export function renderDefaultMovies() {
   });
 }
 
-renderDefaultMovies()
+renderDefaultMovies();
