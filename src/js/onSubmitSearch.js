@@ -15,6 +15,11 @@ function onClickSubmit(event) {
 
   value = refs.input.value.toLowerCase().trim();
 
+  if (!value) {
+    Notiflix.Notify.failure('Please, enter something to search');
+    return;
+  }
+
   fetchSearchFilm(value, page)
     .then(checkInputData)
     // .then(resp => console.log('responce', resp))
