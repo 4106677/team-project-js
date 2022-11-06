@@ -24,15 +24,41 @@
   }
 }
 
+.movie-img-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+
+  @include tablet {
+    margin-bottom: 8px;
+  }
+
+  @include desktop {
+    margin-bottom: 12px;
+  }
+}
+
 .movie-card__img {
   display: block;
   border-radius: 5px;
+  width: 100%;
+
+  @include mobile {
+    height: 398px;
+  }
+  @include tablet {
+    height: 455px;
+  }
+
+  @include desktop {
+    height: 574px;
+  }
 }
 
 .movie-card__title {
   color: #000000;
   padding-left: 5px;
-  margin-top: 10px;
 
   font-weight: 500;
   font-size: 12px;
