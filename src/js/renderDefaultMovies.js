@@ -24,10 +24,11 @@ function fetchDefaultMoviesByApi() {
 
 export function renderDefaultMovies() {
   fetchDefaultMoviesByApi().then(data => {
-    // console.log(data);
 
     ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(data.results));
-    smoothScroll();
+
+    if (ul.childElementCount > 20) smoothScroll();
+    
     if (data.page === 1000) {
       alert("We're sorry, but you've reached the end of films collection.");
       button.classList.add('is-hidden');
