@@ -11,10 +11,17 @@
 
 <body>
 
-    <header class="header">
+    <header class="header__lib">
         <div class="container">
-            <a class="logo" href="./index.html">Filmoteka</a>
+            <div class="header__lib-nav">
+                <a class="logo" href="./index.html">Filmoteka</a>
+                <ul class="nav list">
 
+                    <li class="nav__item "><a href="./index.html">Home</a></li>
+
+                    <li class="nav__item"><a class="current" href="./library.html">My Library</a></li>
+                </ul>
+            </div>
             <form>
                 <div role="group">
                     <ul class="storage">
@@ -37,17 +44,7 @@
                 </div>
             </form>
 
-            <!-- <ul class="library__header-list">
-                <li class="list "><button class="library__btn active" type="button">Watched</button></li>
-                <li class="list "><button class="library__btn" type=" button">queue</button></li>
-            </ul> -->
 
-            <ul class="nav list">
-
-                <li class="nav--item "><a href="./index.html">Home</a></li>
-
-                <li class="nav--item"><a class="current" href="./library.html">My Library</a></li>
-            </ul>
         </div>
     </header>
     <include src="./partials/footer.html"></include>
