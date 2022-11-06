@@ -44,3 +44,4 @@ export function renderDefaultMovies() {
 }
 
 renderDefaultMovies();
+//*
