@@ -1,8 +1,6 @@
 import fetchSearchFilm from './fetchAPI';
 import refs from './refs';
-// import oneMovieCard from '/src/templates/oneMovieCard.hbs';
 import Notiflix from 'notiflix';
-import createGallery from './createGallery';
 import checkInputData from './checkInputData';
 
 refs.form.addEventListener('submit', onClickSubmit);
