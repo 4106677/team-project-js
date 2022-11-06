@@ -1,5 +1,4 @@
 {
-<<<<<<< Updated upstream
   "name": "team-project-js",
   "version": "2.0.0",
   "description": "",
@@ -29,9 +28,4 @@
     "posthtml-include": "^1.7.4"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
-=======
-  "devDependencies": {
-    "@parcel/transformer-html": "^2.7.0"
-  }
->>>>>>> Stashed changes
 }
