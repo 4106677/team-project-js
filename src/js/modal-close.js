@@ -5,7 +5,6 @@ modal.addEventListener('click', closeModal);
 function closeModal() {
   instance.close();
 }
-
 document.addEventListener('keyup', closeModalEsc);
 function closeModalEsc(evt) {
   console.log(evt);
