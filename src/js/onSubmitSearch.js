@@ -1,4 +1,4 @@
-import fetchSearchFilm from './fetchAPI';
+import { fetchSearchFilm } from './fetchAPI';
 import refs from './refs';
 import Notiflix from 'notiflix';
 import checkInputData from './checkInputData';
