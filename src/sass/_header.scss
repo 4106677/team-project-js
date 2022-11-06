@@ -1,7 +1,28 @@
 .header {
+  // max-width: 1280px;
   height: 216px;
   background-image: url(../images/header-bcg.jpg);
 
+  // opacity: 0.9;
+  // display: flex;
+  padding-top: 40px;
+  align-items: baseline;
+}
+
+.header .container {
+  display: flex;
+}
+
+.header__lib-nav {
+  display: flex;
+  align-items: baseline;
+}
+
+.header__lib {
+  height: 216px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(../images/header-lib-bcg.jpg);
+  display: flex;
   // opacity: 0.9;
 
   padding-top: 40px;
@@ -28,14 +49,17 @@
   display: flex;
 }
 
-.nav--item {
+.nav__item {
   &:not(:first-child) {
     margin-left: 39px;
   }
   position: relative;
+
+  // align-items: baseline;
+  justify-content: baseline;
 }
 
-.nav--item a {
+.nav__item a {
   font-size: 12px;
   line-height: calc(14 / 12);
   font-weight: 500;
@@ -47,7 +71,7 @@
   position: relative;
 }
 
-.search-form {
+.search__form {
   position: absolute;
   left: 50%;
   transform: translate(-50%);
@@ -55,7 +79,7 @@
   transform: translateY(-50%);
 }
 
-.search-input {
+.search__input {
   background: transparent;
   outline: none;
 
@@ -67,7 +91,7 @@
   width: 394px;
 }
 
-.search-btn {
+.search__btn {
   position: absolute;
   top: 0;
   right: 0;
@@ -82,15 +106,21 @@
 
 .storage {
   display: flex;
-  align-items: center;
+  // align-items: center;
   justify-content: center;
+
+  padding-left: 0;
+}
+
+.storage__item:first-child {
+  margin-right: 15px;
 }
 
 .storage__input {
   justify-content: center;
   align-items: center;
-  height: 42px;
-  width: 148px;
+  // height: 42px;
+  // width: 148px;
   color: #ffffff;
   background-color: transparent;
 
@@ -109,11 +139,34 @@
 }
 
 .storage__btn {
+  // box-sizing: border-box;
   display: block;
 
-  border-radius: 5px;
+  padding-top: 14px;
+  padding-bottom: 12px;
+
+  min-width: 130px;
 
   text-align: center;
+
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+
+  color: #fff;
+
+  cursor: pointer;
+
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+.storage__input:checked ~ .storage__btn {
+  background-color: #ff6b01;
+  border: 1px solid #ff6b01;
+  color: #ffffff;
 }
 .nav--item.login {
   text-align: center;

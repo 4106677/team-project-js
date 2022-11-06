@@ -11,25 +11,32 @@
 
 <body>
 
-    <header class="header">
+    <header class="header__lib">
         <div class="container">
-            <a class="logo" href="./index.html">Filmoteka</a>
+            <div class="header__lib-nav">
+                <a class="logo" href="./index.html">Filmoteka</a>
+                <ul class="nav list">
 
+                    <li class="nav__item "><a href="./index.html">Home</a></li>
+
+                    <li class="nav__item"><a class="current" href="./library.html">My Library</a></li>
+                </ul>
+            </div>
             <form>
                 <div role="group">
-                    <ul class="storage ">
+                    <ul class="storage">
                         <li class="storage__item list">
                             <label class="storage__label">
-                                <input type="radio" name="storage-btn" value="Watched"
-                                    class="storage__input visuallyhidden" checked />
+                                <input type="radio" name="storage__btn" value="Watched"
+                                    class="storage__input visually-hidden" checked>
                                 <span class="storage__btn" id="js-WatchedButton">Watched</span>
                             </label>
                         </li>
 
                         <li class="storage__item list">
                             <label class="storage__label">
-                                <input type="radio" name="storage-btn" value="Queue"
-                                    class="storage__input visuallyhidden" />
+                                <input type="radio" name="storage__btn" value="Queue"
+                                    class="storage__input visually-hidden">
                                 <span class="storage__btn" id="js-QueueButton">Queue</span>
                             </label>
                         </li>
@@ -37,17 +44,7 @@
                 </div>
             </form>
 
-            <!-- <ul class="library__header-list">
-                <li class="list "><button class="library__btn active" type="button">Watched</button></li>
-                <li class="list "><button class="library__btn" type=" button">queue</button></li>
-            </ul> -->
 
-            <ul class="nav list">
-
-                <li class="nav--item "><a href="./index.html">Home</a></li>
-
-                <li class="nav--item"><a class="current" href="./library.html">My Library</a></li>
-            </ul>
         </div>
     </header>
     <include src="./partials/footer.html"></include>
