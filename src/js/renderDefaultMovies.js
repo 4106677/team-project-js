@@ -1,4 +1,5 @@
 import oneMovieCardTpl from '../templates/oneMovieCard.hbs';
+import { spinnerOff, spinnerOn } from './loader';
 import smoothScroll from './smoothScrool';
 import updateResponce from './updateResponce';
 
@@ -13,14 +14,17 @@ button.addEventListener('click', renderDefaultMovies);
 let page = 1;
 
 function fetchDefaultMoviesByApi() {
-  return fetch(`${BASE_URL}?page=${page}&api_key=${API_KEY}`).then(response => {
-    if (!response.ok) {
-      throw new Error('Fail');
-    }
+  spinnerOn();
+  return fetch(`${BASE_URL}?page=${page}&api_key=${API_KEY}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Fail');
+      }
 
-    page += 1;
-    return response.json();
-  });
+      page += 1;
+      return response.json();
+    })
+    .finally(() => spinnerOff());
 }
 
 export function renderDefaultMovies() {
@@ -40,3 +44,4 @@ export function renderDefaultMovies() {
 }
 
 renderDefaultMovies();
+//*

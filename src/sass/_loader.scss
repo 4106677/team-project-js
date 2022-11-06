@@ -13,13 +13,14 @@
 }
 
 .loader {
+  background: none repeat scroll 0 0 #fff;
   height: 100%;
   width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  top: 0;
+  top: 216;
   z-index: 9;
 }
 .loader .loader-inner {
@@ -29,7 +30,7 @@
   width: 80px;
   position: absolute;
   left: calc(50% - 40px);
-  top: calc(50% - 40px);
+  top: calc(35%);
 }
 @keyframes animate {
   0% {

@@ -4,6 +4,8 @@ import Notiflix from 'notiflix';
 import checkInputData from './checkInputData';
 import updateResponce from './updateResponce';
 
+import { spinnerOn, spinnerOff } from './loader';
+
 refs.form.addEventListener('submit', onClickSubmit);
 let value = null;
 let page = 1;
@@ -19,10 +21,13 @@ function onClickSubmit(event) {
     return;
   }
 
+  spinnerOn();
   fetchSearchFilm(value, page)
     .then(updateResponce)
     // .then(resp => console.log('responce', resp))
-    .catch(error => console.log(error));
+    .catch(error => console.log(error))
+    .finally(() => spinnerOff());
+
   event.target.reset();
 }
 
