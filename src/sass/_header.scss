@@ -1,5 +1,6 @@
 .header {
-  // max-width: 1280px;
+  max-width: 1280px;
+  margin: 0 auto;
   height: 216px;
   background-image: url(../images/header-bcg.jpg);
 
@@ -19,9 +20,11 @@
 }
 
 .header__lib {
+  max-width: 1280px;
+  margin: 0 auto;
   height: 216px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(../images/header-lib-bcg.jpg);
+    url(../images/desctop_bgr_library-min.jpg);
   display: flex;
   // opacity: 0.9;
 
