@@ -1,7 +1,8 @@
-import fetchSearchFilm from './fetchAPI';
+import { fetchSearchFilm } from './fetchAPI';
 import refs from './refs';
 import Notiflix from 'notiflix';
 import checkInputData from './checkInputData';
+import updateResponce from './updateResponce';
 
 refs.form.addEventListener('submit', onClickSubmit);
 let value = null;
@@ -19,7 +20,7 @@ function onClickSubmit(event) {
   }
 
   fetchSearchFilm(value, page)
-    .then(checkInputData)
+    .then(updateResponce)
     // .then(resp => console.log('responce', resp))
     .catch(error => console.log(error));
   event.target.reset();
