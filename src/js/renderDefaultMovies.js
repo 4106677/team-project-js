@@ -1,4 +1,5 @@
 import oneMovieCardTpl from '../templates/oneMovieCard.hbs';
+import { spinnerOff, spinnerOn } from './loader';
 import smoothScroll from './smoothScrool';
 import updateResponce from './updateResponce';
 
@@ -13,30 +14,34 @@ button.addEventListener('click', renderDefaultMovies);
 let page = 1;
 
 function fetchDefaultMoviesByApi() {
-  return fetch(`${BASE_URL}?page=${page}&api_key=${API_KEY}`).then(response => {
-    if (!response.ok) {
-      throw new Error('Fail');
-    }
+  spinnerOn();
+  return fetch(`${BASE_URL}?page=${page}&api_key=${API_KEY}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Fail');
+      }
 
-    page += 1;
-    return response.json();
-  });
+      page += 1;
+      return response.json();
+    })
+    .finally(() => spinnerOff());
 }
 
-export function renderDefaultMovies() {
-  fetchDefaultMoviesByApi().then(data => {
-    console.log('data.results', data.results);
-    const responce = updateResponce(data.results);
-    console.log('updateResponce', responce);
-    ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(responce));
+export async function renderDefaultMovies() {
+  const data = await fetchDefaultMoviesByApi();
 
-    if (ul.childElementCount > 20) smoothScroll();
+  console.log('data.results', data.results);
+  const responce = await updateResponce(data.results);
+  console.log('updateResponce', responce);
+  ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(responce));
 
-    if (data.page === 1000) {
-      alert("We're sorry, but you've reached the end of films collection.");
-      button.classList.add('is-hidden');
-    }
-  });
+  if (ul.childElementCount > 20) smoothScroll();
+
+  if (data.page === 1000) {
+    alert("We're sorry, but you've reached the end of films collection.");
+    button.classList.add('is-hidden');
+  }
 }
 
 renderDefaultMovies();
+//*
