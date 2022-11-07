@@ -1,0 +1,71 @@
+<div class="modal-backdrop">
+    <div class="modal">
+        <button type="button" class="modal__close" data-action="modal-close">
+            X
+        </button>
+        <div class="modal__body">
+            <div class="modal__img-wrapper">
+                {{#if poster_path}}
+                    <picture>
+                        <source
+                            srcset="https://image.tmdb.org/t/p/original{{poster_path}} 1x, https://image.tmdb.org/t/p/original{{poster_path}} 2x"
+                            media="(min-width: 1200px)"
+                            />
+
+                        <source
+                            srcset="
+                            https://image.tmdb.org/t/p/w500{{poster_path}}    1x,
+                            https://image.tmdb.org/t/p/w500{{poster_path}} 2x
+                            "
+                            media="(min-width: 768px)"
+                        />
+
+                        <source
+                            srcset="
+                            https://image.tmdb.org/t/p/w300{{poster_path}}    1x,
+                            https://image.tmdb.org/t/p/w300{{poster_path}} 2x
+                            "
+                            media="(min-width: 320px)"
+                        />
+                        <img src="https://image.tmdb.org/t/p/original{{poster_path}}" alt="Poster for {{title}}" class="modal__img" loading='lazy'/>
+                    </picture>
+                {{else}}
+                    <img class="alt_image" src="./images/no-poster.jpg" alt="Poster not found" class="movie-card__img poster" loading='lazy'/>
+                {{/if}}
+            </div>
+            <div class="modal__details">
+                <p class="modal__title">{{original_title}}</p>
+                <div class="modal__film-info">
+                    <div class="modal__film-category film-category">
+                        <div class="film-category__title">Vote / Votes</div>
+                        <div class="film-category__text"><span class="film-category__vote-average">{{vote_average}}</span> / <span class="film-category__vote-count">{{vote_count}}</span></div>
+                    </div>
+                    <div class="modal__film-category film-category">
+                        <div class="film-category__title">Popularity</div>
+                        <div class="film-category__text">{{popularity}}</div>
+                    </div>
+                    <div class="modal__film-category film-category">
+                        <div class="film-category__title">Original Title</div>
+                        <div class="film-category__text">{{original_title}}</div>
+                    </div>
+                    <div class="modal__film-category film-category">
+                        <div class="film-category__title">Genre</div>
+                        <div class="film-category__text">
+                            {{#each genres}}
+                                {{this.name}}{{#if @last}}{{else}},{{/if}}
+                            {{/each}} 
+                        </div>
+                    </div>
+                </div>
+                <p class="modal__description-title">About</p>
+                <div class="modal__description">
+                    {{overview}}
+                </div>
+                <div class="modal__action action">
+                    <button type="button" class="action__watched">ADD TO WATCHED</button>
+                    <button type="button" class="action__queue">ADD TO QUEUE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
