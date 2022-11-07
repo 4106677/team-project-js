@@ -30,9 +30,9 @@ function fetchDefaultMoviesByApi() {
 export async function renderDefaultMovies() {
   const data = await fetchDefaultMoviesByApi();
 
-  console.log('data.results', data.results);
+  // console.log('renderDefaultMovies data.results', data.results);
   const responce = await updateResponce(data.results);
-  console.log('updateResponce', responce);
+  // console.log('updateResponce', responce);
   ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(responce));
 
   if (ul.childElementCount > 20) smoothScroll();
