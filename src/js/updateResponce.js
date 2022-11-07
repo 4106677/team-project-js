@@ -27,11 +27,6 @@ async function updateResponce(data) {
 
 function getGenresId() {
   const genresObj = {};
-  const genresObj2 = {
-    12: 'Adventure',
-    14: 'Fantasy',
-    16: 'Animation',
-  };
 
   return onGetFilmGenres().then(data => {
     const dataGenres = data.data.genres;
