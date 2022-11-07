@@ -8,7 +8,7 @@
   align-items: baseline;
 
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(../images/mpbile_bgr_home.jpg);
+    url(../images/mobile_bgr_home.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -65,7 +65,6 @@
 
 .header .container {
   display: flex;
-  position: relative;
 }
 
 .header__lib-nav {
@@ -91,13 +90,15 @@
 
   line-height: calc(35 / 30);
 
-  display: flex;
-  // align-items: center;
   text-align: center;
 
   color: #ffffff;
 }
-
+.logo-text {
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+}
 .nav {
   margin-left: auto;
   // outline: 2px solid red;
