@@ -2,6 +2,16 @@ import * as basicLightbox from 'basiclightbox';
 import { userRegistration, userSingIn } from '../js/firebase';
 import { getDatabase, ref, set } from 'firebase/database';
 
+const loginRef = document.querySelector('#login');
+const registrationRef = document.querySelector('#registration');
+const navLibraryRef = document.querySelector('#nav-library');
+
+if (localStorage.getItem('userEmail')) {
+  navLibraryRef.removeAttribute('hidden');
+  loginRef.setAttribute('hidden', true);
+  registrationRef.setAttribute('hidden', true);
+}
+
 const loginModal = basicLightbox.create(
   `
     <div class="modal-login">
@@ -13,8 +23,9 @@ const loginModal = basicLightbox.create(
             <input type="email" placeholder="example@mail.com" class="login-form__input" id="email-login">
             <label for="password">Password</label>
              <input type = "password" placeholder="At least 8 characters" class="login-form__input" id="password-login">
-            <button type="submit" class="login-form__button">Login</button>
-            <!-- <p class="login-form__alternate-access">Don’t have an account ? Register now!</p> -->
+            <p class="error-message"></p>
+             <button type="submit" class="login-form__button">Login</button>
+            
             
         </form>
     </div>
@@ -43,9 +54,6 @@ const registrationModal = basicLightbox.create(
 );
 
 export function openLoginModal() {
-  const loginRef = document.querySelector('#login');
-  const registrationRef = document.querySelector('#registration');
-
   // Вход зарегистрированного пользователя
   loginRef.addEventListener('click', () => {
     loginModal.show();
@@ -79,6 +87,9 @@ function registration(e) {
     } else {
       localStorage.setItem('userEmail', user.email);
       registrationModal.close();
+      navLibraryRef.removeAttribute('hidden');
+      loginRef.setAttribute('hidden', true);
+      registrationRef.setAttribute('hidden', true);
     }
   });
 }
@@ -86,12 +97,31 @@ function registration(e) {
 // ===================== Вход зарегистрированного пользователя ==============
 function singIn(e) {
   e.preventDefault();
+  console.log(navLibraryRef);
   const email = document.querySelector('#email-login').value;
   const password = document.querySelector('#password-login').value;
 
   const user = userSingIn(email, password);
-  user.then(data => {
-    console.log('data', data);
+  user.then(user => {
+    console.log(user);
+    if (user.email) {
+      localStorage.setItem('userEmail', user.email);
+      loginModal.close();
+      navLibraryRef.removeAttribute('hidden');
+      loginRef.setAttribute('hidden', true);
+      registrationRef.setAttribute('hidden', true);
+    } else if (user === 'auth/user-not-found') {
+      console.log('Ошибка входа!!!!');
+      document.querySelector('.error-message').innerHTML =
+        'Пользователя с таким именем не существует !!!!';
+    } else if (user === 'auth/wrong-password') {
+      console.log('Ошибка входа!!!!');
+      document.querySelector('.error-message').innerHTML =
+        'Не правильный пароль !!!!';
+    } else {
+      document.querySelector('.error-message').innerHTML =
+        'Ошибка входа в аккаунт !!!!';
+    }
   });
 
   //   user.then(user => {
