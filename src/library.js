@@ -1,6 +1,10 @@
+
 import watchedFilms from './js/watchedFilms';
 import queueFilms from './js/queueFilms';
 import { writeInDataBase, readFromDataBase } from './js/dataBaseApi';
+
+import { teamModalService } from './js/team-modal-service';
+teamModalService.eventListenerCreator();
 
 const target = 'watched'; //watched , queue
 const uid = 'E7bAOKLi5uVo2RVCvy4tGxdEo7T2';
@@ -25,3 +29,4 @@ const release_date = '2020';
 
 readFromDataBase(uid, target).then(console.log);
 // console.log();
+
