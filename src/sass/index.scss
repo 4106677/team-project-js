@@ -3,10 +3,20 @@
 @import './base/common';
 @import './header';
 @import './components/current';
+
+@import './components/login-modal';
+
 @import './base/visuallyhidden';
 
 @import './base/container';
 @import './movie-gallery';
 @import './movieCard';
 @import './footer';
+
 @import './modal';
+
+
+@import './utils/team-modal-style';
+
+@import './loader';
+

@@ -6,17 +6,20 @@
 
   margin: 0 auto;
 
-  display: flex;
-
-  position: relative;
-  outline: 1px solid red;
+  @include mobile {
+    max-width: 480px;
+  }
 
   @include tablet {
+    max-width: 768px;
+
     padding-left: 32px;
     padding-right: 32px;
   }
 
   @include desktop {
+    max-width: 1280px;
+
     padding-left: 32px;
     padding-right: 32px;
   }
