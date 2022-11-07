@@ -9,6 +9,7 @@ async function fetchSearchFilm(data, page = 1) {
 
   try {
     const responce = axios.get(URL);
+
     return responce;
   } catch (error) {
     console.error('Something wrong! Can not search films' + error);

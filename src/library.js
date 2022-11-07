@@ -24,4 +24,4 @@ const release_date = '2020';
 // );
 
 readFromDataBase(uid, target).then(console.log);
-console.log();
+// console.log();
