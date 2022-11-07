@@ -1,9 +1,8 @@
-import { fetchSearchFilm } from './fetchAPI';
+import fetchSearchFilm from './fetchAPI';
 import refs from './refs';
+import oneMovieCard from '/src/templates/oneMovieCard.hbs';
 import Notiflix from 'notiflix';
-import checkInputData from './checkInputData';
-
-import { spinnerOn, spinnerOff } from './loader';
+import createGallery from './createGallery';
 
 refs.form.addEventListener('submit', onClickSubmit);
 let value = null;
@@ -15,19 +14,10 @@ function onClickSubmit(event) {
 
   value = refs.input.value.toLowerCase().trim();
 
-  if (!value) {
-    Notiflix.Notify.failure('Please, enter something to search');
-    return;
-  }
-
-  spinnerOn();
   fetchSearchFilm(value, page)
-    .then(data => checkInputData(data))
+    .then(createGallery)
     // .then(resp => console.log('responce', resp))
-    .catch(error => console.log(error))
-    .finally(() => spinnerOff());
-
-  event.target.reset();
+    .catch(error => console.log(error));
 }
 
 export default onClickSubmit;

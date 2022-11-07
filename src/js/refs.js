@@ -1,6 +1,7 @@
 const refs = {
-  form: document.querySelector('.search__form'),
-  input: document.querySelector('.search__input'),
+  body: document.querySelector('body'),
+  form: document.querySelector('.search-form'),
+  input: document.querySelector('#search-form'),
   list: document.querySelector('.movies-popular-list'),
 };
 
