@@ -40,11 +40,11 @@ function userRegistration(email, password) {
 // ======== User Authentication =============================
 function userSingIn(email, password) {
   const auth = getAuth();
-  return signInWithEmailAndPassword(email, password, auth)
+  return signInWithEmailAndPassword(auth, email, password)
     .then(userCredential => {
       // Signed in
       const user = userCredential.user;
-      console.log(userCredential);
+
       return user;
     })
     .catch(error => {
