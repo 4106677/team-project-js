@@ -1,17 +1,19 @@
+footer {
+  background-color: #f7f7f7;
+}
+
 .footer {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  font-family: 'Roboto';
+  font-family: inherit;
   font-style: normal;
   font-weight: 400;
 
   font-size: 16px;
   line-height: 19px;
   color: #545454;
-
-  background-color: #f7f7f7;
 
   @media screen and (min-width: 320px) and (max-width: 767px) {
     height: 100px;

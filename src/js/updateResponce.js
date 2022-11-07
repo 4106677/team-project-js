@@ -35,7 +35,15 @@ function getGenresId() {
     });
     return genresObj;
   });
+  //   console.log('genresObj', genresObj);
 
+  // onGetTVGenres().then(data => {
+  //   const dataGenres = data.data.genres;
+  //   dataGenres.forEach(item => {
+  //     genresObj[item.id] = item.name;
+  //   });
+  // });
+  // console.log('genresObj', genresObj);
 }
 
 export default updateResponce;
