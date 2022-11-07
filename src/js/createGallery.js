@@ -5,10 +5,13 @@ import updateResponce from './updateResponce';
 
 // import checkInputData from './checkInputData';
 
-function createGallery(updateResponce) {
-  console.log('createGallery', updateResponce);
+function createGallery(data) {
+  console.log('createGallery', data);
 
-  refs.list.innerHTML = oneMovieCard(updateResponce);
+  // const updData = updateResponce(data);
+  console.log('createGallery updData', data);
+
+  refs.list.innerHTML = oneMovieCard(data);
 }
 
 export default createGallery;
