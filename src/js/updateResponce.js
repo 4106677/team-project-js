@@ -1,40 +1,11 @@
 import data from '/src/js/onSubmitSearch';
 import { onGetFilmGenres, onGetTVGenres } from './fetchAPI';
 
-function updateResponce(data) {
+async function updateResponce(data) {
   console.log('updateResponce', data);
 
-  const genresObj = {};
-  //   const genresObj2 = {
-  //     12: 'Adventure',
-  //     14: 'Fantasy',
-  //     16: 'Animation',
-  //   };
+  const objIdGenres = await getGenresId();
 
-  //   onGetFilmGenres().then(data => {
-  //     const dataGenres = data.data.genres;
-  //     dataGenres.forEach(item => {
-  //       genresObj[item.id] = item.name;
-  //     });
-  //   });
-  //   //   console.log('genresObj', genresObj);
-
-  //   onGetTVGenres().then(data => {
-  //     const dataGenres = data.data.genres;
-  //     dataGenres.forEach(item => {
-  //       genresObj[item.id] = item.name;
-  //     });
-  //   });
-  //   console.log('genresObj', genresObj);
-
-  // console.log(data.data.genres));
-  //   console.log('onGetFilmGenres', onGetFilmGenres());
-
-  //   const data = responce.data.results;
-  //   console.log(data);
-  //   const { poster_path, title, genre_ids, release_date, vote_average } = data;
-  //   console.log(release_date);
-  const objIdGenres = getGenresId();
   console.log('objIdGenres', objIdGenres);
 
   const newObj = data.map(item => {
@@ -45,11 +16,7 @@ function updateResponce(data) {
       vote: item.vote_average.toFixed(1),
       id: item.id,
       genres: item.genre_ids.map(id => {
-        let genres = [];
-        if (Object.keys(objIdGenres).includes(id)) {
-          genres.push(Object.values(objIdGenres));
-        }
-        return id;
+        return objIdGenres[id];
       }),
     };
   });
@@ -65,22 +32,22 @@ function getGenresId() {
     16: 'Animation',
   };
 
-  onGetFilmGenres().then(data => {
+  return onGetFilmGenres().then(data => {
     const dataGenres = data.data.genres;
     dataGenres.forEach(item => {
       genresObj[item.id] = item.name;
     });
+    return genresObj;
   });
   //   console.log('genresObj', genresObj);
 
-  onGetTVGenres().then(data => {
-    const dataGenres = data.data.genres;
-    dataGenres.forEach(item => {
-      genresObj[item.id] = item.name;
-    });
-  });
-  console.log('genresObj', genresObj);
-  return genresObj;
+  // onGetTVGenres().then(data => {
+  //   const dataGenres = data.data.genres;
+  //   dataGenres.forEach(item => {
+  //     genresObj[item.id] = item.name;
+  //   });
+  // });
+  // console.log('genresObj', genresObj);
 }
 
 export default updateResponce;

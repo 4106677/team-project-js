@@ -1,9 +1,10 @@
-const modal = document.querySelector('.modal');
+import openModalOfDevs from './modal-of-devs';
+const backdrop = document.querySelector('.backdrop');
 
-modal.addEventListener('click', closeModal);
+backdrop.addEventListener('click', closeModal);
 
 function closeModal() {
-  instance.close();
+  backdrop.classList.remove('isActive');
 }
 
 document.addEventListener('keyup', closeModalEsc);
