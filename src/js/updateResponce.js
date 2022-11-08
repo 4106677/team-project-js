@@ -14,6 +14,7 @@ async function updateResponce(data) {
       poster: item.poster_path,
       title: item.title || item.name,
       vote: item.vote_average.toFixed(1),
+      popularity: item.popularity.toFixed(1),
       id: item.id,
       genres: item.genre_ids
         .map((id, index, arr) => {
