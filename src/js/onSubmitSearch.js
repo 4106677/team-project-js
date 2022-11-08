@@ -5,7 +5,7 @@ import checkInputData from './checkInputData';
 import { createGallery, createGalleryNextPage } from './createGallery';
 import oneMovieCard from '/src/templates/oneMovieCard.hbs';
 import smoothScroll from './smoothScrool';
-import renderDefaultMovies from './renderDefaultMovies';
+import { renderDefaultMovies } from './renderDefaultMovies';
 
 import { spinnerOn, spinnerOff } from './loader';
 
