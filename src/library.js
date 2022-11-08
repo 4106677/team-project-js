@@ -46,8 +46,10 @@ function readFromDataBase(uid, target) {
   const database = getDatabase(app);
 
   const topUserPostsRef = query(ref(database, 'films/' + uid + '/' + target));
+  console.log(topUserPostsRef);
   onValue(topUserPostsRef, snapshot => {
     const data = Object.values(snapshot.val());
+
     listSectionRef.innerHTML = oneMovieCardTmp(data);
   });
 }
