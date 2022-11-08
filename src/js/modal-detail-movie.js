@@ -7,7 +7,7 @@ import { getDatabase, ref, set, query, onValue } from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 import { writeInDataBase } from './apps/dataBaseApi';
 
-let prop = null;
+let props = null;
 
 // делигирование события на карточки с фильмами
 export default function modalDetailMovie() {
