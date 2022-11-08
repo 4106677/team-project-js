@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const API_KEY = '430ce39ddbb6d767664f5ab1d9d53645';
+// const API_KEY2 = '3ab3f6572c3def6f6cf5801fb6522013';
 
 async function fetchSearchFilm(data, page = 1) {
   const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
@@ -8,7 +9,6 @@ async function fetchSearchFilm(data, page = 1) {
 
   try {
     const responce = axios.get(URL);
-    page += 1;
     return responce;
   } catch (error) {
     console.error('Something wrong! Can not search films' + error);
