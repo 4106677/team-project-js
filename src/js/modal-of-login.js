@@ -54,6 +54,14 @@ export function openLoginModal() {
     modalFormBtn.addEventListener('click', e => {
       singIn(e); // фукция входа зарегистрированного пользоваьеля
     });
+    document.addEventListener('keyup', closeModalEsc);
+
+    function closeModalEsc(evt) {
+      if (evt.code === 'Escape') {
+        loginModal.close();
+        document.removeEventListener('keyup', closeModalEsc);
+      }
+    }
   });
 
   // ===================== регистрация пользователя =======================
@@ -63,6 +71,15 @@ export function openLoginModal() {
     modalFormBtn.addEventListener('submit', e => {
       registration(e); // фукция регистрации полдьзователя
     });
+
+    document.addEventListener('keyup', closeModalEsc);
+
+    function closeModalEsc(evt) {
+      if (evt.code === 'Escape') {
+        registrationModal.close();
+        document.removeEventListener('keyup', closeModalEsc);
+      }
+    }
   });
 }
 
