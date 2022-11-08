@@ -34,8 +34,12 @@
         
           <p class="movie-card__info">
             {{#each genres}}
-            {{this }} {{#unless @last}}, {{/unless}}
-            {{/each}} | {{year}}            
+
+            {{this }}{{#unless @last}},{{/unless}}
+            {{/each}}
+|{{year}} 
+           //<span  class="add-insert">|</span>
+
           </p>
           <p class="movie-card__vote visually-hidden">{{vote}}</p>
       
