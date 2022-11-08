@@ -40,6 +40,7 @@ export default function modalDetailMovie() {
         genres: resp.genres,
         overview: resp.overview,
         year: resp.release_date,
+        popularity: resp.popularity.toFixed(1),
       };
       const instance_2 = basicLightbox.create(modalMovieTmp(props));
       instance_2.show();
@@ -49,8 +50,20 @@ export default function modalDetailMovie() {
       const queueBtnRef = document.querySelector('.queue');
 
       // слушатели на  кнопки
+
       watchedBtnRef.addEventListener('click', addMovieToWatchedBase);
-      queueBtnRef.addEventListener('click', addMovieToQueuedBase);
+
+      
+
+      document.addEventListener('keyup', closeModalEsc);
+
+      function closeModalEsc(evt) {
+        if (evt.code === 'Escape') {
+          instance_2.close();
+          document.removeEventListener('keyup', closeModalEsc);
+        }
+      }
+
     });
 
     // добавление в ветку watched
