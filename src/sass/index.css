@@ -1,3 +1,4 @@
+
 @import '~node_modules/modern-normalize/modern-normalize.css';
 h1,
 h2,
@@ -1026,7 +1027,6 @@ footer {
     transform: rotate(140deg);
   }
 }
-
 @keyframes animate2 {
   0% {
     box-shadow: inset #ff6b08 0 0 0 17px;
@@ -1039,4 +1039,3 @@ footer {
     box-shadow: inset #ff6b08 0 0 0 17px;
     transform: rotate(140deg);
   }
-}/*# sourceMappingURL=index.css.map */
