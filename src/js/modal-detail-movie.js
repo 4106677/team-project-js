@@ -7,6 +7,8 @@ import { getDatabase, ref, set, query, onValue } from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 import { writeInDataBase } from './apps/dataBaseApi';
 
+let prop = null;
+
 // делигирование события на карточки с фильмами
 export default function modalDetailMovie() {
   const moviesListSectionRef = document.querySelector('.movies-popular-list');
@@ -27,7 +29,7 @@ export default function modalDetailMovie() {
 
       // свойтва которые передаються в шаблон
       const userId = localStorage.getItem('uid');
-      const props = {
+      props = {
         userId: userId,
         filmId: resp.id,
         title: resp.original_title,
@@ -47,12 +49,12 @@ export default function modalDetailMovie() {
       const queueBtnRef = document.querySelector('.queue');
 
       // слушатели на  кнопки
-      watchedBtnRef.addEventListener('click', addMovieToWatchedBase, props);
-      queueBtnRef.addEventListener('click', addMovieToQueuedBase, props);
+      watchedBtnRef.addEventListener('click', addMovieToWatchedBase);
+      queueBtnRef.addEventListener('click', addMovieToQueuedBase);
     });
 
     // добавление в ветку watched
-    function addMovieToWatchedBase(props) {
+    function addMovieToWatchedBase() {
       writeInDataBase(
         'watched',
         props['userId'],
@@ -65,7 +67,7 @@ export default function modalDetailMovie() {
       );
     }
     // добавление в ветку Queue
-    function addMovieToQueuedBase(props) {
+    function addMovieToQueuedBase() {
       writeInDataBase(
         'queue',
         props['userId'],
