@@ -26,34 +26,37 @@ export default function modalDetailMovie() {
     //   отправление запроса на получание польной нформации  о фильме
     fetchAboutMovies(movieId).then(resp => {
       const genresList = JSON.parse(localStorage.getItem('genres'));
-
+      let arr = [];
+      for (const name of resp.genres) {
+        arr.push(name.name);
+      }
       // свойтва которые передаються в шаблон
       const userId = localStorage.getItem('uid');
-      props = {
+      const props = {
         userId: userId,
         filmId: resp.id,
         title: resp.original_title,
         poster_url: resp.poster_path,
-        vote_average: resp.vote_average,
+        vote_average: resp.vote_average.toFixed(1),
         vote_count: resp.vote_count,
         original_title: resp.original_title,
-        genres: resp.genres,
+        genres: arr.join(', '),
         overview: resp.overview,
         year: resp.release_date,
         popularity: resp.popularity.toFixed(1),
       };
       const instance_2 = basicLightbox.create(modalMovieTmp(props));
+
       instance_2.show();
 
       // ссылки на кнопки
       const watchedBtnRef = document.querySelector('.watched');
       const queueBtnRef = document.querySelector('.queue');
+      const closeCross = document.querySelector('#close-btn');
 
       // слушатели на  кнопки
 
       watchedBtnRef.addEventListener('click', addMovieToWatchedBase);
-
-      
 
       document.addEventListener('keyup', closeModalEsc);
 
@@ -63,7 +66,11 @@ export default function modalDetailMovie() {
           document.removeEventListener('keyup', closeModalEsc);
         }
       }
-
+      closeCross.addEventListener('click', onCloseModal);
+      function onCloseModal() {
+        instance_2.close();
+        closeCross.removeEventListener('click', onCloseModal);
+      }
     });
 
     // добавление в ветку watched
