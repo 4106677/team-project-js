@@ -38,6 +38,7 @@ export default function modalDetailMovie() {
         genres: resp.genres,
         overview: resp.overview,
         year: resp.release_date,
+        popularity: resp.popularity.toFixed(1),
       };
       const instance_2 = basicLightbox.create(modalMovieTmp(props));
       instance_2.show();
