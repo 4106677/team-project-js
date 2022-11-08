@@ -49,6 +49,15 @@ export default function modalDetailMovie() {
       // слушатели на  кнопки
       watchedBtnRef.addEventListener('click', addMovieToWatchedBase, props);
       queueBtnRef.addEventListener('click', addMovieToQueuedBase, props);
+
+      document.addEventListener('keyup', closeModalEsc);
+
+      function closeModalEsc(evt) {
+        if (evt.code === 'Escape') {
+          instance_2.close();
+          document.removeEventListener('keyup', closeModalEsc);
+        }
+      }
     });
 
     // добавление в ветку watched
