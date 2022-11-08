@@ -1,4 +1,4 @@
-export default firebaseConfig = {
+const firebaseConfig = {
   apiKey: 'AIzaSyD8Xe_Nj5r_CTsQ1IiUWTLdW_hWsbx85Eg',
   authDomain: 'filmoteka-6051d.firebaseapp.com',
   databaseURL:
@@ -8,3 +8,5 @@ export default firebaseConfig = {
   messagingSenderId: '7192088333',
   appId: '1:7192088333:web:7a18c384db98030289ea44',
 };
+
+export default firebaseConfig;
