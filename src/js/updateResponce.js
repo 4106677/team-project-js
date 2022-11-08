@@ -16,9 +16,21 @@ async function updateResponce(data) {
       title: item.title || item.name,
       vote: item.vote_average.toFixed(1),
       id: item.id,
-      genres: item.genre_ids.map(id => {
-        return objIdGenres[id];
-      }),
+      genres: item.genre_ids
+        .map(id => {
+          return objIdGenres[id];
+        })
+        .reduce((acc, element, index, array) => {
+          console.log(index);
+          if (index > 2) {
+            acc = [...array.slice(0, 2)];
+
+            acc.push('Other');
+            return acc;
+          } else {
+            return array;
+          }
+        }, []),
     };
   });
   console.log('newObj', newObj);
