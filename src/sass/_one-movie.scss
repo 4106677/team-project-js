@@ -1,0 +1,121 @@
+.movie {
+  background-color: #fff;
+  padding: 50px 20px 40px;
+  @media screen and (min-width: 768px) {
+    padding: 40px;
+    width: 705px;
+    display: flex;
+  }
+  @media screen and (min-width: 1280px) {
+    padding: 40px 10px;
+    width: 810px;
+  }
+  &__img {
+    width: 100%;
+
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  &__div {
+    @media screen and (min-width: 768px) {
+      display: contents;
+    }
+  }
+}
+.description__title {
+  margin-bottom: 20px;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+
+  color: #000000;
+}
+
+.description__about {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  color: #000000;
+  margin-bottom: 20px;
+
+  &__title {
+    display: block;
+    font-family: inherit;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    text-transform: uppercase;
+    color: #000000;
+  }
+}
+
+.description__info {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #000000;
+}
+
+.description__info__titles {
+  display: inline-block;
+  width: 110px;
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #8c8c8c;
+}
+
+.queue {
+  width: 110px;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 6px 27px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  display: block;
+}
+
+.watched {
+  color: #fff;
+  background-color: #ff6b01;
+  border: 1px solid #ff6b01;
+
+  width: 110px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 6px 27px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  display: block;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.description__list {
+  margin-bottom: 20px;
+  display: block;
+}
