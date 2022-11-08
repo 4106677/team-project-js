@@ -5,10 +5,8 @@ import updateResponce from './updateResponce';
 
 // import checkInputData from './checkInputData';
 
-function createGallery(updateResponce) {
-  console.log('createGallery', updateResponce);
-
-  refs.list.innerHTML = oneMovieCard(updateResponce);
+function createGallery(data) {
+  refs.list.innerHTML = oneMovieCard(data);
 }
 
 export default createGallery;

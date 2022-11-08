@@ -1,3 +1,4 @@
+
 .header {
   // max-width: 1280px;
   height: 216px;
@@ -11,6 +12,7 @@
 
 .header .container {
   display: flex;
+  position: relative;
 }
 
 .header__lib-nav {
@@ -19,68 +21,14 @@
 }
 
 .header__lib {
+  height: 216px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(../images/header-lib-bcg.jpg);
   display: flex;
   // opacity: 0.9;
 
   padding-top: 40px;
   align-items: baseline;
-
-  height: 216px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(../images/mobile_bgr_library-min.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url(../images/mobile_bgr_library@2x-min.jpg);
-  }
-
-  @media screen and (min-width: 768px) {
-    display: flex;
-    padding-top: 40px;
-    align-items: baseline;
-    height: 216px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url(../images/tablet_bgr_library-min.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    @media (min-device-pixel-ratio: 2),
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: linear-gradient(
-          rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)
-        ),
-        url(../images/tablet_bgr_library@2x-min.jpg);
-    }
-  }
-  @media screen and (min-width: 1200px) {
-    display: flex;
-    padding-top: 40px;
-    align-items: baseline;
-    height: 216px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url(../images/desctop_bgr_library-min.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    @media (min-device-pixel-ratio: 2),
-      (-webkit-min-device-pixel-ratio: 2),
-      (min-resolution: 192dpi),
-      (min-resolution: 2dppx) {
-      background-image: linear-gradient(
-          rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)
-        ),
-        url(../images/desctop_bgr_library@2x-min.jpg);
-    }
-  }
 }
 
 .logo {
@@ -236,3 +184,4 @@
 .error-message {
   color: red;
 }
+

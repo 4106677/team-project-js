@@ -24,35 +24,38 @@
   }
 }
 
-.movie-img-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
+// .movie-img-wrapper {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   margin-bottom: 10px;
 
-  @include tablet {
-    margin-bottom: 8px;
-  }
+//   @include tablet {
+//     margin-bottom: 8px;
+//   }
 
-  @include desktop {
-    margin-bottom: 12px;
-  }
-}
+//   @include desktop {
+//     margin-bottom: 12px;
+//   }
+// }
 
 .movie-card__img {
   display: block;
   border-radius: 5px;
   width: 100%;
+  margin-bottom: 10px;
 
   @include mobile {
     height: 398px;
   }
   @include tablet {
     height: 455px;
+    margin-bottom: 8px;
   }
 
   @include desktop {
     height: 574px;
+    margin-bottom: 12px;
   }
 }
 
@@ -99,10 +102,10 @@
 }
 
 .add-insert {
-  font-size: 10px;
+  font-size: 12px;
 
   @include desktop {
-    font-size: 14px;
+    font-size: 18px;
   }
 }
 

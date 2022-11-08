@@ -1,6 +1,8 @@
 import oneMovieCardTpl from '../templates/oneMovieCard.hbs';
+import { spinnerOff, spinnerOn } from './loader';
 import smoothScroll from './smoothScrool';
 import updateResponce from './updateResponce';
+import Notiflix from 'notiflix';
 
 const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day';
 const API_KEY = '3ab3f6572c3def6f6cf5801fb6522013';
@@ -13,30 +15,42 @@ button.addEventListener('click', renderDefaultMovies);
 let page = 1;
 
 function fetchDefaultMoviesByApi() {
-  return fetch(`${BASE_URL}?page=${page}&api_key=${API_KEY}`).then(response => {
-    if (!response.ok) {
-      throw new Error('Fail');
-    }
+  spinnerOn();
+  return fetch(`${BASE_URL}?page=${page}&api_key=${API_KEY}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Fail');
+      }
 
-    page += 1;
-    return response.json();
-  });
+      page += 1;
+      return response.json();
+    })
+    .finally(() => spinnerOff());
 }
 
 export function renderDefaultMovies() {
-  fetchDefaultMoviesByApi().then(data => {
-    console.log('data.results', data.results);
-    const responce = updateResponce(data.results);
-    console.log('updateResponce', responce);
-    ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(responce));
+  fetchDefaultMoviesByApi()
+    .then(data => {
+      const resp = updateResponce(data.results);
+      return resp;
+    })
+    .then(resp => {
+      ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(resp));
+      console.log('RESP', resp);
 
-    if (ul.childElementCount > 20) smoothScroll();
+      if (ul.childElementCount > 20) smoothScroll();
 
-    if (data.page === 1000) {
-      alert("We're sorry, but you've reached the end of films collection.");
-      button.classList.add('is-hidden');
-    }
-  });
+      if (resp.page === 1000) {
+        Notiflix.Notify.info(
+          "We're sorry, but you've reached the end of films collection."
+        );
+        button.classList.add('is-hidden');
+      }
+    });
+  // console.log('renderDefaultMovies data.results', data.results);
+  // updateResponce(data.results);
+  // console.log('updateResponce', responce);
 }
 
 renderDefaultMovies();
+//*

@@ -1,11 +1,11 @@
-{{#each this}}
-<li class="movie-card">
-    <a href='' class="movie-link-wrapper" data-action="modal-open">
-<div class="movie-img-wrapper">
+{{#each this }}
+<li class="movie-card" data-id={{id}}>
+  
+
     {{#if poster}}
-    <picture>
+    <picture class="picture" data-id={{id}}>
       <source
-                  srcset="https://image.tmdb.org/t/p/original{{poster}} 1x, https://image.tmdb.org/t/p/original{{poster}} 2x"
+                  srcset="https://image.tmdb.org/t/p/w500{{poster}} 1x, https://image.tmdb.org/t/p/w500{{poster}} 2x"
                   media="(min-width: 1200px)"
                 />
 
@@ -24,20 +24,26 @@
                   "
                   media="(min-width: 320px)"
                 />
-          <img src="https://image.tmdb.org/t/p/original{{poster}}" alt="Poster for "{{title}}"" class="movie-card__img poster " loading='lazy'/>
-          </picture>
+          <img src="https://image.tmdb.org/t/p/w500{{poster}}" alt="Poster for "{{title}}"" class="movie-card__img poster " loading='lazy'/>
+      </picture>
     {{else}}
         <img  src="https://phonoteka.org/uploads/posts/2021-05/1620113958_20-phonoteka_org-p-kinoplyonka-s-prozrachnim-fonom-24.png" alt="Poster not found for movie: {{title}}" class="movie-card__img poster" loading='lazy'/>
     {{/if}}
-    </div>
+   
         <h2 class="movie-card__title">{{title}}</h2>
-        <div class="movie-card__box">
+        
           <p class="movie-card__info">
-            {{genre_ids}} <span  class="add-insert">|</span> {{year}} 
+            {{#each genres}}
+
+            {{this }}{{#unless @last}},{{/unless}}
+            {{/each}}
+| {{year}} 
+
+
           </p>
           <p class="movie-card__vote visually-hidden">{{vote}}</p>
-        </div>
-        </a>
+      
+        
       </li>
 
 {{/each}} 
