@@ -50,18 +50,18 @@ function renderTeamMarkup(cards) {
       </div>
       <div class="team-card-box">
       <h3  class="team-card-text">${item.name}</h3>
-      <p class="team-card-work_text">Frontend Developer</p>
+      <p class="team-card-work_text">${item.work}</p>
           <ul class="social-network list">
             <li class="social-network__item">
               <a href="${item.git}" class="social-network__link" aria-label="Фейсбук" target="_blank" rel="noopener noreferrer">
-                <svg class="social-network__icon" width="30" height="30">
+                <svg class="social-network__icon" width="17" height="17">
                   <use href="${icons}#github"></use>
                 </svg>
               </a>
             </li>
             <li class="social-network__item">
               <a href="" class="social-network__link" aria-label="Линкедин" target="_blank" rel="noopener noreferrer">
-                <svg class="social-network__icon" width="30" height="30">
+                <svg class="social-network__icon" width="17" height="17">
                   <use href="${icons}#linkedin"></use>
                 </svg>
               </a>
@@ -76,73 +76,85 @@ function renderTeamMarkup(cards) {
 const arrCards = [
   {
     card: 'card-1',
-    name: 'max',
+    name: 'Kateryna Dolotova!',
+    work: 'Scrum Master',
     img: image,
-    git: 'https://github.com/LITOHA-77',
+    git: 'https://github.com/4106677/team-project-js',
   },
   {
     card: 'card-2',
-    name: 'bob',
+    name: 'Diana',
+    work: 'Frontend Developer',
     img: image,
-    git: 'https://github.com/LITOHA-77',
+    git: 'https://github.com/diana2907',
   },
   {
     card: 'card-3',
-    name: 'lilu',
+    name: 'Anna',
+    work: 'Frontend Developer',
     img: image,
-    git: 'https://github.com/LITOHA-77',
+    git: 'https://github.com/anna-zau',
   },
   {
     card: 'card-4',
-    name: 'max',
+    name: 'Julia Ihnatenko',
+    work: 'Frontend Developer',
     img: image,
-    git: 'https://github.com/LITOHA-77',
+    git: 'https://github.com/Lulu0502',
   },
   {
     card: 'card-5',
-    name: 'bob',
+    name: 'Yaroslav Oliynyk',
+    work: 'Team Lead',
     img: image,
-    git: 'https://github.com/LITOHA-77',
+    git: 'https://github.com/4106677',
   },
   {
     card: 'card-6',
-    name: 'lilu',
+    name: 'Yriy Protcyshin',
+    work: 'Frontend Developer',
     img: image,
-    git: 'https://github.com/LITOHA-77',
+    git: 'https://github.com/YriyProtcyshin',
   },
   {
     card: 'card-7',
-    name: 'max',
+    name: 'Viktor Litvynchuk',
+    work: 'Frontend Developer',
     img: image,
-    git: 'https://github.com/LITOHA-77',
+    git: 'https://github.com/Vendettich13',
   },
   {
     card: 'card-8',
-    name: 'bob',
+    name: 'Romanyuk Roman!',
+    work: 'Frontend Developer',
     img: image,
-    git: 'https://github.com/LITOHA-77',
+    git: 'https://github.com/4106677/team-project-js',
   },
   {
     card: 'card-9',
-    name: 'lilu',
+    name: 'Andrii Popov',
+    work: 'Frontend Developer',
     img: image,
-    git: 'https://github.com/LITOHA-77',
+    git: 'https://github.com/Andrii0207',
   },
   {
     card: 'card-10',
-    name: 'max',
+    name: 'Oleksandr Pavlov',
+    work: 'Frontend Developer',
     img: image,
-    git: 'https://github.com/LITOHA-77',
+    git: 'https://github.com/Oleksandr-Pavlov',
   },
   {
     card: 'card-11',
-    name: 'bob',
+    name: 'Ihor Zhayvoron!',
+    work: 'Frontend Developer',
     img: image,
-    git: 'https://github.com/LITOHA-77',
+    git: 'https://github.com/4106677/team-project-js',
   },
   {
     card: 'card-12',
-    name: 'lilu',
+    name: 'Maksym Lytovchenko',
+    work: 'Frontend Developer',
     img: image,
     git: 'https://github.com/LITOHA-77',
   },
