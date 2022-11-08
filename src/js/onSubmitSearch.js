@@ -2,7 +2,6 @@ import { fetchSearchFilm } from './fetchAPI';
 import refs from './refs';
 import Notiflix from 'notiflix';
 import checkInputData from './checkInputData';
-import updateResponce from './updateResponce';
 
 import { spinnerOn, spinnerOff } from './loader';
 
@@ -23,7 +22,7 @@ function onClickSubmit(event) {
 
   spinnerOn();
   fetchSearchFilm(value, page)
-    .then(updateResponce)
+    .then(data => checkInputData(data))
     // .then(resp => console.log('responce', resp))
     .catch(error => console.log(error))
     .finally(() => spinnerOff());

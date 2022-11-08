@@ -33,7 +33,11 @@
         <h2 class="movie-card__title">{{title}}</h2>
         <div class="movie-card__box">
           <p class="movie-card__info">
-            {{genres }} <span  class="add-insert">|</span> {{year}} 
+            {{#each genres}}
+            {{this }} {{#unless @last}}, {{/unless}}
+            {{/each}}
+
+           <span  class="add-insert">|</span> {{year}} 
           </p>
           <p class="movie-card__vote visually-hidden">{{vote}}</p>
         </div>

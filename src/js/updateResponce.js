@@ -1,5 +1,6 @@
 import data from '/src/js/onSubmitSearch';
 import { onGetFilmGenres, onGetTVGenres } from './fetchAPI';
+import createGallery from './createGallery';
 
 async function updateResponce(data) {
   console.log('updateResponce', data);
@@ -21,16 +22,11 @@ async function updateResponce(data) {
     };
   });
   console.log('newObj', newObj);
-  return newObj;
+  return createGallery(newObj);
 }
 
 function getGenresId() {
   const genresObj = {};
-  const genresObj2 = {
-    12: 'Adventure',
-    14: 'Fantasy',
-    16: 'Animation',
-  };
 
   return onGetFilmGenres().then(data => {
     const dataGenres = data.data.genres;
