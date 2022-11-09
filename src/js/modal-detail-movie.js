@@ -35,7 +35,7 @@ export default function modalDetailMovie() {
         filmId: resp.id,
         title: resp.original_title,
         poster_url: resp.poster_path,
-        vote_average: resp.vote_average,
+        vote_average: resp.vote_average.toFixed(1),
         vote_count: resp.vote_count,
         original_title: resp.original_title,
         popularity: resp.popularity.toFixed(1),
