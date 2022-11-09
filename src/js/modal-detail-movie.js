@@ -25,52 +25,36 @@ export default function modalDetailMovie() {
 
     //   отправление запроса на получание польной нформации  о фильме
     fetchAboutMovies(movieId).then(resp => {
-      const genresList = JSON.parse(localStorage.getItem('genres'));
-      let arr = [];
-      for (const name of resp.genres) {
-        arr.push(name.name);
-      }
+      // const genresList = JSON.parse(localStorage.getItem('genres'));
+
       // свойтва которые передаються в шаблон
       const userId = localStorage.getItem('uid');
-      const props = {
+
+      props = {
         userId: userId,
         filmId: resp.id,
         title: resp.original_title,
         poster_url: resp.poster_path,
-        vote_average: resp.vote_average.toFixed(1),
+        vote_average: resp.vote_average,
         vote_count: resp.vote_count,
         original_title: resp.original_title,
-        genres: arr.join(', '),
+        genres: resp.genres.map(genre => genre.name),
         overview: resp.overview,
-        year: resp.release_date,
-        popularity: resp.popularity.toFixed(1),
+        year: resp.release_date.split('-')[0],
       };
-      const instance_2 = basicLightbox.create(modalMovieTmp(props));
 
+      console.log(props.genres);
+
+      const instance_2 = basicLightbox.create(modalMovieTmp(props));
       instance_2.show();
 
       // ссылки на кнопки
       const watchedBtnRef = document.querySelector('.watched');
       const queueBtnRef = document.querySelector('.queue');
-      const closeCross = document.querySelector('#close-btn');
 
       // слушатели на  кнопки
-
       watchedBtnRef.addEventListener('click', addMovieToWatchedBase);
-
-      document.addEventListener('keyup', closeModalEsc);
-
-      function closeModalEsc(evt) {
-        if (evt.code === 'Escape') {
-          instance_2.close();
-          document.removeEventListener('keyup', closeModalEsc);
-        }
-      }
-      closeCross.addEventListener('click', onCloseModal);
-      function onCloseModal() {
-        instance_2.close();
-        closeCross.removeEventListener('click', onCloseModal);
-      }
+      queueBtnRef.addEventListener('click', addMovieToQueuedBase);
     });
 
     // добавление в ветку watched
