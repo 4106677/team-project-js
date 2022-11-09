@@ -1,54 +1,86 @@
-<div class="container">
-    <div class='movie'>
-      <button type="button" class="close-icon button" id="close-btn">
-        <svg width="30" height="30">
-          <use xlink:href="#close"></use>
-        </svg>
-        <svg width="0" height="0" class="hidden">
-          <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" id="close">
-            <path d="M8 8L22 22" stroke="black" stroke-width="2"></path>
-            <path d="M8 22L22 8" stroke="black" stroke-width="2"></path>
-          </symbol>
-        </svg>
-      </button>
-      <div class="movie__div">
-        {{#if poster_url}}
+<div class='container'>
+  <div class='movie'>
+    <button type='button' class='close-icon button' id='close-btn'>
+      <svg width='30' height='30'>
+        <use xlink:href='#close'></use>
+      </svg>
+      <svg width='0' height='0' class='hidden'>
+        <symbol
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          viewBox='0 0 30 30'
+          id='close'
+        >
+          <path d='M8 8L22 22' stroke='black' stroke-width='2'></path>
+          <path d='M8 22L22 8' stroke='black' stroke-width='2'></path>
+        </symbol>
+      </svg>
+    </button>
+    <div class='movie__div'>
+      {{#if poster_url}}
         <picture>
-        <source srcset="https://image.tmdb.org/t/p/w500{{poster_url}} 1x, https://image.tmdb.org/t/p/w500{{poster_url}} 2x"
-          media="(min-width: 1200px)" />
-        
-        <source srcset="
+          <source
+            srcset='https://image.tmdb.org/t/p/w500{{poster_url}} 1x, https://image.tmdb.org/t/p/w500{{poster_url}} 2x'
+            media='(min-width: 1200px)'
+          />
+
+          <source
+            srcset='
                             https://image.tmdb.org/t/p/w500{{poster_url}}    1x,
                            https://image.tmdb.org/t/p/w500{{poster_url}} 2x
-                          " media="(min-width: 768px)" />
-        
-        <source srcset="
+                          '
+            media='(min-width: 768px)'
+          />
+
+          <source
+            srcset='
                             https://image.tmdb.org/t/p/w300{{poster_url}}    1x,
                             https://image.tmdb.org/t/p/w300{{poster_url}} 2x
-                          " media="(min-width: 320px)" />
-        <img class='movie__img' src='https://image.tmdb.org/t/p/w500{{poster_url}}' alt='{{title}}' width='375px' />
+                          '
+            media='(min-width: 320px)'
+          />
+          <img
+            class='movie__img'
+            src='https://image.tmdb.org/t/p/w500{{poster_url}}'
+            alt='{{title}}'
+            width='375px'
+          />
         </picture>
-        {{else}}
+      {{else}}
         <img
-          src="https://phonoteka.org/uploads/posts/2021-05/1620113958_20-phonoteka_org-p-kinoplyonka-s-prozrachnim-fonom-24.png"
-          alt="Poster not found for movie: {{title}}" class="movie__img poster" loading='lazy' />
-        {{/if}}
-      </div>
-      <div class='description'>
-        <h2 class='description__title'>{{title}}</h2>
-        <ul class="description__list list">
-        <li class='description__info'> <span class="description__info__titles">Voit/voits </span> <span class="orangebackend">{{vote_average}}</span> /{{vote_count}}</li>
-        <li class='description__info'> <span class="description__info__titles">Popularity </span> {{popularity}}</li>
-        <li class='description__info'> <span class="description__info__titles">Original title </span>  {{original_title}}</li>
-        <li class='description__info'> <span class="description__info__titles">Genres </span>  {{genres}}
-        </ul>
-        <div class='description__about'><span class="description__about__title">About</span> {{overview}}</div>
-    <div class="buttons">
-      <button type="submit" class="watched">add to watched</button>
-      <button type="submit" class="queue">add to queue</button>
+          src='https://phonoteka.org/uploads/posts/2021-05/1620113958_20-phonoteka_org-p-kinoplyonka-s-prozrachnim-fonom-24.png'
+          alt='Poster not found for movie: {{title}}'
+          class='movie__img poster'
+          loading='lazy'
+        />
+      {{/if}}
     </div>
-        
-    
+    <div class='description'>
+      <h2 class='description__title'>{{title}}</h2>
+      <ul class='description__list list'>
+        <li class='description__info'>
+          <span class='description__info__titles'>Voit/voits </span>
+          <span class='orangebackend'>{{vote_average}}</span>
+          /{{vote_count}}</li>
+        <li class='description__info'>
+          <span class='description__info__titles'>Popularity </span>
+          {{popularity}}</li>
+        <li class='description__info'>
+          <span class='description__info__titles'>Original title </span>
+          {{original_title}}</li>
+        <li class='description__info'>
+          <span class='description__info__titles'>Genres </span>
+          {{#if genres}}{{genres}}{{else}}Other{{/if}}</li>
+      </ul>
+      <div class='description__about'><span
+          class='description__about__title'
+        >About</span>
+        {{overview}}</div>
+      <div class='buttons'>
+        <button type='submit' class='watched'>add to watched</button>
+        <button type='submit' class='queue'>add to queue</button>
       </div>
+
     </div>
+  </div>
 </div>
