@@ -11,24 +11,10 @@ async function updateResponce(data, page) {
       poster: item.poster_path,
       title: item.title || item.name,
       vote: item.vote_average.toFixed(1),
-      popularity: item.popularity.toFixed(1),
-
       id: item.id,
-      genres: item.genre_ids
-        .map(id => {
-          return objIdGenres[id];
-        })
-        .reduce((acc, element, index, array) => {
-          console.log(index);
-          if (index > 2) {
-            acc = [...array.slice(0, 2)];
-
-            acc.push('Other');
-            return acc;
-          } else {
-            return array;
-          }
-        }, []),
+      genres: item.genre_ids.map(id => {
+        return objIdGenres[id];
+      }),
     };
   });
   return createGallery(newObj, page);

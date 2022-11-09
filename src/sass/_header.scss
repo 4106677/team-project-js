@@ -60,6 +60,7 @@
 }
 
 .header .container {
+  display: flex;
   position: relative;
 }
 
@@ -140,30 +141,19 @@
   line-height: calc(35 / 30);
 
   display: flex;
-  align-items: center;
+  align-items: baseline;
   text-align: center;
-  padding: 5px;
 
   color: #ffffff;
-
-  @media screen and (min-width: 768px) {
-    align-items: baseline;
-    padding: 0px;
-  }
 }
 
 .logo-text {
   margin-left: 10px;
-  display: none;
-
-  @media screen and (min-width: 768px) {
-    display: block;
-  }
 }
 .navigation {
   height: 35px;
   display: flex;
-  align-items: center;
+  align-items: baseline;
 
   &__pages {
     margin-left: auto;

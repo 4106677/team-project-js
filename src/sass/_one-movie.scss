@@ -1,7 +1,5 @@
 .movie {
-  @media screen and (max-width: 767px) {
-    height: 100vh;
-  }
+  height: 100vh;
   position: relative;
   background-color: #fff;
   padding: 50px 20px 40px;
@@ -81,7 +79,6 @@
     line-height: 1.33;
     text-transform: uppercase;
     color: #000000;
-    margin-bottom: 10px;
   }
 }
 
@@ -92,10 +89,6 @@
   font-size: 12px;
   line-height: 1.33;
   color: #000000;
-
-  &:not(:last-child) {
-    margin-bottom: 10px;
-  }
 }
 
 .description__info__titles {

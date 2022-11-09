@@ -12,27 +12,7 @@
         </svg>
       </button>
       <div class="movie__div">
-        {{#if poster_url}}
-        <picture>
-        <source srcset="https://image.tmdb.org/t/p/w500{{poster_url}} 1x, https://image.tmdb.org/t/p/w500{{poster_url}} 2x"
-          media="(min-width: 1200px)" />
-        
-        <source srcset="
-                            https://image.tmdb.org/t/p/w500{{poster_url}}    1x,
-                           https://image.tmdb.org/t/p/w500{{poster_url}} 2x
-                          " media="(min-width: 768px)" />
-        
-        <source srcset="
-                            https://image.tmdb.org/t/p/w300{{poster_url}}    1x,
-                            https://image.tmdb.org/t/p/w300{{poster_url}} 2x
-                          " media="(min-width: 320px)" />
         <img class='movie__img' src='https://image.tmdb.org/t/p/w500{{poster_url}}' alt='{{title}}' width='375px' />
-        </picture>
-        {{else}}
-        <img
-          src="https://phonoteka.org/uploads/posts/2021-05/1620113958_20-phonoteka_org-p-kinoplyonka-s-prozrachnim-fonom-24.png"
-          alt="Poster not found for movie: {{title}}" class="movie__img poster" loading='lazy' />
-        {{/if}}
       </div>
       <div class='description'>
         <h2 class='description__title'>{{title}}</h2>
