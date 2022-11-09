@@ -38,6 +38,7 @@ export default function modalDetailMovie() {
         vote_average: resp.vote_average,
         vote_count: resp.vote_count,
         original_title: resp.original_title,
+        popularity: resp.popularity.toFixed(1),
         genres: resp.genres.map(genre => genre.name).join(', '),
         overview: resp.overview,
         year: resp.release_date.split('-')[0],

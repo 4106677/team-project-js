@@ -1,25 +1,37 @@
 <header class="header">
   <div class="container">
-    <a class="logo" href="./index.html"><svg class="icon-film" width="24" height="24">
-        <use xlink:href="#film (1)"></use>
-      </svg>
-      <svg width="0" height="0" class="hidden">
-        <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="film (1)">
-          <path
-            d="M19.82 2H4.18C2.97602 2 2 2.97602 2 4.18V19.82C2 21.024 2.97602 22 4.18 22H19.82C21.024 22 22 21.024 22 19.82V4.18C22 2.97602 21.024 2 19.82 2Z"
-            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path d="M7 2V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path d="M17 2V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path d="M2 12H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path d="M2 7H7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path d="M2 17H7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path d="M17 17H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path d="M17 7H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-        </symbol>
-      </svg><span class="logo-text">Filmoteka</span></a>
+    <div class="navigation">
+      <a class="logo" href="./index.html"><svg class="icon-film" width="24" height="24">
+          <use xlink:href="#film (1)"></use>
+        </svg>
+        <svg width="0" height="0" class="hidden">
+          <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="film (1)">
+            <path
+              d="M19.82 2H4.18C2.97602 2 2 2.97602 2 4.18V19.82C2 21.024 2.97602 22 4.18 22H19.82C21.024 22 22 21.024 22 19.82V4.18C22 2.97602 21.024 2 19.82 2Z"
+              stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M7 2V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M17 2V22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M2 12H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M2 7H7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M2 17H7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M17 17H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M17 7H22" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </symbol>
+        </svg><span class="logo-text">Filmoteka</span></a>
+      <div class="navigation__pages">
+        <ul class="nav list">
+          <li class="nav__item"><a class="current" href="./index.html">Home</a></li>
+
+          <li class="nav__item" id="nav-library" hidden>
+            <a href="./library.html">My Library</a>
+          </li>
+          <li class="nav__item login" id="login">Login</li>
+          <li class="nav__item login" id="registration">Registration</li>
+        </ul>
+      </div>
+    </div>
 
     <form class="search__form">
-      <input placeholder="Movie search" id="search-form" class="search__input" />
       <button type="submit" class="search__btn">
         <svg class="icon-search" width="12" height="12">
           <use xlink:href="#search 2"></use>
@@ -32,16 +44,8 @@
             <path d="M10.5 10.5002L8.32495 8.3252" stroke="white" stroke-linecap="round" stroke-linejoin="round"></path>
           </symbol>
         </svg></button>
+      <input placeholder="Movie search" id="search-form" class="search__input" />
     </form>
 
-    <ul class="nav list">
-      <li class="nav__item"><a class="current" href="./index.html">Home</a></li>
-
-      <li class="nav__item" id="nav-library" hidden>
-        <a href="./library.html">My Library</a>
-      </li>
-      <li class="nav__item login" id="login">Login</li>
-      <li class="nav__item login" id="registration">Registration</li>
-    </ul>
   </div>
 </header>
