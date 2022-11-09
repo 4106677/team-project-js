@@ -132,6 +132,8 @@
 }
 
 .logo {
+  height: 35px;
+
   font-style: normal;
   font-weight: 500;
   font-size: 30px;
@@ -148,20 +150,20 @@
 .logo-text {
   margin-left: 10px;
 }
-.nav {
-  margin-left: auto;
-  // outline: 2px solid red;
+.navigation {
+  height: 35px;
   display: flex;
-}
+  align-items: baseline;
 
+  &__pages {
+    margin-left: auto;
+  }
+}
 .nav__item {
   &:not(:first-child) {
     margin-left: 39px;
   }
-  position: relative;
-
-  // align-items: baseline;
-  justify-content: baseline;
+  height: 15px;
 
   color: #fff;
 
