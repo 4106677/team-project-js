@@ -1,4 +1,5 @@
 .movie {
+  position: relative;
   background-color: #fff;
   padding: 50px 20px 40px;
   @media screen and (min-width: 768px) {
@@ -22,10 +23,10 @@
     @media screen and (min-width: 768px) {
       width: 265px;
       height: 375px;
-      margin-right: 70px;
+      margin-right: 60px;
     }
     @media screen and (min-width: 1280px) {
-      width: 375px;
+      width: 355px;
       height: 480px;
       margin-right: 15px;
     }
@@ -121,6 +122,12 @@
   font-weight: 500;
   line-height: 1.33;
   display: block;
+  transition: transform cubic-bezier(0.19, 1, 0.22, 1) 500ms;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 }
 
 .watched {
@@ -146,6 +153,12 @@
   font-weight: 500;
   line-height: 1.33;
   display: block;
+  transition: transform cubic-bezier(0.19, 1, 0.22, 1) 500ms;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 }
 
 .buttons {
@@ -161,4 +174,25 @@
 .description__list {
   margin-bottom: 20px;
   display: block;
+}
+.orangebackend {
+  border-radius: 5px;
+  background-color: #ff6b01;
+  padding: 0 10px;
+  color: #fff;
+}
+.close-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: #fff;
+  transition: transform cubic-bezier(0.19, 1, 0.22, 1) 500ms;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 }
