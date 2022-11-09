@@ -2,10 +2,16 @@ import { fetchSearchFilm } from './fetchAPI';
 import refs from './refs';
 import Notiflix from 'notiflix';
 import checkInputData from './checkInputData';
+import { createGallery, createGalleryNextPage } from './createGallery';
+import oneMovieCard from '/src/templates/oneMovieCard.hbs';
+import smoothScroll from './smoothScrool';
+import { renderDefaultMovies } from './renderDefaultMovies';
 
 import { spinnerOn, spinnerOff } from './loader';
 
 refs.form.addEventListener('submit', onClickSubmit);
+refs.loadMore.addEventListener('click', onLoadMore);
+
 let value = null;
 let page = 1;
 
@@ -19,10 +25,10 @@ function onClickSubmit(event) {
     Notiflix.Notify.failure('Please, enter something to search');
     return;
   }
-
-  spinnerOn();
+  refs.loadMore.removeEventListener('click', renderDefaultMovies);
+  // spinnerOn();
   fetchSearchFilm(value, page)
-    .then(data => checkInputData(data))
+    .then(data => checkInputData(data, page))
     // .then(resp => console.log('responce', resp))
     .catch(error => console.log(error))
     .finally(() => spinnerOff());
@@ -30,11 +36,12 @@ function onClickSubmit(event) {
   event.target.reset();
 }
 
+function onLoadMore() {
+  page += 1;
+  fetchSearchFilm(value, page)
+    .then(data => checkInputData(data, page))
+    .catch(error => console.log(error));
+  smoothScroll();
+}
+
 export default onClickSubmit;
-
-// function createGallery(data) {
-//   const array = data.data.results;
-//   console.log('createGallery array', array);
-
-//   refs.list.innerHTML = oneMovieCard(array);
-// }

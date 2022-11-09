@@ -2,12 +2,8 @@ import data from '/src/js/onSubmitSearch';
 import { onGetFilmGenres, onGetTVGenres } from './fetchAPI';
 import createGallery from './createGallery';
 
-async function updateResponce(data) {
-  console.log('updateResponce', data);
-
+async function updateResponce(data, page) {
   const objIdGenres = await getGenresId();
-
-  console.log('objIdGenres', objIdGenres);
 
   const newObj = data.map(item => {
     return {
@@ -16,25 +12,12 @@ async function updateResponce(data) {
       title: item.title || item.name,
       vote: item.vote_average.toFixed(1),
       id: item.id,
-      genres: item.genre_ids
-        .map(id => {
-          return objIdGenres[id];
-        })
-        .reduce((acc, element, index, array) => {
-          console.log(index);
-          if (index > 2) {
-            acc = [...array.slice(0, 2)];
-
-            acc.push('Other');
-            return acc;
-          } else {
-            return array;
-          }
-        }, []),
+      genres: item.genre_ids.map(id => {
+        return objIdGenres[id];
+      }),
     };
   });
-  console.log('newObj', newObj);
-  return createGallery(newObj);
+  return createGallery(newObj, page);
 }
 
 function getGenresId() {
@@ -47,15 +30,6 @@ function getGenresId() {
     });
     return genresObj;
   });
-  //   console.log('genresObj', genresObj);
-
-  // onGetTVGenres().then(data => {
-  //   const dataGenres = data.data.genres;
-  //   dataGenres.forEach(item => {
-  //     genresObj[item.id] = item.name;
-  //   });
-  // });
-  // console.log('genresObj', genresObj);
 }
 
 export default updateResponce;

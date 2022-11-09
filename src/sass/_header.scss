@@ -1,12 +1,62 @@
 .header {
   // max-width: 1280px;
-  height: 216px;
-  background-image: url(../images/header-bcg.jpg);
-
+  height: 230px;
   // opacity: 0.9;
   // display: flex;
   padding-top: 40px;
   align-items: baseline;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(../images/mobile_bgr_home.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/mobile_bgr_home@2x.jpg);
+  }
+  @media screen and (min-width: 768px) {
+    height: 216px;
+    padding-top: 40px;
+    align-items: baseline;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/tablet_bgr_home.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/tablet_bgr_home@2x.jpg);
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    height: 216px;
+    padding-top: 40px;
+    align-items: baseline;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/desktop_bgr_home.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/desktop_bgr_home@2x.jpg);
+    }
+  }
 }
 
 .header .container {
@@ -20,14 +70,65 @@
 }
 
 .header__lib {
-  height: 216px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url(../images/header-lib-bcg.jpg);
   display: flex;
   // opacity: 0.9;
-
   padding-top: 40px;
   align-items: baseline;
+  height: 216px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(../images/mobile_bgr_library-min.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/mobile_bgr_library@2x-min.jpg);
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    padding-top: 40px;
+    align-items: baseline;
+    height: 216px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/tablet_bgr_library-min.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/tablet_bgr_library@2x-min.jpg);
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    display: flex;
+    padding-top: 40px;
+    align-items: baseline;
+    height: 216px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/desctop_bgr_library-min.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    @media (min-device-pixel-ratio: 2),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/desctop_bgr_library@2x-min.jpg);
+    }
+  }
 }
 
 .logo {
@@ -38,12 +139,15 @@
   line-height: calc(35 / 30);
 
   display: flex;
-  // align-items: center;
+  align-items: baseline;
   text-align: center;
 
   color: #ffffff;
 }
 
+.logo-text {
+  margin-left: 10px;
+}
 .nav {
   margin-left: auto;
   // outline: 2px solid red;
@@ -58,15 +162,20 @@
 
   // align-items: baseline;
   justify-content: baseline;
-}
 
-.nav__item a {
+  color: #fff;
+
+  cursor: pointer;
   font-size: 12px;
   line-height: calc(14 / 12);
   font-weight: 500;
 
   text-align: center;
   text-transform: uppercase;
+}
+
+.nav__item a {
+  text-align: center;
 
   color: #ffffff;
   position: relative;
@@ -93,6 +202,9 @@
 }
 
 .search__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0;
   right: 0;
