@@ -19,8 +19,6 @@
   --section-filter-link-desktop-gap: 40px;
 }
 
-
-
 .team-modal {
   display: flex;
   align-items: center;
@@ -34,9 +32,7 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--animation-duration) var(--timing-function);
-
 }
-
 
 .team-modal.is-open {
   opacity: 1;
@@ -61,35 +57,37 @@
   width: 80vw;
   height: 100vh;
   overflow-y: overlay;
+
+  overflow-x: hidden;
+  min-width: 295px;
   @media screen and (min-width: 320px) {
-      min-width: 320px;
-      max-width: 400px;
-    }
-  
-    @media screen and (min-width: 768px) {
-      max-width: 750px;
-      height: 69vh;
-    }
-  
-    @media screen and (min-width: 1280px) {
-      max-width: 1200px;
-      height: 85vh;
-        overflow: hidden;
-        
-    }
+    max-width: 400px;
+  }
 
+  @media screen and (min-width: 768px) {
+    max-width: 750px;
+    height: 93vh;
+  }
 
+  @media screen and (min-width: 1280px) {
+    max-width: 1200px;
+    height: 85vh;
+  }
 
   background-color: var(--main-background-color);
   border-radius: 10;
-  
+
   transform: scale(1);
   transition: transform 1000ms var(--timing-function);
   box-shadow: 2px 4px 12px 0px #cfe414,
-  0px 2px 5px 0px rgba(255, 255, 255, 0.507),
-  0px 2px 3px -1px rgba(255, 255, 255, 0.137);
+    0px 2px 5px 0px rgba(255, 255, 255, 0.507),
+    0px 2px 3px -1px rgba(255, 255, 255, 0.137);
   padding: 0;
   margin: 0;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: rgba(255, 255, 255, 0);
 }
 
 .team-modal-content-box {
@@ -122,7 +120,7 @@
   box-shadow: 2px 4px 12px 0px #cfe414,
     0px 2px 5px 0px rgba(255, 255, 255, 0.507),
     0px 2px 3px -1px rgba(255, 255, 255, 0.137);
-@media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     height: 28vh;
   }
   @media screen and (min-width: 1280px) {
@@ -139,13 +137,19 @@
   }
 
   @media screen and (min-width: 768px) {
-    flex-basis: calc(100% / var(--section-filter-link-tablet-set) - var(--section-filter-link-tablet-gap));
+    flex-basis: calc(
+      100% / var(--section-filter-link-tablet-set) -
+        var(--section-filter-link-tablet-gap)
+    );
     margin-left: var(--section-filter-link-tablet-gap);
     margin-bottom: 30px;
   }
 
   @media screen and (min-width: 1280px) {
-    flex-basis: calc(100% / var(--section-filter-link-desktop-set) - var(--section-filter-link-desktop-gap));
+    flex-basis: calc(
+      100% / var(--section-filter-link-desktop-set) -
+        var(--section-filter-link-desktop-gap)
+    );
     margin-left: var(--section-filter-link-desktop-gap);
   }
 }
@@ -163,12 +167,11 @@
   }
 
   @media screen and (min-width: 1280px) {
-
     height: 13vh;
   }
 }
 
-.img-container>img {
+.img-container > img {
   display: block;
   height: 100%;
   width: 100%;
@@ -183,7 +186,6 @@
   @media screen and (min-width: 1280px) {
     padding: 5px 5px;
   }
-
 }
 
 .team-card-text {
@@ -205,9 +207,9 @@
   @media screen and (min-width: 768px) {
     font-size: 18px;
   }
-     @media screen and (min-width: 1280px) {
-       font-size: 14px;
-     }
+  @media screen and (min-width: 1280px) {
+    font-size: 14px;
+  }
 }
 
 .team-close-btn {
@@ -247,14 +249,11 @@
 
   fill: var(--icons-color);
   transition: opacity var(--animation-duration) var(--timing-function);
-  ;
-
   &:hover &,
   :focus & {
     opacity: 0.8;
-    fill: var(--accent-link)
+    fill: var(--accent-link);
   }
-
 }
 
 .team-svg-closer {
@@ -285,10 +284,10 @@
     width: 30px;
     height: 30px;
   }
-     @media screen and (min-width: 1280px) {
-       width: 35px;
-       height: 35px;
-     }
+  @media screen and (min-width: 1280px) {
+    width: 35px;
+    height: 35px;
+  }
 
   transition: var(--transition-bg-color);
 
@@ -306,7 +305,7 @@
 .social-network__icon {
   fill: var(--icons-color);
   transition: var(--transition-fill);
-width: 22px;
+  width: 22px;
   height: 22px;
 
   .social-network__link:hover &,
@@ -317,7 +316,6 @@ width: 22px;
   &--change {
     fill: var(--main-btn-color);
   }
-
 }
 .slide-team.card-1 {
   -webkit-animation: slide-team 2000ms cubic-bezier(0.23, 1, 0.32, 1) both;
@@ -378,10 +376,6 @@ width: 22px;
   animation: slide-team 2000ms cubic-bezier(0.23, 1, 0.32, 1) both;
 }
 
-
-
-
-
 @-webkit-keyframes slide-team {
   0% {
     -webkit-transform: translate(1000px, 1000px) skew(80deg, 10deg);
@@ -431,12 +425,13 @@ width: 22px;
   color: var(--main-title-color);
 }
 
-
 .team-modal-content {
-  background: linear-gradient(0deg, rgba(34, 49, 195, 1) 0%, rgba(253, 245, 45, 0.9150035014005602) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 49, 195, 1) 0%,
+    rgba(253, 245, 45, 0.9150035014005602) 100%
+  );
 }
-
-
 
 @mixin sp-layout {
   @media screen and (max-width: 1280px) {
@@ -444,15 +439,14 @@ width: 22px;
   }
 }
 
-
 @function random_range($min, $max) {
   $rand: random();
-  $random_range: $min +floor($rand * (($max - $min) + 1));
+  $random_range: $min + floor($rand * (($max - $min) + 1));
   @return $random_range;
 }
 
 .stars {
-  position:absolute;
+  position: absolute;
   z-index: -1;
   top: 0;
   left: 0;
@@ -526,7 +520,6 @@ width: 22px;
 }
 
 @keyframes tail-fade {
-
   0%,
   50% {
     width: var(--star-tail-length);
