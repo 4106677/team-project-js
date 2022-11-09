@@ -1,4 +1,3 @@
-
 import watchedFilms from './js/watchedFilms';
 import queueFilms from './js/queueFilms';
 import { writeInDataBase, readFromDataBase } from './js/dataBaseApi';
@@ -29,4 +28,3 @@ const release_date = '2020';
 
 readFromDataBase(uid, target).then(console.log);
 // console.log();
-
