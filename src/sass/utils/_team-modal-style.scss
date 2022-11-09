@@ -62,21 +62,23 @@
   height: 100vh;
   overflow-y: overlay;
   overflow-x: hidden;
-
+  min-width: 295px;
   @media screen and (min-width: 320px) {
-    min-width: 320px;
+    
     max-width: 400px;
   }
 
   @media screen and (min-width: 768px) {
     max-width: 750px;
     height: 93vh;
+      
   }
 
   @media screen and (min-width: 1280px) {
     max-width: 1200px;
     height: 85vh;
-    
+     
+              
 
   }
 
@@ -92,7 +94,11 @@
   0px 2px 3px -1px rgba(255, 255, 255, 0.137);
   padding: 0;
   margin: 0;
-}
+} 
+ ::-webkit-scrollbar {
+   width: 0px;
+   background: rgba(255, 255, 255, 0.0);
+ }
 
 .team-modal-content-box {
   position: absolute;

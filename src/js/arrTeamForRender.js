@@ -1,13 +1,13 @@
 import image from '/src/images/dev.jpg';
-import photoKateryna from '../images/team/Катерина_Долотова.jpg';
-import photoAnna from '../images/team/Анна_Заугольникова.jpg';
-import photoJulia from '../images/team/Юлія_Ігнатенко.jpg';
-import photoAndriy from '../images/team/Андрій_Попов.jpg';
-import photoViktor from '../images/team/Віктор_Літвінчук.jpg';
-import photoIgor from '../images/team/Ігор_Жайворон.jpg';
-import photoOleksandr from '../images/team/Олександр_Павлов.jpg';
-import photoYaroslav from '../images/team/Ярослав_Олійник.png';
-import photoMaksym from '../images/team/Максим_Литовченко.jpg';
+import photoKateryna from '../images/team/Kateryna_Dolotova.jpg';
+import photoAnna from '../images/team/Anna_Zaugolnikova.jpg';
+import photoJulia from '../images/team/Julia_Ihnatenko.jpg';
+import photoAndriy from '../images/team/Andriy_Popov.jpg';
+import photoViktor from '../images/team/Viktor_Litvynchuk.jpg';
+import photoIgor from '../images/team/Ihor_Zhayvoron.jpg';
+import photoOleksandr from '../images/team/Oleksandr_Pavlov.jpg';
+import photoYaroslav from '../images/team/Yaroslav_Oliynyk.png';
+import photoMaksym from '../images/team/Maksym_Lytovchenko.jpg';
 
 export const arrCards = [
   {
