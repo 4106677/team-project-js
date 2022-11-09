@@ -8,8 +8,7 @@ import photoIgor from '../images/team/Ihor_Zhayvoron.jpg';
 import photoOleksandr from '../images/team/Oleksandr_Pavlov.jpg';
 import photoYaroslav from '../images/team/Yaroslav_Oliynyk.png';
 import photoMaksym from '../images/team/Maksym_Lytovchenko.jpg';
-import photoDiana from '../images/team/Diana_Velkova.jpg';
-import photoYriy from '../images/team/Yriy_Protcyshin.jpg';
+
 export const arrCards = [
   {
     card: 'card-1',
@@ -23,7 +22,7 @@ export const arrCards = [
     card: 'card-2',
     name: 'Diana Velkova',
     work: 'Frontend Developer',
-    img: photoDiana,
+    img: image,
     git: 'https://github.com/diana2907',
     in: 'https://www.linkedin.com/in/diana-velkova-a7a23a256/',
   },
@@ -55,7 +54,7 @@ export const arrCards = [
     card: 'card-6',
     name: 'Yriy Protcyshin',
     work: 'Frontend Developer',
-    img: photoYriy,
+    img: image,
     git: 'https://github.com/YriyProtcyshin',
     in: 'https://www.linkedin.com',
   },
