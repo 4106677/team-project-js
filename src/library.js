@@ -7,6 +7,7 @@ import { initializeApp } from 'firebase/app';
 import firebaseConfig from './js/apps/fireBaseConfig';
 import { getDatabase, ref, set, query, onValue } from 'firebase/database';
 import oneMovieCardTmp from './templates/oneMovieCard.hbs';
+import modalDetailMovie from './js/modal-detail-movie';
 
 teamModalService.eventListenerCreator();
 
@@ -27,6 +28,9 @@ if (userid) {
   listSectionRef.innerHTML = '<p> В списке пока еще нет фильмов</p>';
 }
 // =========================================================================
+
+// Модалка с подробный описанием  фильма
+modalDetailMovie();
 
 // Press Watched button
 function onWatchedInput() {
@@ -49,6 +53,7 @@ function readFromDataBase(uid, target) {
   console.log(topUserPostsRef);
   onValue(topUserPostsRef, snapshot => {
     const data = Object.values(snapshot.val());
+    console.log(data);
 
     listSectionRef.innerHTML = oneMovieCardTmp(data);
   });

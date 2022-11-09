@@ -32,7 +32,7 @@ function writeInDataBase(
   const database = getDatabase(app);
 
   set(ref(database, 'films/' + uid + '/' + target + '/' + filmID), {
-    filmID: filmID,
+    id: filmID,
     title: title,
     genres: genres,
     poster: imageUrl,
