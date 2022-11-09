@@ -3,12 +3,7 @@ import { onGetFilmGenres, onGetTVGenres } from './fetchAPI';
 import createGallery from './createGallery';
 
 async function updateResponce(data, page) {
-  console.log('updateResponce data:', data);
-  console.log('updateResponce page:', page);
-
   const objIdGenres = await getGenresId();
-
-  console.log('objIdGenres', objIdGenres);
 
   const newObj = data.map(item => {
     return {
@@ -22,17 +17,11 @@ async function updateResponce(data, page) {
       }),
     };
   });
-  console.log('newObj', newObj);
   return createGallery(newObj, page);
 }
 
 function getGenresId() {
   const genresObj = {};
-  const genresObj2 = {
-    12: 'Adventure',
-    14: 'Fantasy',
-    16: 'Animation',
-  };
 
   return onGetFilmGenres().then(data => {
     const dataGenres = data.data.genres;
@@ -41,15 +30,6 @@ function getGenresId() {
     });
     return genresObj;
   });
-  //   console.log('genresObj', genresObj);
-
-  // onGetTVGenres().then(data => {
-  //   const dataGenres = data.data.genres;
-  //   dataGenres.forEach(item => {
-  //     genresObj[item.id] = item.name;
-  //   });
-  // });
-  // console.log('genresObj', genresObj);
 }
 
 export default updateResponce;

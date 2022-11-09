@@ -38,12 +38,10 @@ export default function modalDetailMovie() {
         vote_average: resp.vote_average,
         vote_count: resp.vote_count,
         original_title: resp.original_title,
-        genres: resp.genres.map(genre => genre.name),
+        genres: resp.genres.map(genre => genre.name).join(', '),
         overview: resp.overview,
         year: resp.release_date.split('-')[0],
       };
-
-      console.log(props.genres);
 
       const instance_2 = basicLightbox.create(modalMovieTmp(props));
       instance_2.show();
@@ -51,10 +49,17 @@ export default function modalDetailMovie() {
       // ссылки на кнопки
       const watchedBtnRef = document.querySelector('.watched');
       const queueBtnRef = document.querySelector('.queue');
+      const closeBtn = document.querySelector('#close-btn');
 
       // слушатели на  кнопки
       watchedBtnRef.addEventListener('click', addMovieToWatchedBase);
       queueBtnRef.addEventListener('click', addMovieToQueuedBase);
+      closeBtn.addEventListener('click', onCloseModal);
+
+      function onCloseModal() {
+        instance_2.close();
+        closeBtn.removeEventListener('click', onCloseModal);
+      }
     });
 
     // добавление в ветку watched

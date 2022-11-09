@@ -36,7 +36,6 @@ export function renderDefaultMovies() {
     })
     .then(resp => {
       ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(resp));
-      console.log('RESP', resp);
 
       if (ul.childElementCount > 20) smoothScroll();
 
