@@ -2,24 +2,15 @@
 <html lang="ru">
 
 <head>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Filmoteka</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon_io/favicon-16x16.png">
-    <link rel="mask-icon" href="./images//favicon_io/favicon.ico" color="#5bbad5">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>        
-    <script type="module" src="./library.js"></script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page title</title>
+  <link rel="stylesheet" href="./sass/index.scss" />
+  <script type="module" src="./library.js"></script>
 </head>
 
 <body>
   <header class="header__lib">
-  <a id="page-top"></a>
     <div class="container">
       <div class="header__lib-nav">
         <a class="logo" href="./index.html"><svg class="icon-film" width="24" height="24">
@@ -58,6 +49,7 @@
                 <span class="storage__btn" id="js-WatchedButton">Watched</span>
               </label>
             </li>
+
             <li class="storage__item list">
               <label class="storage__label">
                 <input id="queue" type="radio" name="storage__btn" value="Queue"
@@ -80,10 +72,6 @@
 
   <include src="./partials/footer.html"></include>
   <include src="./partials/team-modal.html"></include>
-  <include src="./partials/btnUp.html"></include>
-  <script src="./js/btnUp.js"></script>
-  <script src="./js/lazyScrol.js"></script>
-
 </body>
 
 </html>
