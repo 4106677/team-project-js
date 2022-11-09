@@ -53,9 +53,9 @@ export default function modalDetailMovie() {
       const closeBtn = document.querySelector('#close-btn');
 
       // слушатели на  кнопки
-      watchedBtnRef.addEventListener('click', addMovieToWatchedBase);
-      queueBtnRef.addEventListener('click', addMovieToQueuedBase);
-      closeBtn.addEventListener('click', onCloseModal);
+      watchedBtnRef.addEventListener('click', addMovieToWatchedBase); // добавление в Watched
+      queueBtnRef.addEventListener('click', addMovieToQueuedBase); // добавление в Queue
+      closeBtn.addEventListener('click', onCloseModal); // закрытие модалки
 
       function onCloseModal() {
         instance_2.close();
