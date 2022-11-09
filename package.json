@@ -22,26 +22,18 @@
     "basiclightbox": "^5.0.4",
     "firebase": "^9.13.0",
     "handlebars": "^4.7.7",
-    "lodash": "^4.17.21",
     "lodash.debounce": "^4.0.8",
-    "lodash.throttle": "^4.1.1",
     "modern-normalize": "^1.1.0",
-    "notiflix": "^3.2.5",
-    "throttle": "^1.0.3"
+    "notiflix": "^3.2.5"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
-    "@parcel/transformer-webmanifest": "^2.6.0",
-    "assert": "^2.0.0",
     "buffer": "^6.0.3",
-    "events": "^3.3.0",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
     "parcel-transformer-hbs": "^1.0.4",
     "posthtml-include": "^1.7.4",
-    "process": "^0.11.10",
-    "stream-browserify": "^3.0.0",
-    "util": "^0.12.5"
+    "process": "^0.11.10"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }
