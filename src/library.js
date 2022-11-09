@@ -61,3 +61,4 @@ function readFromDataBase(uid, target) {
 
 // Открытие модального окна входа и регистрации пользователя
 // openLoginModal();
+
