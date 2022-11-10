@@ -30,12 +30,20 @@
         <img  src="https://phonoteka.org/uploads/posts/2021-05/1620113958_20-phonoteka_org-p-kinoplyonka-s-prozrachnim-fonom-24.png" alt="Poster not found for movie: {{title}}" class="movie-card__img poster" loading='lazy'/>
     {{/if}}
    
-        <h2 class="movie-card__title">{{title}}</h2>
+        <h2 class="movie-card__title">
+          {{#if title}}{{title}}
+          {{else}}{{original_title}}
+          {{/if}}
+          </h2>
         
           <p class="movie-card__info">
+            {{#if genres}}
             {{#each genres}}
             {{this }}{{#unless @last}},{{/unless}}
             {{/each}}
+            {{else}}Other
+            {{/if}}
+
 | {{year}} 
 
 
