@@ -1,6 +1,8 @@
 import * as basicLightbox from 'basiclightbox';
 import { userRegistration, userSingIn } from '../js/firebase';
 import { getDatabase, ref, set } from 'firebase/database';
+import loginUserForm from '../templates/loginUserForm.hbs';
+import userRegistratinForm from '../templates/userRegistrationForm.hbs';
 
 const loginRef = document.querySelector('#login');
 const registrationRef = document.querySelector('#registration');
