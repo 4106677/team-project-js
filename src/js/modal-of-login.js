@@ -1,8 +1,6 @@
 import * as basicLightbox from 'basiclightbox';
 import { userRegistration, userSingIn } from '../js/firebase';
 import { getDatabase, ref, set } from 'firebase/database';
-import loginUserForm from '../templates/loginUserForm.hbs';
-import userRegistratinForm from '../templates/userRegistrationForm.hbs';
 
 const loginRef = document.querySelector('#login');
 const registrationRef = document.querySelector('#registration');
@@ -14,9 +12,46 @@ if (localStorage.getItem('userEmail')) {
   registrationRef.setAttribute('hidden', true);
 }
 
-const loginModal = basicLightbox.create(loginUserForm());
+const loginModal = basicLightbox.create(
+  `
+    <div class="modal-login">
+        <img src="./images/login.png" alt="login image" />
+        <p class="modal-login__login">Login</p>
+        <p class="modal-login__welcome">Welcome back to account</p>
+        <form class="login-form">
+            <label for="email">Email</label>
+            <input type="email" placeholder="example@mail.com" class="login-form__input" id="email-login">
+            <label for="password">Password</label>
+             <input type = "password" placeholder="At least 8 characters" class="login-form__input" id="password-login">
+            <p class="error-message"></p>
+             <button type="submit" class="login-form__button">Login</button>
+            
+            
+        </form>
+    </div>
+`
+);
 
-const registrationModal = basicLightbox.create(userRegistratinForm());
+const registrationModal = basicLightbox.create(
+  `
+    <div class="modal-login">
+        <img src="./images/login.png" alt="login image" />
+        <p class="modal-login__login">Registration</p>
+        <p class="modal-login__welcome">Create your new account</p>
+        <form class="login-form">
+            <label for="email">Email</label>
+            <input type="email" placeholder="example@mail.com" class="login-form__input" id="email">
+            <label for="password">Password</label>
+            <input type = "password" placeholder="At least 8 characters" class="login-form__input" id="password">
+             <label for="password">Check password</label>
+             <input type = "checkPwd" placeholder="Type password again" class="login-form__input" checkPwd="checkPwd">
+            <p class="error-message"></p>
+             <button type="submit" class="login-form__button">Register Account</button>           
+            
+        </form>
+    </div>
+`
+);
 
 export function openLoginModal() {
   // Вход зарегистрированного пользователя
@@ -57,31 +92,23 @@ export function openLoginModal() {
 
 function registration(e) {
   e.preventDefault();
-
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;
-  const password2 = document.querySelector('#password2').value;
+  const user = userRegistration(email, password);
 
-  if (password !== password2) {
-    document.querySelector('.error-message').innerHTML =
-      'Please make sure your passwords match';
-  } else {
-    const user = userRegistration(email, password);
-
-    user.then(user => {
-      if (user === 'auth/email-already-in-use') {
-        document.querySelector('.error-message').innerHTML =
-          'Error!! Email already in use!!!!';
-      } else {
-        localStorage.setItem('userEmail', user.email);
-        localStorage.setItem('uid', user.uid);
-        registrationModal.close();
-        navLibraryRef.removeAttribute('hidden');
-        loginRef.setAttribute('hidden', true);
-        registrationRef.setAttribute('hidden', true);
-      }
-    });
-  }
+  user.then(user => {
+    if (user === 'auth/email-already-in-use') {
+      document.querySelector('.error-message').innerHTML =
+        'Error!! Email already in use!!!!';
+    } else {
+      localStorage.setItem('userEmail', user.email);
+      localStorage.setItem('uid', user.uid);
+      registrationModal.close();
+      navLibraryRef.removeAttribute('hidden');
+      loginRef.setAttribute('hidden', true);
+      registrationRef.setAttribute('hidden', true);
+    }
+  });
 }
 
 // ===================== Вход зарегистрированного пользователя ==============
