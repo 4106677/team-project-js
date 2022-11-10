@@ -62,24 +62,23 @@
   height: 100vh;
   overflow-x: hidden;
   min-width: 295px;
+
   @media screen and (min-width: 320px) {
-    
+
     max-width: 400px;
   }
 
   @media screen and (min-width: 768px) {
     max-width: 750px;
     height: 93vh;
-      
+
   }
 
   @media screen and (min-width: 1280px) {
     max-width: 1500px;
     width: 1260px;
     height: 89vh;
-    overflow-y:hidden
-              
-
+    overflow-y: hidden
   }
 
   background-color: var(--main-background-color);
@@ -92,11 +91,12 @@
   0px 2px 3px -1px rgba(255, 255, 255, 0.137);
   padding: 0;
   margin: 0;
-} 
- ::-webkit-scrollbar {
-   width: 0px;
-   background: rgba(255, 255, 255, 0.0);
- }
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: rgba(255, 255, 255, 0.0);
+}
 
 .team-modal-content-box {
   position: absolute;
@@ -197,18 +197,20 @@
   line-height: 1;
   letter-spacing: 0.06em;
   margin-bottom: 7px;
+
   @media screen and (min-width: 768px) {
-      margin-bottom: 10px;
-    }
-         @media screen and (min-width: 1280px) {
-          font-size: 16px;
-         }
+    margin-bottom: 10px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    font-size: 16px;
+  }
 }
 
 .team-close-btn {
   position: absolute;
   right: 20px;
-  top: 15px;
+  top: 35px;
   width: 26px;
   height: 26px;
   background: var(--accent-color);
@@ -224,24 +226,26 @@
 
 .material-icons.team-closer {
   position: absolute;
-    top: -19.5px;
-      left: 6px;
+  top: -19.5px;
+  left: 6px;
 
   @media screen and (min-width: 768px) {
-        top: -16px;
-          left: 5.5px;
+    top: -16px;
+    left: 5.5px;
   }
-        @media screen and (min-width: 1280px) {
-          top: -18px;
-          left: 6px;
-        }
+
+  @media screen and (min-width: 1280px) {
+    top: -18px;
+    left: 6px;
+  }
 
   fill: var(--icons-color);
-        &:hover,
-        &:focus {
-          fill: rgb(45, 64, 177);
-          transform: scale(1.1);
-        }
+
+  &:hover,
+  &:focus {
+    fill: rgb(45, 64, 177);
+    transform: scale(1.1);
+  }
 }
 
 .team-svg-closer {
@@ -269,7 +273,7 @@
   height: 40px;
   border-radius: 50%;
 
- 
+
   @media screen and (min-width: 1280px) {
     width: 27px;
     height: 27px;
@@ -277,10 +281,7 @@
 
   transition: var(--transition-bg-color);
 
-  &:hover,
-  &:focus {
-    background-color: var(--accent-link);
-  }
+
 
   &--change {
     background: var(--accent-link-footer);
@@ -293,18 +294,17 @@
   transition: var(--transition-fill);
   width: 22px;
   height: 22px;
+
   @media screen and (min-width: 768px) {
-      width: 30px;
-      height: 30px;
-    }
-  
-    @media screen and (min-width: 1280px) {
-    
-    }
+    width: 30px;
+    height: 30px;
+  }
+
 
   .social-network__link:hover &,
   .social-network__link:focus & {
-    fill: white;
+    fill: yellow;
+
   }
 
   &--change {
@@ -436,136 +436,6 @@
 
 
 
-@mixin sp-layout {
-  @media screen and (max-width: 1280px) {
-    @content;
-  }
-}
 
 
-@function random_range($min, $max) {
-  $rand: random();
-  $random_range: $min +floor($rand * (($max - $min) + 1));
-  @return $random_range;
-}
 
-.stars {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120%;
-  transform: rotate(245deg);
-}
-
-.star {
-  $star-count: 26;
-  --star-color: rgb(248, 250, 252);
-  --star-tail-length: 6em;
-  --star-tail-height: 2px;
-  --star-width: calc(var(--star-tail-length) / 6);
-  --fall-duration: 3s;
-  --tail-fade-duration: var(--fall-duration);
-
-  position: absolute;
-  top: var(--top-offset);
-  left: 0;
-  width: var(--star-tail-length);
-  height: var(--star-tail-height);
-  color: var(--star-color);
-  background: linear-gradient(45deg, currentColor, transparent);
-  border-radius: 50%;
-  filter: drop-shadow(0 0 6px currentColor);
-  transform: translate3d(104em, 0, 0);
-  animation: fall var(--fall-duration) var(--fall-delay) linear infinite,
-    tail-fade var(--tail-fade-duration) var(--fall-delay) ease-out infinite;
-
-  @include sp-layout {
-    // For mobile performance, tail-fade animation will be removed QAQ
-    animation: fall var(--fall-duration) var(--fall-delay) linear infinite;
-  }
-
-  @for $i from 1 through $star-count {
-    &:nth-child(#{$i}) {
-      --star-tail-length: #{random_range(500em, 750em) / 100};
-      --top-offset: #{random_range(0vh, 10000vh) / 100};
-      --fall-duration: #{random_range(6000, 12000s) / 1000};
-      --fall-delay: #{random_range(0, 10000s) / 1000};
-    }
-  }
-
-  &::before,
-  &::after {
-    position: absolute;
-    content: '';
-    top: 0;
-    left: calc(var(--star-width) / -2);
-    width: var(--star-width);
-    height: 100%;
-    background: linear-gradient(45deg, transparent, currentColor, transparent);
-    border-radius: inherit;
-    animation: blink 2s linear infinite;
-  }
-
-  &::before {
-    transform: rotate(45deg);
-  }
-
-  &::after {
-    transform: rotate(-45deg);
-  }
-}
-
-@keyframes fall {
-  to {
-    transform: translate3d(-30em, 0, 0);
-  }
-}
-
-@keyframes tail-fade {
-
-  0%,
-  50% {
-    width: var(--star-tail-length);
-    opacity: 1;
-  }
-
-  70%,
-  80% {
-    width: 0;
-    opacity: 0.4;
-  }
-
-  100% {
-    width: 0;
-    opacity: 0;
-  }
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0.6;
-  }
-}
-.fix-top-btn {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-}
-
-.hide-el {
-  display: none;
-}
-
-.material-icons {
-  font-weight: 900;
-  font-size: 32px;
-  line-height: 1.41;
-  display: inline-block;
-}
-
-.event-lokation--link {
-  display: initial;
-  text-decoration: underline;
-}
