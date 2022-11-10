@@ -230,7 +230,6 @@
   &:hover,
   &:focus {
     background-color: var(--accent-link);
-    transform: scale(1);
   }
 }
 
@@ -245,15 +244,6 @@
   }
 
   fill: var(--icons-color);
-  transition: opacity var(--animation-duration) var(--timing-function);
-  ;
-
-  &:hover &,
-  :focus & {
-    opacity: 0.8;
-    fill: var(--accent-link)
-  }
-
 }
 
 .team-svg-closer {
