@@ -15,8 +15,8 @@
   --transition-fill: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   --section-filter-link-tablet-set: 2;
   --section-filter-link-tablet-gap: 30px;
-  --section-filter-link-desktop-set: 4;
-  --section-filter-link-desktop-gap: 40px;
+  --section-filter-link-desktop-set: 6;
+  --section-filter-link-desktop-gap: 30px;
 }
 
 
@@ -56,11 +56,10 @@
 
 .team-modal-content {
   position: relative;
-  top: 20px;
+  top: -1px;
   display: flex;
   width: 80vw;
   height: 100vh;
-  overflow-y: overlay;
   overflow-x: hidden;
   min-width: 295px;
   @media screen and (min-width: 320px) {
@@ -75,9 +74,10 @@
   }
 
   @media screen and (min-width: 1280px) {
-    max-width: 1200px;
-    height: 85vh;
-     
+    max-width: 1500px;
+    width: 1260px;
+    height: 90vh;
+    overflow-y:hidden
               
 
   }
@@ -143,11 +143,6 @@
   border-radius: 10px 10px 5px 5px;
   background-color: var(--accent-color);
 
-  // &:not(:last-child) {
-  //   @media screen and (max-width: 767px) {
-  //     margin-bottom: 30px;
-  //   }
-  // }
 
   @media screen and (min-width: 768px) {
     flex-basis: calc(100% / var(--section-filter-link-tablet-set) - var(--section-filter-link-tablet-gap));
@@ -175,7 +170,7 @@
 
   @media screen and (min-width: 1280px) {
 
-    height: 27vh;
+    height: 28vh;
   }
 }
 
@@ -207,6 +202,9 @@
   @media screen and (min-width: 768px) {
       margin-bottom: 10px;
     }
+         @media screen and (min-width: 1280px) {
+          font-size: 16px;
+         }
 }
 
 .team-close-btn {
@@ -215,13 +213,6 @@
   top: 15px;
   width: 26px;
   height: 26px;
-
-  @media screen and (min-width: 768px) {
-    width: 30px;
-    height: 30px;
-  }
-
-  border: solid 2px rgba(192, 192, 192, 0.507);
   background: var(--accent-color);
   border-radius: 50%;
   cursor: pointer;
@@ -229,7 +220,7 @@
 
   &:hover,
   &:focus {
-    background-color: var(--accent-link);
+    transform: scale(1.1);
   }
 }
 
@@ -242,14 +233,23 @@
         top: -16px;
           left: 5.5px;
   }
+        @media screen and (min-width: 1280px) {
+          top: -18px;
+          left: 6px;
+        }
 
   fill: var(--icons-color);
+        &:hover,
+        &:focus {
+          fill: rgb(45, 64, 177);
+          transform: scale(1.1);
+        }
 }
 
 .team-svg-closer {
   @media screen and (min-width: 768px) {
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
   }
 }
 
@@ -271,14 +271,10 @@
   height: 40px;
   border-radius: 50%;
 
-  @media screen and (min-width: 768px) {
-    width: 40px;
-    height: 40px;
-  }
-
+ 
   @media screen and (min-width: 1280px) {
-    width: 35px;
-    height: 35px;
+    width: 27px;
+    height: 27px;
   }
 
   transition: var(--transition-bg-color);
