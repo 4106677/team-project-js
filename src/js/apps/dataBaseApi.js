@@ -1,4 +1,11 @@
-import { getDatabase, ref, set, query, onValue } from 'firebase/database';
+import {
+  getDatabase,
+  ref,
+  set,
+  query,
+  onValue,
+  remove,
+} from 'firebase/database';
 import { initializeApp } from 'firebase/app';
 
 // Web app's Firebase configuration
@@ -45,8 +52,8 @@ function writeInDataBase(
 function readFromDataBase(uid, target) {
   const app = initializeApp(firebaseConfig);
   const database = getDatabase(app);
-
   const topUserPostsRef = query(ref(database, 'films/' + uid + '/' + target));
+
   onValue(topUserPostsRef, snapshot => {
     const data = snapshot.val();
     console.log(data);
@@ -54,4 +61,35 @@ function readFromDataBase(uid, target) {
   });
 }
 
-export { writeInDataBase, readFromDataBase };
+// Чтение из базы данных и запись в localStorage
+function setDataToLocalStorage(uid) {
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  const watchedDB = query(ref(database, 'films/' + uid + '/' + 'watched'));
+  const queueDB = query(ref(database, 'films/' + uid + '/' + 'queue'));
+
+  onValue(watchedDB, snapshot => {
+    const data = snapshot.val();
+    localStorage.setItem('watched', JSON.stringify(Object.keys(data)));
+  });
+
+  onValue(queueDB, snapshot => {
+    const data = snapshot.val();
+    localStorage.setItem('queue', JSON.stringify(Object.keys(data)));
+  });
+}
+
+// Удаление записи из базы данных
+function deleteFromDB(uid, target, filmId) {
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
+  remove(ref(database, 'films/' + uid + '/' + target + '/' + filmId));
+}
+
+export {
+  writeInDataBase,
+  readFromDataBase,
+  setDataToLocalStorage,
+  deleteFromDB,
+};
