@@ -136,6 +136,11 @@
   &:focus {
     transform: scale(1.1);
   }
+
+  &.in-library {
+    background-color: #b8b5b3;
+    color: #fff;
+  }
 }
 
 .watched {
@@ -166,6 +171,11 @@
   &:hover,
   &:focus {
     transform: scale(1.1);
+  }
+
+  &.in-library {
+    background-color: #b8b5b3;
+    color: #fff;
   }
 }
 
