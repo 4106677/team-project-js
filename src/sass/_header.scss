@@ -140,14 +140,24 @@
   line-height: calc(35 / 30);
 
   display: flex;
-  align-items: baseline;
+  align-items: center;
   text-align: center;
+  padding: 5px;
 
   color: #ffffff;
+  @media screen and (min-width: 768px) {
+    align-items: baseline;
+    padding: 0px;
+  }
 }
 
 .logo-text {
   margin-left: 10px;
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
 }
 .navigation {
   height: 35px;

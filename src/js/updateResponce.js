@@ -7,9 +7,10 @@ async function updateResponce(data, page) {
 
   const newObj = data.map(item => {
     return {
-      year: parseInt(item.release_date),
+      year: parseInt(item.release_date) || 'Date not specified',
       poster: item.poster_path,
       title: item.title || item.name,
+      original_title: item.original_title,
       vote: item.vote_average.toFixed(1),
       popularity: item.popularity.toFixed(1),
 
@@ -19,7 +20,6 @@ async function updateResponce(data, page) {
           return objIdGenres[id];
         })
         .reduce((acc, element, index, array) => {
-          console.log(index);
           if (index > 2) {
             acc = [...array.slice(0, 2)];
 
