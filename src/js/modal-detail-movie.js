@@ -89,6 +89,7 @@ export default function modalDetailMovie() {
       closeBtn.addEventListener('click', onCloseModal); // закрытие модалки
       document.addEventListener('keyup', closeModalEsc);
 
+
       // проверка есть ли данный фильм в базе данных
       // если есть добавлянтся стиль кнопки "in-library" и добавляю аттрибут disabled
       if (isMovieInBase(props.filmId) === 'watched') {
@@ -96,6 +97,7 @@ export default function modalDetailMovie() {
         watchedBtnRef.classList.add('in-library');
         watchedBtnRef.getAttribute('disabled', '');
         watchedBtnRef.addEventListener('click', deleteItemfromWatchedDb, props); // слушатель на удаление фильма
+
       }
 
       if (isMovieInBase(props.filmId) === 'queue') {
@@ -104,6 +106,7 @@ export default function modalDetailMovie() {
         queueBtnRef.getAttribute('disabled', '');
         queueBtnRef.addEventListener('click', deleteItemfromQueueDb, props); // слушатель на удаление фильма
       }
+
       // ------------------------------------------------------------------------------
     });
   }
@@ -181,6 +184,19 @@ function isMovieInBase(movieId) {
   if (queueBd.includes(movieId.toString())) {
     return 'queue';
   }
+}
+
+// Закрытие модалки
+function onCloseModal() {
+  instance_2.close();
+  closeBtn.removeEventListener('click', onCloseModal);
+}
+
+// Сообщение о необходимости зарегистрироваться
+function showToLogInNessage() {
+  Notify.failure(
+    'Sorry! You must be logged in to add a movie to your library.'
+  );
 }
 
 // Закрытие модалки

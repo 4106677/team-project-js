@@ -1,5 +1,6 @@
 .movie {
   @media screen and (max-width: 767px) {
+    overflow: auto;
     height: 100vh;
   }
   position: relative;
@@ -136,6 +137,11 @@
   &:focus {
     transform: scale(1.1);
   }
+
+  &.in-library {
+    background-color: #b8b5b3;
+    color: #fff;
+  }
 }
 
 .watched {
@@ -166,6 +172,11 @@
   &:hover,
   &:focus {
     transform: scale(1.1);
+  }
+
+  &.in-library {
+    background-color: #b8b5b3;
+    color: #fff;
   }
 }
 
