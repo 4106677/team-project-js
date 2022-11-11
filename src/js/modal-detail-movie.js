@@ -87,6 +87,7 @@ export default function modalDetailMovie() {
       }
 
       closeBtn.addEventListener('click', onCloseModal); // закрытие модалки
+      document.addEventListener('keyup', closeModalEsc);
 
 
       // проверка есть ли данный фильм в базе данных
@@ -189,6 +190,26 @@ function isMovieInBase(movieId) {
 function onCloseModal() {
   instance_2.close();
   closeBtn.removeEventListener('click', onCloseModal);
+}
+
+// Сообщение о необходимости зарегистрироваться
+function showToLogInNessage() {
+  Notify.failure(
+    'Sorry! You must be logged in to add a movie to your library.'
+  );
+}
+
+// Закрытие модалки
+function onCloseModal() {
+  instance_2.close();
+  closeBtn.removeEventListener('click', onCloseModal);
+}
+
+function closeModalEsc(evt) {
+  if (evt.code === 'Escape') {
+    instance_2.close();
+    document.removeEventListener('keyup', closeModalEsc);
+  }
 }
 
 // Сообщение о необходимости зарегистрироваться
