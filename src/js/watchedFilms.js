@@ -17,5 +17,4 @@ function getWatchedFilms() {
   gallery.innerHTML = '';
 
   renderOneMovieCard({ results: data }, true);
-
 }

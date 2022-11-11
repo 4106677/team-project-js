@@ -3,11 +3,17 @@ import { openLoginModal } from './js/modal-of-login';
 import { getDatabase, ref, set } from 'firebase/database';
 import modalDetailMovie from './js/modal-detail-movie';
 import getAllgenres from './js/apps/getAllGenres';
+import { setDataToLocalStorage } from './js/apps/dataBaseApi';
 
 // получаю все жанры и сохраняю в localstorage("genres")
 getAllgenres();
 
-// userRegistration('test@user.net', '123456');
+// Проверка зарегистрирован ли пользователь на сайте
+
+let userId = localStorage.getItem('uid');
+if (userId) {
+  setDataToLocalStorage(userId); // загрузка id сохранненных фильмов из базы в localStorage
+}
 
 // Открытие модального окна входа и регистрации пользователя
 openLoginModal();

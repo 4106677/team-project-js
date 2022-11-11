@@ -29,26 +29,30 @@ export function fetchDefaultMoviesByApi() {
 }
 
 export function renderDefaultMovies() {
-  fetchDefaultMoviesByApi()
-    .then(data => {
-      const resp = updateResponce(data.results);
-      return resp;
-    })
-    .then(resp => {
-      ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(resp));
-
-      if (ul.childElementCount > 20) smoothScroll();
-
-      if (resp.page === 1000) {
-        Notiflix.Notify.info(
-          "We're sorry, but you've reached the end of films collection."
-        );
-        button.classList.add('is-hidden');
+  fetchDefaultMoviesByApi().then(data => {
+    const resp = updateResponce(data.results);
+    const ids = JSON.parse(localStorage.getItem('queue'));
+    const arr1 = data.results.map(id => id.id);
+    for (const id of ids) {
+      if (arr1.includes(Number(id))) {
+        // const textCard = document.querySelector('.text-on-card');
+        // textCard.classList.toggle('visually-hidden');
+        console.log('TRUE', ids);
       }
-    });
-  // console.log('renderDefaultMovies data.results', data.results);
-  // updateResponce(data.results);
-  // console.log('updateResponce', responce);
+    }
+    return resp;
+  });
+  // .then(resp => {
+  //   ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(resp));
+  //   if (ul.childElementCount > 20) smoothScroll();
+
+  //   if (resp.page === 1000) {
+  //     Notiflix.Notify.info(
+  //       "We're sorry, but you've reached the end of films collection."
+  //     );
+  //     button.classList.add('is-hidden');
+  //   }
+  // });
 }
 
 renderDefaultMovies();

@@ -1,6 +1,6 @@
 // import watchedFilms from './js/watchedFilms';
 // import queueFilms from './js/queueFilms';
-import { writeInDataBase } from './js/apps/dataBaseApi';
+import { setDataToLocalStorage } from './js/apps/dataBaseApi';
 import { openLoginModal } from './js/modal-of-login';
 import { teamModalService } from './js/team-modal-service';
 import { initializeApp } from 'firebase/app';
@@ -21,7 +21,12 @@ inputQueueRef.addEventListener('change', onQueueInput);
 // ============ первая загрузка страницы =================================
 let userid = localStorage.getItem('uid');
 
-// userid = 'E7bAOKLi5uVo2RVCvy4tGxdEo7T2';
+// загрузка очередей фильмов в LocalStorage из DB
+
+if (localStorage.getItem('uid')) {
+  setDataToLocalStorage(userid);
+}
+
 if (userid) {
   readFromDataBase(userid, 'watched');
 } else {
@@ -42,18 +47,15 @@ function onQueueInput() {
   readFromDataBase(userid, 'queue');
 }
 
-console.dir(inputWatchedRef);
-
 // Функция чтение из базы данных
 function readFromDataBase(uid, target) {
   const app = initializeApp(firebaseConfig);
   const database = getDatabase(app);
 
   const topUserPostsRef = query(ref(database, 'films/' + uid + '/' + target));
-  console.log(topUserPostsRef);
+
   onValue(topUserPostsRef, snapshot => {
     const data = Object.values(snapshot.val());
-    console.log(data);
 
     listSectionRef.innerHTML = oneMovieCardTmp(data);
   });
@@ -61,3 +63,4 @@ function readFromDataBase(uid, target) {
 
 // Открытие модального окна входа и регистрации пользователя
 // openLoginModal();
+

@@ -7,9 +7,11 @@ import userRegistratinForm from '../templates/userRegistrationForm.hbs';
 const loginRef = document.querySelector('#login');
 const registrationRef = document.querySelector('#registration');
 const navLibraryRef = document.querySelector('#nav-library');
+const logOutRef = document.querySelector('#logout');
 
 if (localStorage.getItem('userEmail')) {
   navLibraryRef.removeAttribute('hidden');
+  logOutRef.removeAttribute('hidden');
   loginRef.setAttribute('hidden', true);
   registrationRef.setAttribute('hidden', true);
 }
@@ -19,6 +21,13 @@ const loginModal = basicLightbox.create(loginUserForm());
 const registrationModal = basicLightbox.create(userRegistratinForm());
 
 export function openLoginModal() {
+  // финкция LogOut
+  logOutRef.addEventListener('click', () => {
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('uid');
+    document.location.reload();
+  });
+
   // Вход зарегистрированного пользователя
   loginRef.addEventListener('click', () => {
     loginModal.show();
@@ -55,6 +64,7 @@ export function openLoginModal() {
   });
 }
 
+// функция регистрации пользователя
 function registration(e) {
   e.preventDefault();
 
@@ -77,6 +87,7 @@ function registration(e) {
         localStorage.setItem('uid', user.uid);
         registrationModal.close();
         navLibraryRef.removeAttribute('hidden');
+        logOutRef.removeAttribute('hidden');
         loginRef.setAttribute('hidden', true);
         registrationRef.setAttribute('hidden', true);
       }
@@ -99,6 +110,7 @@ function singIn(e) {
       localStorage.setItem('uid', user.uid);
       loginModal.close();
       navLibraryRef.removeAttribute('hidden');
+      logOutRef.removeAttribute('hidden');
       loginRef.setAttribute('hidden', true);
       registrationRef.setAttribute('hidden', true);
     } else if (user === 'auth/user-not-found') {
@@ -123,21 +135,3 @@ function singIn(e) {
   //     console.log(user);
   //   });
 }
-
-// ================= запись в базу данных ==================
-
-// const userID = '9999';
-// const filmID = '6666666';
-// const filmName = 'Black Adam part 2';
-// const genres = ['Action', 'Fantasy', 'Science', 'Fiction'];
-
-// writeUserData(userID, filmID, filmName, genres);
-
-// function writeUserData(userID, filmID, filmName, genres) {
-//   const db = getDatabase();
-//   set(ref(db, 'users/' + userID + '/' + filmID), {
-//     filmID: filmID,
-//     filmName: filmName,
-//     genres: genres,
-//   });
-// }
