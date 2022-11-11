@@ -1,5 +1,6 @@
 .movie {
   @media screen and (max-width: 767px) {
+    overflow: auto;
     height: 100vh;
   }
   position: relative;

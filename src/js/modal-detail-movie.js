@@ -48,7 +48,7 @@ export default function modalDetailMovie() {
       if (genreArr.length > 3) {
         genreList = genreArr.slice(0, 2).push('Other');
       } else {
-        genreList = genreArr;
+        genreList = genreArr.join(', ');
       }
 
       props = {
@@ -76,6 +76,7 @@ export default function modalDetailMovie() {
       closeBtn = document.querySelector('#close-btn');
 
       // слушатели на  кнопки
+
       // если юзер не загрегистрирован, то при клике на кнопку вывод сообщения
       if (userId) {
         watchedBtnRef.addEventListener('click', addMovieToWatchedBase); // добавление в Watched
@@ -86,6 +87,7 @@ export default function modalDetailMovie() {
       }
 
       closeBtn.addEventListener('click', onCloseModal); // закрытие модалки
+
 
       // проверка есть ли данный фильм в базе данных
       // если есть добавлянтся стиль кнопки "in-library" и добавляю аттрибут disabled
