@@ -29,32 +29,30 @@ function fetchDefaultMoviesByApi() {
 }
 
 export function renderDefaultMovies() {
-  fetchDefaultMoviesByApi()
-    .then(data => {
-      const resp = updateResponce(data.results);
-      const ids = JSON.parse(localStorage.getItem('queue'));
-      const arr1 = data.results.map(id => id.id);
-      for (const id of ids) {
-        if (arr1.includes(Number(id))) {
-          console.log('TRUE', ids);
-        }
+  fetchDefaultMoviesByApi().then(data => {
+    const resp = updateResponce(data.results);
+    const ids = JSON.parse(localStorage.getItem('queue'));
+    const arr1 = data.results.map(id => id.id);
+    for (const id of ids) {
+      if (arr1.includes(Number(id))) {
+        // const textCard = document.querySelector('.text-on-card');
+        // textCard.classList.toggle('visually-hidden');
+        console.log('TRUE', ids);
       }
-      ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(resp));
-      return resp;
-    })
-    .then(resp => {
-      if (ul.childElementCount > 20) smoothScroll();
+    }
+    return resp;
+  });
+  // .then(resp => {
+  //   ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(resp));
+  //   if (ul.childElementCount > 20) smoothScroll();
 
-      if (resp.page === 1000) {
-        Notiflix.Notify.info(
-          "We're sorry, but you've reached the end of films collection."
-        );
-        button.classList.add('is-hidden');
-      }
-    });
-  console.log('renderDefaultMovies data.results', data.results);
-  updateResponce(data.results);
-  console.log('updateResponce', responce);
+  //   if (resp.page === 1000) {
+  //     Notiflix.Notify.info(
+  //       "We're sorry, but you've reached the end of films collection."
+  //     );
+  //     button.classList.add('is-hidden');
+  //   }
+  // });
 }
 
 renderDefaultMovies();
