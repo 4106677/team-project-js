@@ -1,10 +1,11 @@
 import data from '/src/js/onSubmitSearch';
-import { onGetFilmGenres, onGetTVGenres } from './fetchAPI';
+// import { onGetFilmGenres, onGetTVGenres } from './fetchAPI';
 import createGallery from './createGallery';
 
 async function updateResponce(data, page) {
-  const objIdGenres = await getGenresId();
-
+  // const objIdGenres = await getGenresId();
+  const objIdGenres = JSON.parse(localStorage.getItem('genres'));
+  // console.log(objIdGenres);
   const newObj = data.map(item => {
     return {
       year: parseInt(item.release_date) || 'Date not specified',
@@ -34,16 +35,16 @@ async function updateResponce(data, page) {
   return createGallery(newObj, page);
 }
 
-function getGenresId() {
-  const genresObj = {};
+// function getGenresId() {
+//   const genresObj = {};
 
-  return onGetFilmGenres().then(data => {
-    const dataGenres = data.data.genres;
-    dataGenres.forEach(item => {
-      genresObj[item.id] = item.name;
-    });
-    return genresObj;
-  });
-}
+//   return onGetFilmGenres().then(data => {
+//     const dataGenres = data.data.genres;
+//     dataGenres.forEach(item => {
+//       genresObj[item.id] = item.name;
+//     });
+//     return genresObj;
+//   });
+// }
 
 export default updateResponce;
