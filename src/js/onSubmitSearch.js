@@ -39,7 +39,12 @@ function onClickSubmit(event) {
 function onLoadMore() {
   page += 1;
   fetchSearchFilm(value, page)
-    .then(data => checkInputData(data, page))
+    .then(data => {
+      if (data.data.page === data.data.total_pages) {
+        refs.loadMore.classList.toggle('visually-hidden');
+      }
+      checkInputData(data, page);
+    })
     .catch(error => console.log(error));
   smoothScroll();
 }
