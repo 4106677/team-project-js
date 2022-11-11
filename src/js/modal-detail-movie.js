@@ -1,6 +1,8 @@
 import * as basicLightbox from 'basiclightbox';
 import modalMovieTmp from '../templates/detailDescriptionMovie.hbs';
 
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import { fetchAboutMovies } from './apps/fetchApi';
 
 import { getDatabase, ref, set, query, onValue } from 'firebase/database';
@@ -31,7 +33,11 @@ export default function modalDetailMovie() {
     }
 
     const movieId = e.target.parentNode.dataset.id;
+
+    // получаю id user
     const userId = localStorage.getItem('uid');
+
+    console.log(userId);
 
     //   отправление запроса на получание польной нформации  о фильме
     fetchAboutMovies(movieId).then(resp => {
@@ -70,8 +76,15 @@ export default function modalDetailMovie() {
       closeBtn = document.querySelector('#close-btn');
 
       // слушатели на  кнопки
-      watchedBtnRef.addEventListener('click', addMovieToWatchedBase); // добавление в Watched
-      queueBtnRef.addEventListener('click', addMovieToQueuedBase); // добавление в Queue
+      // если юзер не загрегистрирован, то при клике на кнопку вывод сообщения
+      if (userId) {
+        watchedBtnRef.addEventListener('click', addMovieToWatchedBase); // добавление в Watched
+        queueBtnRef.addEventListener('click', addMovieToQueuedBase); // добавление в Queue
+      } else {
+        watchedBtnRef.addEventListener('click', showToLogInNessage); // добавление в Watched
+        queueBtnRef.addEventListener('click', showToLogInNessage); // добавление в Queue
+      }
+
       closeBtn.addEventListener('click', onCloseModal); // закрытие модалки
 
       // проверка есть ли данный фильм в базе данных
@@ -172,4 +185,11 @@ function isMovieInBase(movieId) {
 function onCloseModal() {
   instance_2.close();
   closeBtn.removeEventListener('click', onCloseModal);
+}
+
+// Сообщение о необходимости зарегистрироваться
+function showToLogInNessage() {
+  Notify.failure(
+    'Sorry! You must be logged in to add a movie to your library.'
+  );
 }
