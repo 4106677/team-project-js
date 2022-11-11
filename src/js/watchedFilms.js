@@ -10,8 +10,6 @@ watchedButton.addEventListener('click', getWatchedFilms);
 function getWatchedFilms() {
   const getFilms = localStorage.getItem(LOCAL_STORAGE_WATCHED);
   const data = JSON.parse(getFilms);
-  const textCard = document.querySelector('.text-on-card');
-  textCard.classList.toggle('visually-hidden');
 
   if (data === null) {
     data = [];
