@@ -6,7 +6,7 @@ import getAllgenres from './js/apps/getAllGenres';
 import { setDataToLocalStorage } from './js/apps/dataBaseApi';
 
 // получаю все жанры и сохраняю в localstorage("genres")
-getAllgenres();
+if (!localStorage.getItem('genres')) getAllgenres();
 
 // Проверка зарегистрирован ли пользователь на сайте
 
