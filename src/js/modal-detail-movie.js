@@ -96,6 +96,7 @@ export default function modalDetailMovie() {
         watchedBtnRef.classList.add('in-library');
         watchedBtnRef.getAttribute('disabled', '');
         watchedBtnRef.addEventListener('click', deleteItemfromWatchedDb, props); // слушатель на удаление фильма
+
       }
 
       if (isMovieInBase(props.filmId) === 'queue') {
@@ -104,6 +105,7 @@ export default function modalDetailMovie() {
         queueBtnRef.getAttribute('disabled', '');
         queueBtnRef.addEventListener('click', deleteItemfromQueueDb, props); // слушатель на удаление фильма
       }
+
       // ------------------------------------------------------------------------------
     });
   }
