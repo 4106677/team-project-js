@@ -57,10 +57,22 @@ export default function modalDetailMovie() {
       queueBtnRef.addEventListener('click', addMovieToQueuedBase); // добавление в Queue
       closeBtn.addEventListener('click', onCloseModal); // закрытие модалки
 
-      function onCloseModal() {
-        instance_2.close();
-        closeBtn.removeEventListener('click', onCloseModal);
+      // проверка есть ли данный фильм в базе данных
+      // если есть добавлянтся стиль кнопки "in-library" и добавляю аттрибут disabled
+      if (isMovieInBase(props.filmId) === 'watched') {
+        watchedBtnRef.innerText = 'delete from watched';
+        watchedBtnRef.classList.add('in-library');
+        watchedBtnRef.getAttribute('disabled', '');
+        watchedBtnRef.addEventListener('click', deleteItemfromWatchedDb, props); // слушатель на удаление фильма
       }
+
+      if (isMovieInBase(props.filmId) === 'queue') {
+        queueBtnRef.innerText = 'delete from queue';
+        queueBtnRef.classList.add('in-library');
+        queueBtnRef.getAttribute('disabled', '');
+        queueBtnRef.addEventListener('click', deleteItemfromQueueDb, props); // слушатель на удаление фильма
+      }
+      // ------------------------------------------------------------------------------
     });
 
     // добавление в ветку watched
