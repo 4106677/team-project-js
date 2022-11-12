@@ -10,7 +10,7 @@ const moviesListSectionRef = document.querySelector('.movies-popular-list');
 
 moviesListSectionRef.addEventListener('click', clickOnTheCard);
 
-function clickOnTheCard(e) {
+export default function clickOnTheCard(e) {
   const parentNode = e.target.parentNode.nodeName;
   movieId = e.target.parentNode.dataset.id;
   console.log(movieId);

@@ -6,6 +6,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchAboutMovies } from './apps/fetchApi';
 
 import { getDatabase, ref, set, query, onValue } from 'firebase/database';
+import fetchTrailer from './trailer';
 import { initializeApp } from 'firebase/app';
 import {
   writeInDataBase,
@@ -72,7 +73,21 @@ export default function modalDetailMovie() {
 
       // создание модального окна
       instance_2 = basicLightbox.create(modalMovieTmp(props));
-      instance_2.show();
+      const movieLB = document.querySelector('.movie-card');
+      movieLB.addEventListener('click', createLightbox);
+      function createLightbox() {
+        instance_2.show();
+
+        if (e.currentTarget !== e.target) {
+          console.log('rr');
+          const basicLb = document.querySelector('.basicLightbox');
+          basicLb.addEventListener('click', () => {
+            body.classList.remove('overflow-hidden');
+            instance_2.close();
+          });
+        }
+      }
+      createLightbox();
 
       // ссылки на кнопки
       watchedBtnRef = document.querySelector('.watched');
@@ -191,6 +206,9 @@ function isMovieInBase(movieId) {
 // Закрытие модалки
 function onCloseModal() {
   body.classList.remove('overflow-hidden');
+  const button = document.querySelector('.trailer__button');
+
+  button.removeEventListener('click', fetchTrailer);
   instance_2.close();
   closeBtn.removeEventListener('click', onCloseModal);
 }
@@ -205,6 +223,9 @@ function showToLogInNessage() {
 function closeModalEsc(evt) {
   if (evt.code === 'Escape') {
     body.classList.remove('overflow-hidden');
+    const button = document.querySelector('.trailer__button');
+
+    button.removeEventListener('click', fetchTrailer);
     instance_2.close();
     document.removeEventListener('keyup', closeModalEsc);
   }
