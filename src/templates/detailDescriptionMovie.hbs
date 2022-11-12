@@ -69,16 +69,24 @@
         <li class='description__info'>
           <span class='description__info__titles'>Voit/voits </span>
           <span class='orangebackend'>{{vote_average}}</span>
-          /{{vote_count}}</li>
+          / <div >{{vote_count}}</div></li>
         <li class='description__info'>
           <span class='description__info__titles'>Popularity </span>
-          {{popularity}}</li>
+          <div class="decr-width">{{popularity}}</div></li>
         <li class='description__info'>
           <span class='description__info__titles'>Original title </span>
-          {{original_title}}</li>
+          <div class="decr-width">{{original_title}}</div></li>
         <li class='description__info'>
           <span class='description__info__titles'>Genres </span>
-          {{#if genres}}{{genres}}{{else}}Other{{/if}}</li>
+          <div class="decr-width">
+          {{#if genres}}
+          {{#each genres}}
+          {{this }}{{#unless @last}}, {{/unless}}
+          {{else}}Other
+          {{/each}}
+          {{/if}}
+          </div>
+          </li>
       </ul>
       <div class='description__about'><span
           class='description__about__title'

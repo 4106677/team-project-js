@@ -45,9 +45,9 @@
           <p class="movie-card__info">
             {{#if genres}}
             {{#each genres}}
-            {{this }}{{#unless @last}},{{/unless}}
-            {{/each}}
+            {{this }}{{#unless @last}}, {{/unless}}
             {{else}}Other
+            {{/each}}
             {{/if}}
 
 | {{year}} 

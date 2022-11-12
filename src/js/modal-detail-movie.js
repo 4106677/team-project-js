@@ -13,6 +13,8 @@ import {
   deleteFromDB,
 } from './apps/dataBaseApi';
 
+const body = document.querySelector('body');
+
 let props = null;
 let watchedBtnRef = null;
 let queueBtnRef = null;
@@ -31,7 +33,7 @@ export default function modalDetailMovie() {
     if (parentNode !== 'LI' && parentNode !== 'PICTURE') {
       return;
     }
-
+    body.classList.add('overflow-hidden');
     const movieId = e.target.parentNode.dataset.id;
 
     // получаю id user
@@ -48,7 +50,7 @@ export default function modalDetailMovie() {
       if (genreArr.length > 3) {
         genreList = genreArr.slice(0, 2).push('Other');
       } else {
-        genreList = genreArr.join(', ');
+        genreList = genreArr;
       }
 
       props = {
@@ -89,7 +91,6 @@ export default function modalDetailMovie() {
       closeBtn.addEventListener('click', onCloseModal); // закрытие модалки
       document.addEventListener('keyup', closeModalEsc);
 
-
       // проверка есть ли данный фильм в базе данных
       // если есть добавлянтся стиль кнопки "in-library" и добавляю аттрибут disabled
       if (isMovieInBase(props.filmId) === 'watched') {
@@ -97,7 +98,6 @@ export default function modalDetailMovie() {
         watchedBtnRef.classList.add('in-library');
         watchedBtnRef.getAttribute('disabled', '');
         watchedBtnRef.addEventListener('click', deleteItemfromWatchedDb, props); // слушатель на удаление фильма
-
       }
 
       if (isMovieInBase(props.filmId) === 'queue') {
@@ -111,7 +111,7 @@ export default function modalDetailMovie() {
     });
   }
 }
-
+body.classList.remove('overflow-hidden');
 // Удаление из Watched базы данных
 function deleteItemfromWatchedDb() {
   deleteFromDB(props.userId, 'watched', props.filmId);
