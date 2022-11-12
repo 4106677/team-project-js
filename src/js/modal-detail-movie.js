@@ -45,18 +45,20 @@ export default function modalDetailMovie() {
     fetchAboutMovies(movieId).then(resp => {
       // создаю новый объект который передаються в шаблон
       const genreArr = resp.genres.map(genre => genre.name);
-      let genreList = '';
+      let genreList = [];
 
-      if (genreArr.length > 3) {
-        genreList = genreArr.slice(0, 2).push('Other');
-      } else {
-        genreList = genreArr;
-      }
+      if (genreArr.length !== 0) {
+        if (genreArr.length > 3) {
+          genreList = genreArr.slice(0, 2).push('Other');
+        } else {
+          genreList = genreArr;
+        }
+      } else genreList.push('Other');
 
       props = {
         userId: userId,
         filmId: resp.id,
-        title: resp.original_title,
+        title: resp.title,
         poster_url: resp.poster_path,
         vote_average: resp.vote_average.toFixed(1),
         vote_count: resp.vote_count,
