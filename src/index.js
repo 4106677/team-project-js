@@ -13,6 +13,9 @@ if (!localStorage.getItem('genres')) getAllgenres();
 let userId = localStorage.getItem('uid');
 if (userId) {
   setDataToLocalStorage(userId); // загрузка id сохранненных фильмов из базы в localStorage
+} else {
+  localStorage.removeItem('watched');
+  localStorage.removeItem('queue');
 }
 
 // Открытие модального окна входа и регистрации пользователя

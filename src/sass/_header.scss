@@ -12,9 +12,9 @@
   background-size: cover;
 
   @media (min-device-pixel-ratio: 2),
-  (-webkit-min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/mobile_bgr_home@2x.jpg);
   }
@@ -30,11 +30,13 @@
     background-size: cover;
 
     @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
         url(../images/tablet_bgr_home@2x.jpg);
     }
   }
@@ -50,11 +52,13 @@
     background-size: cover;
 
     @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
         url(../images/desktop_bgr_home@2x.jpg);
     }
   }
@@ -82,9 +86,9 @@
   background-size: cover;
 
   @media (min-device-pixel-ratio: 2),
-  (-webkit-min-device-pixel-ratio: 2),
-  (min-resolution: 192dpi),
-  (min-resolution: 2dppx) {
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/mobile_bgr_library@2x-min.jpg);
   }
@@ -101,11 +105,13 @@
     background-size: cover;
 
     @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
         url(../images/tablet_bgr_library@2x-min.jpg);
     }
   }
@@ -122,11 +128,13 @@
     background-size: cover;
 
     @media (min-device-pixel-ratio: 2),
-    (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi),
-    (min-resolution: 2dppx) {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.56),
-          rgba(0, 0, 0, 0.56)),
+      (-webkit-min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
         url(../images/desctop_bgr_library@2x-min.jpg);
     }
   }
@@ -151,7 +159,7 @@
 
   &:hover,
   &:focus {
-    scale: (1.1)
+    scale: (1.1);
   }
 
   @media screen and (min-width: 768px) {
@@ -161,7 +169,6 @@
 }
 
 .icon-film {
-
   fill: none;
   stroke: #fff;
   stroke-width: 2px;
@@ -210,7 +217,7 @@ ul.nav {
 
   &:hover,
   &:focus {
-    scale: (1.2)
+    scale: (1.2);
   }
 }
 
@@ -331,7 +338,7 @@ ul.nav {
   border-radius: 5px;
 }
 
-.storage__input:checked~.storage__btn {
+.storage__input:checked ~ .storage__btn {
   background-color: #ff6b01;
   border: 1px solid #ff6b01;
   color: #ffffff;
@@ -350,4 +357,21 @@ ul.nav {
 
 .error-message {
   color: red;
+}
+
+.gba-active {
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  background-color: #ff6b01;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1em;
+}
+
+.nav.list {
+  display: flex;
+  align-items: center;
 }

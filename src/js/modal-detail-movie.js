@@ -124,10 +124,10 @@ export default function modalDetailMovie() {
 }
 
 function createLightbox() {
-  instance_2.show();
   const basicLb = document.querySelector('.basicLightbox');
   basicLb.addEventListener('click', closeLightbox);
 }
+
 function closeLightbox(e) {
   const basicLb = document.querySelector('.basicLightbox');
   console.log(e.target);
@@ -145,7 +145,6 @@ function deleteItemfromWatchedDb() {
   deleteFromDB(props.userId, 'watched', props.filmId);
   watchedBtnRef.innerText = 'add to watched';
   watchedBtnRef.classList.remove('in-library');
-  watchedBtnRef.removeAttribute('disabled');
   watchedBtnRef.addEventListener('click', addMovieToWatchedBase); // слушатель на добавление фильма
 }
 
@@ -154,7 +153,7 @@ function deleteItemfromQueueDb() {
   deleteFromDB(props.userId, 'queue', props.filmId);
   queueBtnRef.innerText = 'add to queue';
   queueBtnRef.classList.remove('in-library');
-  queueBtnRef.removeAttribute('disabled');
+
   queueBtnRef.addEventListener('click', addMovieToQueuedBase); // слушатель на добавление фильма
 }
 
@@ -172,7 +171,8 @@ function addMovieToWatchedBase() {
   );
   watchedBtnRef.innerText = 'delete from watched';
   watchedBtnRef.classList.add('in-library');
-  watchedBtnRef.getAttribute('disabled', '');
+
+  watchedBtnRef.removeEventListener('click', addMovieToWatchedBase);
   watchedBtnRef.addEventListener('click', deleteItemfromWatchedDb, props); // слушатель на удаление фильма
 
   // если фильм добавляется в WatchedBase он должен удалиться из QueueD
@@ -193,7 +193,8 @@ function addMovieToQueuedBase() {
   );
   queueBtnRef.innerText = 'delete from queue';
   queueBtnRef.classList.add('in-library');
-  queueBtnRef.getAttribute('disabled', '');
+
+  queueBtnRef.removeEventListener('click', addMovieToQueuedBase);
   queueBtnRef.addEventListener('click', deleteItemfromQueueDb); // слушатель на удаление фильма
 
   // если фильм добавляется в QueuedBase он должен удалиться из WatchedDb
@@ -243,8 +244,8 @@ function closeModalEsc(evt) {
 }
 
 // Сообщение о необходимости зарегистрироваться
-function showToLogInNessage() {
-  Notify.failure(
-    'Sorry! You must be logged in to add a movie to your library.'
-  );
-}
+// function showToLogInNessage() {
+//   Notify.failure(
+//     'Sorry! You must be logged in to add a movie to your library.'
+//   );
+// }

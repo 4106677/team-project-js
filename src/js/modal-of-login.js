@@ -8,10 +8,15 @@ const loginRef = document.querySelector('#login');
 const registrationRef = document.querySelector('#registration');
 const navLibraryRef = document.querySelector('#nav-library');
 const logOutRef = document.querySelector('#logout');
+const gbaRef = document.querySelector('#gba');
 
 if (localStorage.getItem('userEmail')) {
   navLibraryRef.removeAttribute('hidden');
   logOutRef.removeAttribute('hidden');
+  gbaRef.innerText = localStorage.getItem('userEmail')[0];
+  gbaRef.removeAttribute('hidden');
+  gbaRef.classList.add('gba-active');
+
   loginRef.setAttribute('hidden', true);
   registrationRef.setAttribute('hidden', true);
 }
@@ -25,6 +30,8 @@ export function openLoginModal() {
   logOutRef.addEventListener('click', () => {
     localStorage.removeItem('userEmail');
     localStorage.removeItem('uid');
+    localStorage.removeItem('watched');
+    localStorage.removeItem('queue');
     document.location.reload();
   });
 
@@ -50,6 +57,7 @@ export function openLoginModal() {
   registrationRef.addEventListener('click', () => {
     registrationModal.show();
     const modalFormBtn = document.querySelector('.login-form');
+
     modalFormBtn.addEventListener('submit', e => {
       registration(e); // фукция регистрации полдьзователя
     });
@@ -83,11 +91,16 @@ function registration(e) {
         document.querySelector('.error-message').innerHTML =
           'Error!! Email already in use!!!!';
       } else {
-        registrationModal.close();
         navLibraryRef.removeAttribute('hidden');
         logOutRef.removeAttribute('hidden');
+
+        gbaRef.innerText = localStorage.getItem('userEmail')[0];
+        gbaRef.removeAttribute('hidden');
+        gbaRef.classList.add('gba-active');
+
         loginRef.setAttribute('hidden', true);
         registrationRef.setAttribute('hidden', true);
+        registrationModal.close();
       }
     });
   }
@@ -106,6 +119,11 @@ function singIn(e) {
     if (user.email) {
       localStorage.setItem('userEmail', user.email);
       localStorage.setItem('uid', user.uid);
+
+      gbaRef.innerText = localStorage.getItem('userEmail')[0];
+      gbaRef.removeAttribute('hidden');
+      gbaRef.classList.add('gba-active');
+
       loginModal.close();
       navLibraryRef.removeAttribute('hidden');
       logOutRef.removeAttribute('hidden');
