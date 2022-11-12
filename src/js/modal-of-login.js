@@ -32,7 +32,7 @@ export function openLoginModal() {
   loginRef.addEventListener('click', () => {
     loginModal.show();
     const modalFormBtn = document.querySelector('.login-form__button');
-    console.log(modalFormBtn);
+
     modalFormBtn.addEventListener('click', e => {
       singIn(e); // фукция входа зарегистрированного пользоваьеля
     });
@@ -83,8 +83,6 @@ function registration(e) {
         document.querySelector('.error-message').innerHTML =
           'Error!! Email already in use!!!!';
       } else {
-        localStorage.setItem('userEmail', user.email);
-        localStorage.setItem('uid', user.uid);
         registrationModal.close();
         navLibraryRef.removeAttribute('hidden');
         logOutRef.removeAttribute('hidden');
@@ -114,11 +112,9 @@ function singIn(e) {
       loginRef.setAttribute('hidden', true);
       registrationRef.setAttribute('hidden', true);
     } else if (user === 'auth/user-not-found') {
-      console.log('Ошибка входа!!!!');
       document.querySelector('.error-message').innerHTML =
         'Пользователя с таким именем не существует !!!!';
     } else if (user === 'auth/wrong-password') {
-      console.log('Ошибка входа!!!!');
       document.querySelector('.error-message').innerHTML =
         'Не правильный пароль !!!!';
     } else {
