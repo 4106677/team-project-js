@@ -87,7 +87,15 @@
   }
 }
 
+.decr-width {
+  width: 100px;
+  @media screen and (min-width: 768px) {
+    width: 150px;
+  }
+}
+
 .description__info {
+  display: flex;
   font-family: inherit;
   font-style: normal;
   font-weight: 500;

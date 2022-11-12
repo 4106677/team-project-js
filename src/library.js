@@ -1,5 +1,6 @@
 // import watchedFilms from './js/watchedFilms';
 // import queueFilms from './js/queueFilms';
+import { getId } from './js/trailer';
 import { setDataToLocalStorage } from './js/apps/dataBaseApi';
 import { openLoginModal } from './js/modal-of-login';
 import { teamModalService } from './js/team-modal-service';
