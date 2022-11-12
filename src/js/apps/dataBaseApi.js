@@ -70,12 +70,16 @@ function setDataToLocalStorage(uid) {
 
   onValue(watchedDB, snapshot => {
     const data = snapshot.val();
-    localStorage.setItem('watched', JSON.stringify(Object.keys(data)));
+    if (data) {
+      localStorage.setItem('watched', JSON.stringify(Object.keys(data)));
+    }
   });
 
   onValue(queueDB, snapshot => {
     const data = snapshot.val();
-    localStorage.setItem('queue', JSON.stringify(Object.keys(data)));
+    if (data) {
+      localStorage.setItem('queue', JSON.stringify(Object.keys(data)));
+    }
   });
 }
 
