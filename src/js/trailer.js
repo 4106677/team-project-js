@@ -13,13 +13,11 @@ moviesListSectionRef.addEventListener('click', clickOnTheCard);
 export default function clickOnTheCard(e) {
   const parentNode = e.target.parentNode.nodeName;
   movieId = e.target.parentNode.dataset.id;
-  console.log(movieId);
   // button.addEventListener('click', fetchTrailer);
 
   const onBtn = () => {
     setTimeout(() => {
       const button = document.querySelector('.trailer__button');
-      console.log(button);
       button.addEventListener('click', fetchTrailer);
     }, 250);
   };
