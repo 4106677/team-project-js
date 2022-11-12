@@ -39,7 +39,6 @@ export default function modalDetailMovie() {
 
     movieLB.addEventListener('click', createLightbox);
 
-
     body.classList.add('overflow-hidden');
     const movieId = e.target.parentNode.dataset.id;
 
@@ -82,17 +81,6 @@ export default function modalDetailMovie() {
       const movieLB = document.querySelector('.movie-card');
 
       movieLB.addEventListener('click', createLightbox);
-
-      function createLightbox() {
-        if (e.currentTarget !== e.target) {
-          console.log('rr');
-          const basicLb = document.querySelector('.basicLightbox');
-          basicLb.addEventListener('click', () => {
-            body.classList.remove('overflow-hidden');
-            instance_2.close();
-          });
-        }
-      }
 
       createLightbox();
       // ссылки на кнопки
@@ -142,8 +130,11 @@ function createLightbox() {
 }
 function closeLightbox(e) {
   const basicLb = document.querySelector('.basicLightbox');
+  console.log(e.target);
 
   if (e.target === basicLb) {
+    console.log(e.target);
+    console.log(basicLb);
     body.classList.remove('overflow-hidden');
     instance_2.close();
   } else return;
