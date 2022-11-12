@@ -111,7 +111,7 @@ export default function modalDetailMovie() {
     });
   }
 }
-body.classList.remove('overflow-hidden');
+
 // Удаление из Watched базы данных
 function deleteItemfromWatchedDb() {
   deleteFromDB(props.userId, 'watched', props.filmId);
@@ -188,6 +188,7 @@ function isMovieInBase(movieId) {
 
 // Закрытие модалки
 function onCloseModal() {
+  body.classList.remove('overflow-hidden');
   instance_2.close();
   closeBtn.removeEventListener('click', onCloseModal);
 }
@@ -199,14 +200,9 @@ function showToLogInNessage() {
   );
 }
 
-// Закрытие модалки
-function onCloseModal() {
-  instance_2.close();
-  closeBtn.removeEventListener('click', onCloseModal);
-}
-
 function closeModalEsc(evt) {
   if (evt.code === 'Escape') {
+    body.classList.remove('overflow-hidden');
     instance_2.close();
     document.removeEventListener('keyup', closeModalEsc);
   }
