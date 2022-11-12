@@ -26,9 +26,10 @@ async function updateResponce(data, page) {
 
             acc.push('Other');
             return acc;
-          } else {
-            return array;
-          }
+          } else if (array.length === 0) {
+            console.log('ARR', array.length);
+            return 'Other';
+          } else return array;
         }, []),
     };
   });

@@ -8,8 +8,8 @@ import smoothScroll from './smoothScrool';
 import { renderDefaultMovies } from './renderDefaultMovies';
 
 import { spinnerOn, spinnerOff } from './loader';
-
-refs.form.addEventListener('submit', onClickSubmit);
+const form = document.querySelector('.search__form');
+form.addEventListener('submit', onClickSubmit);
 refs.loadMore.addEventListener('click', onLoadMore);
 
 let value = null;
