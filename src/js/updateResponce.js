@@ -27,8 +27,8 @@ async function updateResponce(data, page) {
             acc.push('Other');
             return acc;
           } else if (array.length === 0) {
-            console.log('ARR', array.length);
-            return 'Other';
+            acc = [...array];
+            return acc.push('Other');
           } else return array;
         }, []),
     };
