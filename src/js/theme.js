@@ -16,7 +16,7 @@ const loadLs = key => {
   }
 };
 
-const themeBtn = document.getElementById('toggle-theme-btn');
+const themeBtn = document.querySelector('.toggle-theme-btn');
 const sun = document.querySelector('.sun');
 const moon = document.querySelector('.moon');
 

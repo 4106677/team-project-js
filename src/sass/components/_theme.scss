@@ -10,7 +10,7 @@ body.dark {
   --accent-color: #ff6b01;
 }
 
-#toggle-theme-image {
+.toggle-theme-image {
   fill: var(--accent-color, #ffffff);
   width: 22px;
   height: 22px;
@@ -20,7 +20,8 @@ body.dark {
     height: 29px;
   }
 }
-#toggle-theme-btn {
+
+.toggle-theme-btn {
   width: 50px;
   height: 5px;
   position: absolute;
