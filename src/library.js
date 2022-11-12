@@ -14,6 +14,18 @@ import './js/theme';
 // получаю все жанры и сохраняю в localstorage("genres")
 if (!localStorage.getItem('genres')) getAllgenres();
 
+// функция LogOut
+//
+if (localStorage.getItem('userEmail')) {
+  const logOutRef = document.querySelector('#logout');
+  logOutRef.addEventListener('click', () => {
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('uid');
+    document.location.reload();
+  });
+} else {
+  location.href = './index.html';
+}
 
 teamModalService.eventListenerCreator();
 

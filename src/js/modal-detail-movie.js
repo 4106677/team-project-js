@@ -34,9 +34,11 @@ export default function modalDetailMovie() {
     if (parentNode !== 'LI' && parentNode !== 'PICTURE') {
       return;
     }
+
     const movieLB = document.querySelector('.movie-card');
 
     movieLB.addEventListener('click', createLightbox);
+
 
     body.classList.add('overflow-hidden');
     const movieId = e.target.parentNode.dataset.id;
@@ -74,6 +76,24 @@ export default function modalDetailMovie() {
       // ----------------------------------------------------------------------------
       // создание модального окна
       instance_2 = basicLightbox.create(modalMovieTmp(props));
+
+      instance_2.show();
+
+      const movieLB = document.querySelector('.movie-card');
+
+      movieLB.addEventListener('click', createLightbox);
+
+      function createLightbox() {
+        if (e.currentTarget !== e.target) {
+          console.log('rr');
+          const basicLb = document.querySelector('.basicLightbox');
+          basicLb.addEventListener('click', () => {
+            body.classList.remove('overflow-hidden');
+            instance_2.close();
+          });
+        }
+      }
+
       createLightbox();
       // ссылки на кнопки
       watchedBtnRef = document.querySelector('.watched');
