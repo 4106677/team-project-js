@@ -15,15 +15,18 @@ import './js/theme';
 if (!localStorage.getItem('genres')) getAllgenres();
 
 // функция LogOut
-//
+// 
 if (localStorage.getItem('userEmail')) {
   const logOutRef = document.querySelector('#logout');
   logOutRef.addEventListener('click', () => {
     localStorage.removeItem('userEmail');
     localStorage.removeItem('uid');
+    localStorage.removeItem('watched');
+    localStorage.removeItem('queue');
     document.location.reload();
   });
 } else {
+  // Если пользователь не авторизирован его преребрасывает на главную страницу
   location.href = './index.html';
 }
 
@@ -73,11 +76,14 @@ function readFromDataBase(uid, target) {
   const topUserPostsRef = query(ref(database, 'films/' + uid + '/' + target));
 
   onValue(topUserPostsRef, snapshot => {
-    const data = Object.values(snapshot.val());
-
-    listSectionRef.innerHTML = oneMovieCardTmp(data);
+    try {
+      const data = Object.values(snapshot.val());
+      listSectionRef.innerHTML = oneMovieCardTmp(data);
+    } catch {
+      if (target === "watched") {
+        listSectionRef.innerHTML = '<p>Watched library is empty</p>';
+      } else {
+        listSectionRef.innerHTML = '<p>Queue library is empty</p>';
+      }
+    }
   });
-}
-
-// Открытие модального окна входа и регистрации пользователя
-// openLoginModal();
