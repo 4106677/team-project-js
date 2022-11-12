@@ -8,7 +8,7 @@ import firebaseConfig from './js/apps/fireBaseConfig';
 import { getDatabase, ref, set, query, onValue } from 'firebase/database';
 import oneMovieCardTmp from './templates/oneMovieCard.hbs';
 import modalDetailMovie from './js/modal-detail-movie';
-
+import './js/theme';
 teamModalService.eventListenerCreator();
 
 const listSectionRef = document.querySelector('.movies-popular-list');
@@ -63,4 +63,3 @@ function readFromDataBase(uid, target) {
 
 // Открытие модального окна входа и регистрации пользователя
 // openLoginModal();
-

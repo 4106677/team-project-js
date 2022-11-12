@@ -2,9 +2,9 @@
   <a id="page-top"></a>
   <div class="container">
     <div class="navigation">
-      <a class="logo" href="./index.html"
-        ><svg class="icon-film" width="24" height="24">
-          <use xlink:href="#film (1)"></use>
+      <a class="logo" href="./index.html"><svg class="icon-film" width="24" height="24">
+          <use href="/src/images/icons.svg#icon-film"></use>
+          <!-- <use xlink:href="#film (1)"></use>
         </svg>
         <svg width="0" height="0" class="hidden">
           <symbol
@@ -69,17 +69,16 @@
               stroke-linecap="round"
               stroke-linejoin="round"
             ></path>
-          </symbol></svg
-        ><span class="logo-text">Filmoteka</span></a
-      >
+          </symbol></svg -->
+          ><span class="logo-text">Filmoteka</span></a>
       <div class="navigation__pages">
         <ul class="nav list">
           <li class="nav__item">
-            <a class="current" href="./index.html">Home</a>
+            <a class="current nav__item-link" href="./index.html">Home</a>
           </li>
 
           <li class="nav__item" id="nav-library" hidden>
-            <a href="./library.html">My Library</a>
+            <a class="nav__item-link" href="./library.html ">My Library</a>
           </li>
           <li class="nav__item login" id="login">Login</li>
           <li class="nav__item login" id="registration">Registration</li>
@@ -91,7 +90,8 @@
     <form class="search__form">
       <button type="submit" class="search__btn">
         <svg class="icon-search" width="12" height="12">
-          <use xlink:href="#search 2"></use>
+          <use href="/src/images/icons.svg#icon-search"></use>
+          <!-- <use xlink:href="#search 2"></use>
         </svg>
         <svg width="0" height="0" class="hidden">
           <symbol
@@ -113,13 +113,18 @@
               stroke-linejoin="round"
             ></path>
           </symbol>
-        </svg>
+        </svg> -->
       </button>
-      <input
-        placeholder="Movie search"
-        id="search-form"
-        class="search__input"
-      />
+      <input placeholder="Movie search" id="search-form" class="search__input" />
     </form>
+    <div>
+      <button id="toggle-theme-btn"><span class="text_theme-btn"></span>
+        <svg width="25px" height="25px">
+          <use class="moon" id="toggle-theme-image" href="/src/images/icons.svg#moon"></use>
+          <use class="sun" id="toggle-theme-image" href="/src/images/icons.svg#sun"></use>
+        </svg>
+        <span class="visually-hidden">theme</span>
+      </button>
+    </div>
   </div>
 </header>
