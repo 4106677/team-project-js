@@ -8,7 +8,7 @@
   --inv-btn-main-color: rgb(63, 63, 63);
   --animation-duration: 250ms;
   --transition-bg-color: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  --accent-color: #013cff00;
+  --card-team-color: #013cff00;
   --accent-link: #ecdf1fd5;
   --icons-color: rgb(36, 10, 128);
   --accent-link-footer: rgba(255, 255, 255, 0.1);
@@ -138,7 +138,7 @@
   }
 
   border-radius: 10px 10px 5px 5px;
-  background-color: var(--accent-color);
+  background-color: var(--card-team-color);
 
 
   @media screen and (min-width: 768px) {
