@@ -14,7 +14,7 @@ button.addEventListener('click', renderDefaultMovies);
 
 let page = 1;
 
-function fetchDefaultMoviesByApi() {
+export function fetchDefaultMoviesByApi() {
   spinnerOn();
   return fetch(`${BASE_URL}?page=${page}&api_key=${API_KEY}`)
     .then(response => {
@@ -56,4 +56,3 @@ export function renderDefaultMovies() {
 }
 
 renderDefaultMovies();
-//*
