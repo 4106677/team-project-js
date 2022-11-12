@@ -34,13 +34,15 @@ export default function modalDetailMovie() {
     if (parentNode !== 'LI' && parentNode !== 'PICTURE') {
       return;
     }
+    const movieLB = document.querySelector('.movie-card');
+
+    movieLB.addEventListener('click', createLightbox);
+
     body.classList.add('overflow-hidden');
     const movieId = e.target.parentNode.dataset.id;
 
     // получаю id user
     const userId = localStorage.getItem('uid');
-
-    console.log(userId);
 
     //   отправление запроса на получание польной нформации  о фильме
     fetchAboutMovies(movieId).then(resp => {
@@ -70,25 +72,9 @@ export default function modalDetailMovie() {
         year: resp.release_date.split('-')[0],
       };
       // ----------------------------------------------------------------------------
-
       // создание модального окна
       instance_2 = basicLightbox.create(modalMovieTmp(props));
-      const movieLB = document.querySelector('.movie-card');
-      movieLB.addEventListener('click', createLightbox);
-      function createLightbox() {
-        instance_2.show();
-
-        if (e.currentTarget !== e.target) {
-          console.log('rr');
-          const basicLb = document.querySelector('.basicLightbox');
-          basicLb.addEventListener('click', () => {
-            body.classList.remove('overflow-hidden');
-            instance_2.close();
-          });
-        }
-      }
       createLightbox();
-
       // ссылки на кнопки
       watchedBtnRef = document.querySelector('.watched');
       queueBtnRef = document.querySelector('.queue');
@@ -127,6 +113,20 @@ export default function modalDetailMovie() {
       // ------------------------------------------------------------------------------
     });
   }
+}
+
+function createLightbox() {
+  instance_2.show();
+  const basicLb = document.querySelector('.basicLightbox');
+  basicLb.addEventListener('click', closeLightbox);
+}
+function closeLightbox(e) {
+  const basicLb = document.querySelector('.basicLightbox');
+
+  if (e.target === basicLb) {
+    body.classList.remove('overflow-hidden');
+    instance_2.close();
+  } else return;
 }
 
 // Удаление из Watched базы данных

@@ -31,15 +31,6 @@ export function fetchDefaultMoviesByApi() {
 export function renderDefaultMovies() {
   fetchDefaultMoviesByApi().then(data => {
     const resp = updateResponce(data.results);
-    const ids = JSON.parse(localStorage.getItem('queue'));
-    const arr1 = data.results.map(id => id.id);
-    for (const id of ids) {
-      if (arr1.includes(Number(id))) {
-        // const textCard = document.querySelector('.text-on-card');
-        // textCard.classList.toggle('visually-hidden');
-        console.log('TRUE', ids);
-      }
-    }
     return resp;
   });
   // .then(resp => {
