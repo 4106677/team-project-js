@@ -7,7 +7,7 @@ import Notiflix from 'notiflix';
 const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day';
 const API_KEY = '3ab3f6572c3def6f6cf5801fb6522013';
 
-const ul = document.querySelector('.movies-popular-list');
+// const ul = document.querySelector('.movies-popular-list');
 const button = document.querySelector('.load-more');
 
 button.addEventListener('click', renderDefaultMovies);
