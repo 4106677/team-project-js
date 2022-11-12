@@ -69,14 +69,6 @@ export const arrCards = [
   },
   {
     card: 'card-8',
-    name: 'Romanyuk Roman',
-    work: 'Frontend Developer',
-    img: image,
-    git: 'https://github.com/Xray1221',
-    in: 'https://www.linkedin.com',
-  },
-  {
-    card: 'card-9',
     name: 'Andriy Popov',
     work: 'Frontend Developer',
     img: photoAndriy,
@@ -84,7 +76,7 @@ export const arrCards = [
     in: 'https://www.linkedin.com',
   },
   {
-    card: 'card-10',
+    card: 'card-9',
     name: 'Oleksandr Pavlov',
     work: 'Frontend Developer',
     img: photoOleksandr,
@@ -92,7 +84,7 @@ export const arrCards = [
     in: 'https://www.linkedin.com/in/oleksandr-pavlov-92b079131',
   },
   {
-    card: 'card-11',
+    card: 'card-10',
     name: 'Ihor Zhayvoron',
     work: 'Frontend Developer',
     img: photoIgor,
@@ -100,7 +92,7 @@ export const arrCards = [
     in: 'https://www.linkedin.com',
   },
   {
-    card: 'card-12',
+    card: 'card-11',
     name: 'M:) Lytovchenko',
     work: 'Frontend Developer',
     img: photoMaksym,

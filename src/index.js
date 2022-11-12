@@ -33,3 +33,4 @@ teamModalService.eventListenerCreator();
 
 // Модалка с подробный описанием  фильма
 modalDetailMovie();
+import './js/theme';

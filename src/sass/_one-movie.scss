@@ -3,6 +3,7 @@
     overflow: auto;
     height: 100vh;
   }
+  border-radius: 5px;
   position: relative;
   background-color: #fff;
   padding: 50px 20px 40px;
@@ -207,7 +208,7 @@
   position: absolute;
   right: 10px;
   top: 10px;
-  background-color: #fff;
+  background-color: transparent;
   transition: transform cubic-bezier(0.19, 1, 0.22, 1) 500ms;
 
   &:hover,

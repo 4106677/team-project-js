@@ -77,8 +77,7 @@
   @media screen and (min-width: 1280px) {
     max-width: 1500px;
     width: 1260px;
-    height: 89vh;
-    overflow-y: hidden
+    max-height: 780px;
   }
 
   background-color: var(--main-background-color);
@@ -118,11 +117,11 @@
 }
 
 .team-modal.is-open .team-img-card {
-  transform: scale(0.6);
+  transform: scale(1);
 }
 
 .team-img-card {
-  height: 49vh;
+  height: 401px;
   margin-bottom: 30px;
   transform: scale(2);
   transition: transform 1000ms var(--timing-function);
@@ -131,11 +130,11 @@
     0px 2px 3px -1px rgba(255, 255, 255, 0.137);
 
   @media screen and (min-width: 768px) {
-    height: 52vh;
+    height: 435px;
   }
 
   @media screen and (min-width: 1280px) {
-    height: 37vh;
+    height: 330px;
   }
 
   border-radius: 10px 10px 5px 5px;
@@ -151,24 +150,28 @@
   @media screen and (min-width: 1280px) {
     flex-basis: calc(100% / var(--section-filter-link-desktop-set) - var(--section-filter-link-desktop-gap));
     margin-left: var(--section-filter-link-desktop-gap);
+
+    &:nth-child(7) {
+      margin-left: 130px;
+    }
   }
 }
 
 .img-container {
   display: flex;
   width: auto;
-  height: 38vh;
+  height: 320px;
   overflow: hidden;
   border-radius: 10px 10px 0px 0px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
   @media screen and (min-width: 768px) {
-    height: 41vh;
+    height: 349px;
   }
 
   @media screen and (min-width: 1280px) {
 
-    height: 29vh;
+    height: 255px;
   }
 }
 
@@ -210,11 +213,11 @@
 .team-close-btn {
   position: absolute;
   right: 20px;
-  top: 35px;
+  top: 15px;
   width: 26px;
   height: 26px;
-  background: var(--accent-color);
   border-radius: 50%;
+  background: #013cff00;
   cursor: pointer;
   transition: opacity var(--animation-duration);
 
@@ -226,16 +229,16 @@
 
 .material-icons.team-closer {
   position: absolute;
-  top: -19.5px;
-  left: 6px;
+  top: 5px;
+  left: 7px;
 
   @media screen and (min-width: 768px) {
-    top: -16px;
+    top: 5px;
     left: 5.5px;
   }
 
   @media screen and (min-width: 1280px) {
-    top: -18px;
+    top: 5px;
     left: 6px;
   }
 
@@ -313,116 +316,15 @@
 
 }
 
-.slide-team.card-1 {
-  -webkit-animation: slide-team 2000ms cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation: slide-team 2000ms cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.slide-team.card-2 {
-  -webkit-animation: slide-team 200ms cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation: slide-team 200ms cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.slide-team.card-3 {
-  -webkit-animation: slide-team 1200ms cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation: slide-team 1200ms cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.slide-team.card-4 {
-  -webkit-animation: slide-team 1100ms cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation: slide-team 1100ms cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.slide-team.card-5 {
-  -webkit-animation: slide-team 1200ms cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation: slide-team 1200ms cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.slide-team.card-6 {
-  -webkit-animation: slide-team 400ms cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation: slide-team 400ms cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.slide-team.card-7 {
-  -webkit-animation: slide-team 1600ms cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation: slide-team 1600ms cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.slide-team.card-8 {
-  -webkit-animation: slide-team 1600ms cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation: slide-team 1600ms cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.slide-team.card-9 {
-  -webkit-animation: slide-team 2400ms cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation: slide-team 2400ms cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.slide-team.card-10 {
-  -webkit-animation: slide-team 2000ms cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation: slide-team 2000ms cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.slide-team.card-11 {
-  -webkit-animation: slide-team 2000ms cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation: slide-team 2000ms cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-.slide-team.card-12 {
-  -webkit-animation: slide-team 2000ms cubic-bezier(0.23, 1, 0.32, 1) both;
-  animation: slide-team 2000ms cubic-bezier(0.23, 1, 0.32, 1) both;
-}
-
-
-
-
-
-@-webkit-keyframes slide-team {
-  0% {
-    -webkit-transform: translate(1000px, 1000px) skew(80deg, 10deg);
-    transform: translate(1000px, 1000px) skew(80deg, 10deg);
-    -webkit-transform-origin: 0% 100%;
-    transform-origin: 0% 100%;
-    -webkit-filter: blur(40px);
-    filter: blur(40px);
-    opacity: 0;
-  }
-
-  100% {
-    -webkit-transform: translate(0, 0) skew(0deg, 0deg);
-    transform: translate(0, 0) skew(0deg, 0deg);
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slide-team {
-  0% {
-    -webkit-transform: translate(1000px, 1000px) skew(80deg, 10deg);
-    transform: translate(1000px, 1000px) skew(80deg, 10deg);
-    -webkit-transform-origin: 0% 100%;
-    transform-origin: 0% 100%;
-    -webkit-filter: blur(40px);
-    filter: blur(40px);
-    opacity: 0;
-  }
-
-  100% {
-    -webkit-transform: translate(0, 0) skew(0deg, 0deg);
-    transform: translate(0, 0) skew(0deg, 0deg);
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-filter: blur(0);
-    filter: blur(0);
-    opacity: 1;
-  }
-}
-
 .students-team {
+  color: #545454;
   cursor: pointer;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    scale: (1.05);
+  }
 }
 
 .team-active:hover {
@@ -433,9 +335,3 @@
 .team-modal-content {
   background: linear-gradient(0deg, rgba(34, 49, 195, 1) 0%, rgba(253, 245, 45, 0.9150035014005602) 100%);
 }
-
-
-
-
-
-

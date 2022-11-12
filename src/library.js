@@ -8,9 +8,11 @@ import firebaseConfig from './js/apps/fireBaseConfig';
 import { getDatabase, ref, set, query, onValue } from 'firebase/database';
 import oneMovieCardTmp from './templates/oneMovieCard.hbs';
 import modalDetailMovie from './js/modal-detail-movie';
+import './js/theme';
 
 // получаю все жанры и сохраняю в localstorage("genres")
 if (!localStorage.getItem('genres')) getAllgenres();
+
 
 teamModalService.eventListenerCreator();
 

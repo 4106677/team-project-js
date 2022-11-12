@@ -10,9 +10,8 @@ class TeamModalService {
   openTeamModal() {
     const markup = renderTeamMarkup(arrCards);
     teamList.innerHTML = markup;
-    document
-      .querySelectorAll('.team-img-card')
-      .forEach(el => el.classList.add('slide-team'));
+    document.querySelectorAll('.team-img-card');
+    // .forEach(el => el.classList.add('slide-team'))
     document.querySelector('.team-modal').classList.add('is-open');
     document.body.style.overflow = 'hidden';
     document.body.style.height = '100wh';
@@ -20,9 +19,8 @@ class TeamModalService {
 
   closeTeamModal() {
     document.querySelector('.team-modal').classList.remove('is-open');
-    document
-      .querySelectorAll('.team-img-card')
-      .forEach(el => el.classList.remove('slide-team'));
+    document.querySelectorAll('.team-img-card');
+    // .forEach(el => el.classList.remove('slide-team'))
     document.body.style.overflow = 'auto';
     document.body.style.height = 'auto';
   }
