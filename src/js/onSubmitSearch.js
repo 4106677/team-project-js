@@ -45,9 +45,9 @@ function onLoadMore() {
         refs.loadMore.classList.toggle('visually-hidden');
       }
       checkInputData(data, page);
+      smoothScroll();
     })
     .catch(error => console.log(error));
-  smoothScroll();
 }
 
 export default onClickSubmit;

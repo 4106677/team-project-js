@@ -1,5 +1,6 @@
 import { spinnerOff, spinnerOn } from './loader';
 import updateResponce from './updateResponce';
+import smoothScroll from './smoothScrool';
 import { API_KEY } from './apps/fetchApi';
 
 const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day';
@@ -28,6 +29,7 @@ export function fetchDefaultMoviesByApi() {
 export function renderDefaultMovies() {
   fetchDefaultMoviesByApi().then(data => {
     const resp = updateResponce(data.results);
+    smoothScroll();
     return resp;
   });
   // .then(resp => {
