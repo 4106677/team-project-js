@@ -12,6 +12,9 @@
 
   &__login {
     padding: 10px 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6b01;
   }
 
   &__welcome {
@@ -52,6 +55,11 @@
     &:focus {
       border: 2px solid #ff6b01;
     }
+
+    &::placeholder {
+      font-size: 16px;
+      color: #c1c2c4;
+    }
   }
 
   & label {
@@ -64,7 +72,7 @@
   }
 
   &__button {
-    margin-top: 20px;
+    margin: 20px auto 5px;
     height: 40px;
     width: 150px;
     background: #ff6b01;

@@ -5,14 +5,8 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { fetchAboutMovies } from './apps/fetchApi';
 
-import { getDatabase, ref, set, query, onValue } from 'firebase/database';
 import fetchTrailer from './trailer';
-import { initializeApp } from 'firebase/app';
-import {
-  writeInDataBase,
-  setDataToLocalStorage,
-  deleteFromDB,
-} from './apps/dataBaseApi';
+import { writeInDataBase, deleteFromDB } from './apps/dataBaseApi';
 
 const body = document.querySelector('body');
 
@@ -21,6 +15,7 @@ let watchedBtnRef = null;
 let queueBtnRef = null;
 let closeBtn = null;
 let instance_2 = null;
+let label = null;
 
 // делигирование события на карточки с фильмами
 export default function modalDetailMovie() {
@@ -130,11 +125,8 @@ function createLightbox() {
 
 function closeLightbox(e) {
   const basicLb = document.querySelector('.basicLightbox');
-  console.log(e.target);
 
   if (e.target === basicLb) {
-    console.log(e.target);
-    console.log(basicLb);
     body.classList.remove('overflow-hidden');
     instance_2.close();
   } else return;
@@ -145,6 +137,12 @@ function deleteItemfromWatchedDb() {
   deleteFromDB(props.userId, 'watched', props.filmId);
   watchedBtnRef.innerText = 'add to watched';
   watchedBtnRef.classList.remove('in-library');
+
+  // при удалении фильма в базу отображаю ярлык на карточке фильма
+  label = document.querySelector(`li[data-id = "${props['filmId']}"]`);
+  label.children[1].innerHTML = '';
+
+  watchedBtnRef.removeEventListener('click', deleteItemfromWatchedDb);
   watchedBtnRef.addEventListener('click', addMovieToWatchedBase); // слушатель на добавление фильма
 }
 
@@ -153,6 +151,10 @@ function deleteItemfromQueueDb() {
   deleteFromDB(props.userId, 'queue', props.filmId);
   queueBtnRef.innerText = 'add to queue';
   queueBtnRef.classList.remove('in-library');
+
+  // при удалении фильма в базу отображаю ярлык на карточке фильма
+  label = document.querySelector(`li[data-id = "${props['filmId']}"]`);
+  label.children[1].innerHTML = '';
 
   queueBtnRef.addEventListener('click', addMovieToQueuedBase); // слушатель на добавление фильма
 }
@@ -172,8 +174,17 @@ function addMovieToWatchedBase() {
   watchedBtnRef.innerText = 'delete from watched';
   watchedBtnRef.classList.add('in-library');
 
-  watchedBtnRef.removeEventListener('click', addMovieToWatchedBase);
+  // при добавлении фильма в базу отображаю ярлык на карточке фильма
+
+  label = document.querySelector(`li[data-id = "${props['filmId']}"]`);
+  label.children[1].insertAdjacentHTML(
+    'afterbegin',
+    '<p class="text-on-card">Watched</p>'
+  );
+  console.dir(label.children[1]);
+
   watchedBtnRef.addEventListener('click', deleteItemfromWatchedDb, props); // слушатель на удаление фильма
+  watchedBtnRef.removeEventListener('click', addMovieToWatchedBase);
 
   // если фильм добавляется в WatchedBase он должен удалиться из QueueD
   deleteItemfromQueueDb();
@@ -194,6 +205,10 @@ function addMovieToQueuedBase() {
   queueBtnRef.innerText = 'delete from queue';
   queueBtnRef.classList.add('in-library');
 
+  // при добавлении фильма в базу отображаю ярлык на карточке фильма
+  label = document.querySelector(`li[data-id = "${props['filmId']}"]`);
+  label.children[1].innerHTML = "<p class='text-on-card'>In queue</p>";
+
   queueBtnRef.removeEventListener('click', addMovieToQueuedBase);
   queueBtnRef.addEventListener('click', deleteItemfromQueueDb); // слушатель на удаление фильма
 
@@ -207,10 +222,14 @@ function isMovieInBase(movieId) {
   const watchedBd = JSON.parse(localStorage.getItem('watched'));
   const queueBd = JSON.parse(localStorage.getItem('queue'));
 
-  if (watchedBd.includes(movieId.toString())) {
+  if (watchedBd === null) {
+    return;
+  } else if (watchedBd.includes(movieId.toString())) {
     return 'watched';
   }
-  if (queueBd.includes(movieId.toString())) {
+  if (queueBd === null) {
+    return;
+  } else if (queueBd.includes(movieId.toString())) {
     return 'queue';
   }
 }

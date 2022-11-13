@@ -2,12 +2,10 @@ import { fetchSearchFilm } from './fetchAPI';
 import refs from './refs';
 import Notiflix from 'notiflix';
 import checkInputData from './checkInputData';
-import { createGallery, createGalleryNextPage } from './createGallery';
-import oneMovieCard from '/src/templates/oneMovieCard.hbs';
 import smoothScroll from './smoothScrool';
 import { renderDefaultMovies } from './renderDefaultMovies';
 
-import { spinnerOn, spinnerOff } from './loader';
+import { spinnerOff, spinnerOn } from './loader';
 const form = document.querySelector('.search__form');
 form.addEventListener('submit', onClickSubmit);
 refs.loadMore.addEventListener('click', onLoadMore);
@@ -37,6 +35,9 @@ function onClickSubmit(event) {
 }
 
 function onLoadMore() {
+  if (!value) {
+    return;
+  }
   page += 1;
   fetchSearchFilm(value, page)
     .then(data => {
@@ -44,9 +45,9 @@ function onLoadMore() {
         refs.loadMore.classList.toggle('visually-hidden');
       }
       checkInputData(data, page);
+      smoothScroll();
     })
     .catch(error => console.log(error));
-  smoothScroll();
 }
 
 export default onClickSubmit;

@@ -1,11 +1,9 @@
-import oneMovieCardTpl from '../templates/oneMovieCard.hbs';
 import { spinnerOff, spinnerOn } from './loader';
-import smoothScroll from './smoothScrool';
 import updateResponce from './updateResponce';
-import Notiflix from 'notiflix';
+import smoothScroll from './smoothScrool';
+import { API_KEY } from './apps/fetchApi';
 
 const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day';
-const API_KEY = '3ab3f6572c3def6f6cf5801fb6522013';
 
 // const ul = document.querySelector('.movies-popular-list');
 const button = document.querySelector('.load-more');
@@ -31,6 +29,7 @@ export function fetchDefaultMoviesByApi() {
 export function renderDefaultMovies() {
   fetchDefaultMoviesByApi().then(data => {
     const resp = updateResponce(data.results);
+    smoothScroll();
     return resp;
   });
   // .then(resp => {

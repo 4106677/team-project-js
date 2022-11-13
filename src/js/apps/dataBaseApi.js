@@ -33,8 +33,6 @@ function writeInDataBase(
   vote_average,
   release_date
 ) {
-  console.log('target', target);
-  console.log('target', uid);
   const app = initializeApp(firebaseConfig);
   const database = getDatabase(app);
 
@@ -49,17 +47,17 @@ function writeInDataBase(
 }
 
 // Чтение из базы данных
-function readFromDataBase(uid, target) {
-  const app = initializeApp(firebaseConfig);
-  const database = getDatabase(app);
-  const topUserPostsRef = query(ref(database, 'films/' + uid + '/' + target));
+// function readFromDataBase(uid, target) {
+//   const app = initializeApp(firebaseConfig);
+//   const database = getDatabase(app);
+//   const topUserPostsRef = query(ref(database, 'films/' + uid + '/' + target));
 
-  onValue(topUserPostsRef, snapshot => {
-    const data = snapshot.val();
-    console.log(data);
-    return data;
-  });
-}
+//   onValue(topUserPostsRef, snapshot => {
+//     const data = snapshot.val();
+//     console.log(data);
+//     return data;
+//   });
+// }
 
 // Чтение из базы данных и запись в localStorage
 function setDataToLocalStorage(uid) {
@@ -72,6 +70,8 @@ function setDataToLocalStorage(uid) {
     const data = snapshot.val();
     if (data) {
       localStorage.setItem('watched', JSON.stringify(Object.keys(data)));
+    } else {
+      localStorage.setItem('watched', JSON.stringify([]));
     }
   });
 
@@ -79,6 +79,8 @@ function setDataToLocalStorage(uid) {
     const data = snapshot.val();
     if (data) {
       localStorage.setItem('queue', JSON.stringify(Object.keys(data)));
+    } else {
+      localStorage.setItem('queue', JSON.stringify([]));
     }
   });
 }
@@ -93,7 +95,7 @@ function deleteFromDB(uid, target, filmId) {
 
 export {
   writeInDataBase,
-  readFromDataBase,
+  // readFromDataBase,
   setDataToLocalStorage,
   deleteFromDB,
 };

@@ -1,8 +1,8 @@
 import * as basicLightbox from 'basiclightbox';
 import { userRegistration, userSingIn } from '../js/firebase';
-import { getDatabase, ref, set } from 'firebase/database';
 import loginUserForm from '../templates/loginUserForm.hbs';
 import userRegistratinForm from '../templates/userRegistrationForm.hbs';
+import { setDataToLocalStorage } from './apps/dataBaseApi';
 
 const loginRef = document.querySelector('#login');
 const registrationRef = document.querySelector('#registration');
@@ -93,7 +93,8 @@ function registration(e) {
       } else {
         navLibraryRef.removeAttribute('hidden');
         logOutRef.removeAttribute('hidden');
-
+        localStorage.setItem('userEmail', user.email);
+        localStorage.setItem('uid', user.uid);
         gbaRef.innerText = localStorage.getItem('userEmail')[0];
         gbaRef.removeAttribute('hidden');
         gbaRef.classList.add('gba-active');
@@ -109,13 +110,11 @@ function registration(e) {
 // ===================== Вход зарегистрированного пользователя ==============
 function singIn(e) {
   e.preventDefault();
-  console.log(navLibraryRef);
   const email = document.querySelector('#email-login').value;
   const password = document.querySelector('#password-login').value;
 
   const user = userSingIn(email, password);
   user.then(user => {
-    console.log(user);
     if (user.email) {
       localStorage.setItem('userEmail', user.email);
       localStorage.setItem('uid', user.uid);
@@ -124,20 +123,22 @@ function singIn(e) {
       gbaRef.removeAttribute('hidden');
       gbaRef.classList.add('gba-active');
 
-      loginModal.close();
       navLibraryRef.removeAttribute('hidden');
       logOutRef.removeAttribute('hidden');
       loginRef.setAttribute('hidden', true);
       registrationRef.setAttribute('hidden', true);
+      setDataToLocalStorage(user.uid);
+      loginModal.close();
+      location.reload();
     } else if (user === 'auth/user-not-found') {
       document.querySelector('.error-message').innerHTML =
-        'Пользователя с таким именем не существует !!!!';
+        'User with this name does not exist !!!!';
     } else if (user === 'auth/wrong-password') {
       document.querySelector('.error-message').innerHTML =
-        'Не правильный пароль !!!!';
+        'Wrong password !!!!';
     } else {
       document.querySelector('.error-message').innerHTML =
-        'Ошибка входа в аккаунт !!!!';
+        'Account login error !!!!';
     }
   });
 
