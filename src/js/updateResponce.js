@@ -1,4 +1,7 @@
 import createGallery from './createGallery';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import refs from './refs';
+import smoothScroll from './smoothScrool';
 
 async function updateResponce(data, page) {
   // const objIdGenres = await getGenresId();
@@ -10,6 +13,16 @@ async function updateResponce(data, page) {
     const queue = arrQ.includes(item.id);
     const arrW = localStorage.getItem('watched') || [];
     const watched = arrW.includes(item.id);
+
+    if (refs.list.childElementCount > 20) smoothScroll();
+
+    if (item.page === 1000) {
+      Notify.info(
+        "We're sorry, but you've reached the end of films collection."
+      );
+      button.classList.add('is-hidden');
+    }
+
     return {
       year: parseInt(item.release_date) || 'Date not specified',
       poster: item.poster_path,
