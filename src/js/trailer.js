@@ -3,7 +3,7 @@ import * as basicLightbox from 'basiclightbox';
 const API_KEY = '430ce39ddbb6d767664f5ab1d9d53645';
 const BASE_URL = 'https://api.themoviedb.org/3/movie/';
 let movieId = '';
-
+let button = null;
 // ---------получить id----------
 
 const moviesListSectionRef = document.querySelector('.movies-popular-list');
@@ -12,9 +12,8 @@ moviesListSectionRef.addEventListener('click', clickOnTheCard);
 
 function clickOnTheCard(e) {
   const parentNode = e.target.parentNode.nodeName;
+  console.log(e.target.parentNode);
   movieId = e.target.parentNode.dataset.id;
-  console.log(movieId);
-  // button.addEventListener('click', fetchTrailer);
 
   const onBtn = () => {
     setTimeout(() => {
@@ -36,6 +35,10 @@ function clickOnTheCard(e) {
         return response.json();
       })
       .then(data => {
+        if (!data.results[0]) {
+          button.textContent = 'Trailer is not avaliable';
+          button.disabled = true;
+        }
         if (data.results[0]) {
           console.log(data.results);
           const trailerKey = data.results[0].key;
