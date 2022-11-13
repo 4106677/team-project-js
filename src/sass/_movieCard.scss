@@ -127,13 +127,12 @@
 }
 
 .text-on-card {
+  color: #fff;
+  background-color: rgb(255 107 8 / 84%);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 20px;
   position: absolute;
   top: 5px;
   left: 5px;
-  padding: 5px;
-
-  color: #ff6b08;
-  background-color: rgba(#ffffff, 0.5);
-
-  border-radius: 5px;
 }

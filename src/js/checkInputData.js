@@ -1,4 +1,3 @@
-import createGallery from './createGallery';
 import Notiflix from 'notiflix';
 import updateResponce from './updateResponce';
 

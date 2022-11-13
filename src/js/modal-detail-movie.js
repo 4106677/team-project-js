@@ -5,14 +5,8 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { fetchAboutMovies } from './apps/fetchApi';
 
-import { getDatabase, ref, set, query, onValue } from 'firebase/database';
 import fetchTrailer from './trailer';
-import { initializeApp } from 'firebase/app';
-import {
-  writeInDataBase,
-  setDataToLocalStorage,
-  deleteFromDB,
-} from './apps/dataBaseApi';
+import { writeInDataBase, deleteFromDB } from './apps/dataBaseApi';
 
 const body = document.querySelector('body');
 
@@ -130,11 +124,8 @@ function createLightbox() {
 
 function closeLightbox(e) {
   const basicLb = document.querySelector('.basicLightbox');
-  console.log(e.target);
 
   if (e.target === basicLb) {
-    console.log(e.target);
-    console.log(basicLb);
     body.classList.remove('overflow-hidden');
     instance_2.close();
   } else return;
@@ -153,7 +144,6 @@ function deleteItemfromQueueDb() {
   deleteFromDB(props.userId, 'queue', props.filmId);
   queueBtnRef.innerText = 'add to queue';
   queueBtnRef.classList.remove('in-library');
-
   queueBtnRef.addEventListener('click', addMovieToQueuedBase); // слушатель на добавление фильма
 }
 
@@ -207,10 +197,14 @@ function isMovieInBase(movieId) {
   const watchedBd = JSON.parse(localStorage.getItem('watched'));
   const queueBd = JSON.parse(localStorage.getItem('queue'));
 
-  if (watchedBd.includes(movieId.toString())) {
+  if (watchedBd === null) {
+    return;
+  } else if (watchedBd.includes(movieId.toString())) {
     return 'watched';
   }
-  if (queueBd.includes(movieId.toString())) {
+  if (queueBd === null) {
+    return;
+  } else if (queueBd.includes(movieId.toString())) {
     return 'queue';
   }
 }
