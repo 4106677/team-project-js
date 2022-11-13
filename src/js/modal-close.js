@@ -1,4 +1,3 @@
-import openModalOfDevs from './modal-of-devs';
 const backdrop = document.querySelector('.backdrop');
 
 backdrop.addEventListener('click', closeModal);

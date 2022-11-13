@@ -1,6 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
-
-const API_KEY = '430ce39ddbb6d767664f5ab1d9d53645';
+import { API_KEY } from './apps/fetchApi';
 const BASE_URL = 'https://api.themoviedb.org/3/movie/';
 let movieId = '';
 

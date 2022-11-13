@@ -5,14 +5,8 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { fetchAboutMovies } from './apps/fetchApi';
 
-import { getDatabase, ref, set, query, onValue } from 'firebase/database';
 import fetchTrailer from './trailer';
-import { initializeApp } from 'firebase/app';
-import {
-  writeInDataBase,
-  setDataToLocalStorage,
-  deleteFromDB,
-} from './apps/dataBaseApi';
+import { writeInDataBase, deleteFromDB } from './apps/dataBaseApi';
 
 const body = document.querySelector('body');
 
@@ -150,7 +144,6 @@ function deleteItemfromQueueDb() {
   deleteFromDB(props.userId, 'queue', props.filmId);
   queueBtnRef.innerText = 'add to queue';
   queueBtnRef.classList.remove('in-library');
-
   queueBtnRef.addEventListener('click', addMovieToQueuedBase); // слушатель на добавление фильма
 }
 

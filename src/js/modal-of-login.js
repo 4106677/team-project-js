@@ -1,6 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
 import { userRegistration, userSingIn } from '../js/firebase';
-import { getDatabase, ref, set } from 'firebase/database';
 import loginUserForm from '../templates/loginUserForm.hbs';
 import userRegistratinForm from '../templates/userRegistrationForm.hbs';
 import { setDataToLocalStorage } from './apps/dataBaseApi';
@@ -94,7 +93,8 @@ function registration(e) {
       } else {
         navLibraryRef.removeAttribute('hidden');
         logOutRef.removeAttribute('hidden');
-
+        localStorage.setItem('userEmail', user.email);
+        localStorage.setItem('uid', user.uid);
         gbaRef.innerText = localStorage.getItem('userEmail')[0];
         gbaRef.removeAttribute('hidden');
         gbaRef.classList.add('gba-active');

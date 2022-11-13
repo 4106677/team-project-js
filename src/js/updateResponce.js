@@ -1,5 +1,3 @@
-import data from '/src/js/onSubmitSearch';
-// import { onGetFilmGenres, onGetTVGenres } from './fetchAPI';
 import createGallery from './createGallery';
 
 async function updateResponce(data, page) {

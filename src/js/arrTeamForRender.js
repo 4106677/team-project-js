@@ -1,4 +1,3 @@
-import image from '/src/images/dev.jpg';
 import photoKateryna from '../images/team/Kateryna_Dolotova.jpg';
 import photoAnna from '../images/team/Anna_Zaugolnikova.jpg';
 import photoJulia from '../images/team/Julia_Ihnatenko.jpg';
