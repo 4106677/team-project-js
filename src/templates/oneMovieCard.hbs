@@ -19,7 +19,7 @@
 
                 <source
                   srcset="
-                    https://image.tmdb.org/t/p/w300{{poster}} 1x,
+                    https://image.tmdb.org/t/p/w300{{poster}}    1x,
                     https://image.tmdb.org/t/p/w300{{poster}} 2x
                   "
                   media="(min-width: 320px)"
@@ -29,6 +29,27 @@
     {{else}}
         <img  src="https://phonoteka.org/uploads/posts/2021-05/1620113958_20-phonoteka_org-p-kinoplyonka-s-prozrachnim-fonom-24.png" alt="Poster not found for movie: {{title}}" class="movie-card__img poster" loading='lazy'/>
     {{/if}}
+
+ 
+    <div class="laber">
+    <p></p>
+       {{#if queue}}<p class="text-on-card">In queue</p>{{/if}}
+       {{#if watched}} <p class="text-on-card">Watched</p> {{/if}}
+    </div>
+    
+    
+
+
+    {{!-- {{#if queue}}
+    <div class="text-on-card"> 
+      <p>In queue</p>
+    </div>
+    {{/if}}
+    {{#if watched}}
+    <div class=" text-on-card"> 
+      <p>Watched</p>
+    </div>
+    {{/if}} --}}
    
         <h2 class="movie-card__title">
           {{#if title}}{{title}}
@@ -39,7 +60,7 @@
           <p class="movie-card__info">
             {{#if genres}}
             {{#each genres}}
-            {{this }}{{#unless @last}},{{/unless}}
+            {{this }}{{#unless @last}}, {{/unless}}
             {{/each}}
             {{else}}Other
             {{/if}}

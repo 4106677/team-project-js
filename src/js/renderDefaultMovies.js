@@ -1,13 +1,13 @@
-import oneMovieCardTpl from '../templates/oneMovieCard.hbs';
 import { spinnerOff, spinnerOn } from './loader';
-import smoothScroll from './smoothScrool';
 import updateResponce from './updateResponce';
-import Notiflix from 'notiflix';
+import smoothScroll from './smoothScrool';
+import { API_KEY } from './apps/fetchApi';
+import refs from './refs';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day';
-const API_KEY = '3ab3f6572c3def6f6cf5801fb6522013';
 
-const ul = document.querySelector('.movies-popular-list');
+// const ul = document.querySelector('.movies-popular-list');
 const button = document.querySelector('.load-more');
 
 button.addEventListener('click', renderDefaultMovies);
@@ -16,7 +16,9 @@ let page = 1;
 
 export function fetchDefaultMoviesByApi() {
   spinnerOn();
-  return fetch(`${BASE_URL}?page=${page}&api_key=${API_KEY}`)
+  return fetch(
+    `${BASE_URL}?page=${page}&api_key=3ab3f6572c3def6f6cf5801fb6522013`
+  )
     .then(response => {
       if (!response.ok) {
         throw new Error('Fail');
@@ -29,27 +31,29 @@ export function fetchDefaultMoviesByApi() {
 }
 
 export function renderDefaultMovies() {
-  fetchDefaultMoviesByApi()
-    .then(data => {
-      const resp = updateResponce(data.results);
-      return resp;
-    })
-    .then(resp => {
-      ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(resp));
+  fetchDefaultMoviesByApi().then(data => {
+    const resp = updateResponce(data.results);
+    if (refs.list.childElementCount > 20) smoothScroll();
+    // smoothScroll();
+    if (data.page === 1000) {
+      Notify.info(
+        "We're sorry, but you've reached the end of films collection."
+      );
+      button.classList.add('is-hidden');
+    }
+    return resp;
+  });
+  // .then(resp => {
+  //   ul.insertAdjacentHTML('beforeend', oneMovieCardTpl(resp));
+  //   if (ul.childElementCount > 20) smoothScroll();
 
-      if (ul.childElementCount > 20) smoothScroll();
-
-      if (resp.page === 1000) {
-        Notiflix.Notify.info(
-          "We're sorry, but you've reached the end of films collection."
-        );
-        button.classList.add('is-hidden');
-      }
-    });
-  // console.log('renderDefaultMovies data.results', data.results);
-  // updateResponce(data.results);
-  // console.log('updateResponce', responce);
+  //   if (resp.page === 1000) {
+  //     Notiflix.Notify.info(
+  //       "We're sorry, but you've reached the end of films collection."
+  //     );
+  //     button.classList.add('is-hidden');
+  //   }
+  // });
 }
 
 renderDefaultMovies();
-//*

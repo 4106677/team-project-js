@@ -3,11 +3,20 @@ import { openLoginModal } from './js/modal-of-login';
 import { getDatabase, ref, set } from 'firebase/database';
 import modalDetailMovie from './js/modal-detail-movie';
 import getAllgenres from './js/apps/getAllGenres';
+import { setDataToLocalStorage } from './js/apps/dataBaseApi';
 
 // получаю все жанры и сохраняю в localstorage("genres")
-getAllgenres();
+if (!localStorage.getItem('genres')) getAllgenres();
 
-// userRegistration('test@user.net', '123456');
+// Проверка зарегистрирован ли пользователь на сайте
+
+let userId = localStorage.getItem('uid');
+if (userId) {
+  setDataToLocalStorage(userId); // загрузка id сохранненных фильмов из базы в localStorage
+} else {
+  localStorage.removeItem('watched');
+  localStorage.removeItem('queue');
+}
 
 // Открытие модального окна входа и регистрации пользователя
 openLoginModal();
@@ -22,8 +31,8 @@ import oneMovieCard from '/src/templates/oneMovieCard.hbs';
 import refs from './js/refs';
 import fetchSearchFilm from './js/fetchAPI';
 import response from './js/onSubmitSearch';
-import { teamModalService } from './js/team-modal-service';
-teamModalService.eventListenerCreator();
+import './js/team-modal-service';
 
 // Модалка с подробный описанием  фильма
 modalDetailMovie();
+import './js/theme';

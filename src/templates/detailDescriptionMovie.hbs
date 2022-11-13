@@ -1,6 +1,6 @@
 <div class='container'>
   <div class='movie'>
-    <button type='button' class='close-icon button' id='close-btn'>
+    <button type='button' class='close-icon button' id='close-btn' aria-label="button close">
       <svg width='30' height='30'>
         <use xlink:href='#close'></use>
       </svg>
@@ -47,7 +47,7 @@
           />
         </picture>
       
-            <button class="trailer__button" type="button">
+            <button class="trailer__button" type="button" aria-label="button trailer">
                 {{!-- <div class="trailer__div"></div> --}}
           <svg class="icon-video" aria-hidden="true" width="45" height="25"
          version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
@@ -69,24 +69,32 @@
         <li class='description__info'>
           <span class='description__info__titles'>Voit/voits </span>
           <span class='orangebackend'>{{vote_average}}</span>
-          /{{vote_count}}</li>
+           &nbsp;/&nbsp; <div >{{vote_count}}</div></li>
         <li class='description__info'>
           <span class='description__info__titles'>Popularity </span>
-          {{popularity}}</li>
+          <div class="decr-width">{{popularity}}</div></li>
         <li class='description__info'>
           <span class='description__info__titles'>Original title </span>
-          {{original_title}}</li>
+          <div class="decr-width">{{original_title}}</div></li>
         <li class='description__info'>
           <span class='description__info__titles'>Genres </span>
-          {{#if genres}}{{genres}}{{else}}Other{{/if}}</li>
+          <div class="decr-width">
+          {{#if genres}}
+          {{#each genres}}
+          {{this }}{{#unless @last}}, {{/unless}}
+          {{else}}Other
+          {{/each}}
+          {{/if}}
+          </div>
+          </li>
       </ul>
       <div class='description__about'><span
           class='description__about__title'
         >About</span>
         {{overview}}</div>
       <div class='buttons'>
-        <button type='submit' class='watched'>add to watched</button>
-        <button type='submit' class='queue'>add to queue</button>
+        <button type='submit' class='watched' aria-label="add to watched">add to watched</button>
+        <button type='submit' class='queue' aria-label="add to queue">add to queue</button>
       </div>
 
     </div>

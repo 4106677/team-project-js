@@ -1,6 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
-
-const API_KEY = '430ce39ddbb6d767664f5ab1d9d53645';
+import { API_KEY } from './apps/fetchApi';
 const BASE_URL = 'https://api.themoviedb.org/3/movie/';
 let movieId = '';
 let button = null;
@@ -10,21 +9,18 @@ const moviesListSectionRef = document.querySelector('.movies-popular-list');
 
 moviesListSectionRef.addEventListener('click', clickOnTheCard);
 
-function clickOnTheCard(e) {
+export default function clickOnTheCard(e) {
   const parentNode = e.target.parentNode.nodeName;
   console.log(e.target.parentNode);
   movieId = e.target.parentNode.dataset.id;
-
   const onBtn = () => {
     setTimeout(() => {
       const button = document.querySelector('.trailer__button');
-      console.log(button);
       button.addEventListener('click', fetchTrailer);
     }, 250);
   };
   onBtn();
   function fetchTrailer() {
-    console.log(movieId);
     const URL = `${BASE_URL}${movieId}/videos?api_key=${API_KEY}&language=en-US`;
 
     return fetch(URL)
@@ -40,12 +36,9 @@ function clickOnTheCard(e) {
           button.disabled = true;
         }
         if (data.results[0]) {
-          console.log(data.results);
           const trailerKey = data.results[0].key;
-          console.log(trailerKey);
           createTrailer(trailerKey);
         } else {
-          console.log('No triler');
           return;
         }
       });

@@ -1,10 +1,11 @@
 <div class='modal-login'>
-  <img src='../images/login.png' alt='login image' />
+  {{!-- <img src='../images/login.png' alt='login image' /> --}}
   <p class='modal-login__login'>Registration</p>
   <p class='modal-login__welcome'>Create your new account</p>
   <form class='login-form'>
     <label for='email'>Email</label>
     <input
+      aria-label="enter your email"
       type='email'
       placeholder='example@mail.com'
       class='login-form__input'
@@ -12,6 +13,7 @@
     />
     <label for='password'>Password</label>
     <input
+      aria-label="enter your new password"
       type='password'
       placeholder='At least 8 characters'
       class='login-form__input'
@@ -19,6 +21,7 @@
     />
     <label for='password2'>Check password</label>
     <input
+      aria-label="re-enter the new password"
       type='password'
       placeholder='Type password again'
       class='login-form__input'
@@ -26,7 +29,7 @@
       id='password2'
     />
     <p class='error-message'></p>
-    <button type='submit' class='login-form__button'>Register Account</button>
+    <button type='submit' class='login-form__button' aria-label="account confirmation button">Register Account</button>
 
   </form>
 </div>

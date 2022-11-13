@@ -33,7 +33,34 @@
 }
 
 .load-more {
+  width: 150px;
+
   padding: 10px;
   margin: 0 auto;
   display: block;
+
+  color: var(--accent-color);
+  background: #303133;
+  border: 0;
+  border-radius: 5px;
+  outline: 3px solid var(--accent-color);
+  font-family: Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:focus,
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px #70350b;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 100px;
+    font-size: 0.8rem;
+  }
+}
+
+.movies-popular-section {
+  min-height: 400px;
 }

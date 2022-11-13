@@ -1,15 +1,13 @@
 import { fetchSearchFilm } from './fetchAPI';
 import refs from './refs';
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import checkInputData from './checkInputData';
-import { createGallery, createGalleryNextPage } from './createGallery';
-import oneMovieCard from '/src/templates/oneMovieCard.hbs';
 import smoothScroll from './smoothScrool';
 import { renderDefaultMovies } from './renderDefaultMovies';
 
-import { spinnerOn, spinnerOff } from './loader';
-
-refs.form.addEventListener('submit', onClickSubmit);
+import { spinnerOff, spinnerOn } from './loader';
+const form = document.querySelector('.search__form');
+form.addEventListener('submit', onClickSubmit);
 refs.loadMore.addEventListener('click', onLoadMore);
 
 let value = null;
@@ -22,7 +20,7 @@ function onClickSubmit(event) {
   value = refs.input.value.toLowerCase().trim();
 
   if (!value) {
-    Notiflix.Notify.failure('Please, enter something to search');
+    Notify.failure('Please, enter something to search');
     return;
   }
   refs.loadMore.removeEventListener('click', renderDefaultMovies);
@@ -31,17 +29,32 @@ function onClickSubmit(event) {
     .then(data => checkInputData(data, page))
     // .then(resp => console.log('responce', resp))
     .catch(error => console.log(error))
-    .finally(() => spinnerOff());
+    .finally(() => {
+      spinnerOff();
+      refs.loadMore.classList.remove('visually-hidden');
+    });
 
   event.target.reset();
 }
 
 function onLoadMore() {
+  if (!value) {
+    return;
+  }
+
   page += 1;
   fetchSearchFilm(value, page)
-    .then(data => checkInputData(data, page))
+    .then(data => {
+      if (data.data.page === data.data.total_pages) {
+        refs.loadMore.classList.add('visually-hidden');
+        Notify.info(
+          "We're sorry, but you've reached the end of films collection."
+        );
+      }
+      checkInputData(data, page);
+      smoothScroll();
+    })
     .catch(error => console.log(error));
-  smoothScroll();
 }
 
 export default onClickSubmit;

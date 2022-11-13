@@ -5,19 +5,17 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { fetchAboutMovies } from './apps/fetchApi';
 
-import { getDatabase, ref, set, query, onValue } from 'firebase/database';
-import { initializeApp } from 'firebase/app';
-import {
-  writeInDataBase,
-  setDataToLocalStorage,
-  deleteFromDB,
-} from './apps/dataBaseApi';
+import fetchTrailer from './trailer';
+import { writeInDataBase, deleteFromDB } from './apps/dataBaseApi';
+
+const body = document.querySelector('body');
 
 let props = null;
 let watchedBtnRef = null;
 let queueBtnRef = null;
 let closeBtn = null;
 let instance_2 = null;
+let label = null;
 
 // делигирование события на карточки с фильмами
 export default function modalDetailMovie() {
@@ -32,29 +30,34 @@ export default function modalDetailMovie() {
       return;
     }
 
+    const movieLB = document.querySelector('.movie-card');
+
+    movieLB.addEventListener('click', createLightbox);
+
+    body.classList.add('overflow-hidden');
     const movieId = e.target.parentNode.dataset.id;
 
     // получаю id user
     const userId = localStorage.getItem('uid');
 
-    console.log(userId);
-
     //   отправление запроса на получание польной нформации  о фильме
     fetchAboutMovies(movieId).then(resp => {
       // создаю новый объект который передаються в шаблон
       const genreArr = resp.genres.map(genre => genre.name);
-      let genreList = '';
+      let genreList = [];
 
-      if (genreArr.length > 3) {
-        genreList = genreArr.slice(0, 2).push('Other');
-      } else {
-        genreList = genreArr.join(', ');
-      }
+      if (genreArr.length !== 0) {
+        if (genreArr.length > 3) {
+          genreList = genreArr.slice(0, 2).push('Other');
+        } else {
+          genreList = genreArr;
+        }
+      } else genreList.push('Other');
 
       props = {
         userId: userId,
         filmId: resp.id,
-        title: resp.original_title,
+        title: resp.title,
         poster_url: resp.poster_path,
         vote_average: resp.vote_average.toFixed(1),
         vote_count: resp.vote_count,
@@ -65,11 +68,16 @@ export default function modalDetailMovie() {
         year: resp.release_date.split('-')[0],
       };
       // ----------------------------------------------------------------------------
-
       // создание модального окна
       instance_2 = basicLightbox.create(modalMovieTmp(props));
+
       instance_2.show();
 
+      const movieLB = document.querySelector('.movie-card');
+
+      movieLB.addEventListener('click', createLightbox);
+
+      createLightbox();
       // ссылки на кнопки
       watchedBtnRef = document.querySelector('.watched');
       queueBtnRef = document.querySelector('.queue');
@@ -104,9 +112,24 @@ export default function modalDetailMovie() {
         queueBtnRef.getAttribute('disabled', '');
         queueBtnRef.addEventListener('click', deleteItemfromQueueDb, props); // слушатель на удаление фильма
       }
+
       // ------------------------------------------------------------------------------
     });
   }
+}
+
+function createLightbox() {
+  const basicLb = document.querySelector('.basicLightbox');
+  basicLb.addEventListener('click', closeLightbox);
+}
+
+function closeLightbox(e) {
+  const basicLb = document.querySelector('.basicLightbox');
+
+  if (e.target === basicLb) {
+    body.classList.remove('overflow-hidden');
+    instance_2.close();
+  } else return;
 }
 
 // Удаление из Watched базы данных
@@ -114,7 +137,12 @@ function deleteItemfromWatchedDb() {
   deleteFromDB(props.userId, 'watched', props.filmId);
   watchedBtnRef.innerText = 'add to watched';
   watchedBtnRef.classList.remove('in-library');
-  watchedBtnRef.removeAttribute('disabled');
+
+  // при удалении фильма в базу отображаю ярлык на карточке фильма
+  label = document.querySelector(`li[data-id = "${props['filmId']}"]`);
+  label.children[1].innerHTML = '';
+
+  watchedBtnRef.removeEventListener('click', deleteItemfromWatchedDb);
   watchedBtnRef.addEventListener('click', addMovieToWatchedBase); // слушатель на добавление фильма
 }
 
@@ -123,7 +151,11 @@ function deleteItemfromQueueDb() {
   deleteFromDB(props.userId, 'queue', props.filmId);
   queueBtnRef.innerText = 'add to queue';
   queueBtnRef.classList.remove('in-library');
-  queueBtnRef.removeAttribute('disabled');
+
+  // при удалении фильма в базу отображаю ярлык на карточке фильма
+  label = document.querySelector(`li[data-id = "${props['filmId']}"]`);
+  label.children[1].innerHTML = '';
+
   queueBtnRef.addEventListener('click', addMovieToQueuedBase); // слушатель на добавление фильма
 }
 
@@ -141,8 +173,18 @@ function addMovieToWatchedBase() {
   );
   watchedBtnRef.innerText = 'delete from watched';
   watchedBtnRef.classList.add('in-library');
-  watchedBtnRef.getAttribute('disabled', '');
+
+  // при добавлении фильма в базу отображаю ярлык на карточке фильма
+
+  label = document.querySelector(`li[data-id = "${props['filmId']}"]`);
+  label.children[1].insertAdjacentHTML(
+    'afterbegin',
+    '<p class="text-on-card">Watched</p>'
+  );
+  console.dir(label.children[1]);
+
   watchedBtnRef.addEventListener('click', deleteItemfromWatchedDb, props); // слушатель на удаление фильма
+  watchedBtnRef.removeEventListener('click', addMovieToWatchedBase);
 
   // если фильм добавляется в WatchedBase он должен удалиться из QueueD
   deleteItemfromQueueDb();
@@ -162,7 +204,12 @@ function addMovieToQueuedBase() {
   );
   queueBtnRef.innerText = 'delete from queue';
   queueBtnRef.classList.add('in-library');
-  queueBtnRef.getAttribute('disabled', '');
+
+  // при добавлении фильма в базу отображаю ярлык на карточке фильма
+  label = document.querySelector(`li[data-id = "${props['filmId']}"]`);
+  label.children[1].innerHTML = "<p class='text-on-card'>In queue</p>";
+
+  queueBtnRef.removeEventListener('click', addMovieToQueuedBase);
   queueBtnRef.addEventListener('click', deleteItemfromQueueDb); // слушатель на удаление фильма
 
   // если фильм добавляется в QueuedBase он должен удалиться из WatchedDb
@@ -175,25 +222,26 @@ function isMovieInBase(movieId) {
   const watchedBd = JSON.parse(localStorage.getItem('watched'));
   const queueBd = JSON.parse(localStorage.getItem('queue'));
 
-  if (watchedBd.includes(movieId.toString())) {
+  if (watchedBd === null) {
+    return;
+  } else if (watchedBd.includes(movieId.toString())) {
     return 'watched';
   }
-  if (queueBd.includes(movieId.toString())) {
+  if (queueBd === null) {
+    return;
+  } else if (queueBd.includes(movieId.toString())) {
     return 'queue';
   }
 }
 
 // Закрытие модалки
 function onCloseModal() {
+  body.classList.remove('overflow-hidden');
+  const button = document.querySelector('.trailer__button');
+
+  button.removeEventListener('click', fetchTrailer);
   instance_2.close();
   closeBtn.removeEventListener('click', onCloseModal);
-}
-
-function closeModalEsc(evt) {
-  if (evt.code === 'Escape') {
-    instance_2.close();
-    document.removeEventListener('keyup', closeModalEsc);
-  }
 }
 
 // Сообщение о необходимости зарегистрироваться
@@ -202,3 +250,21 @@ function showToLogInNessage() {
     'Sorry! You must be logged in to add a movie to your library.'
   );
 }
+
+function closeModalEsc(evt) {
+  if (evt.code === 'Escape') {
+    body.classList.remove('overflow-hidden');
+    const button = document.querySelector('.trailer__button');
+
+    button.removeEventListener('click', fetchTrailer);
+    instance_2.close();
+    document.removeEventListener('keyup', closeModalEsc);
+  }
+}
+
+// Сообщение о необходимости зарегистрироваться
+// function showToLogInNessage() {
+//   Notify.failure(
+//     'Sorry! You must be logged in to add a movie to your library.'
+//   );
+// }

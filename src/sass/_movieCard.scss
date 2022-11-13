@@ -1,4 +1,5 @@
 .movie-card {
+  position: relative;
   width: 100%;
   border-radius: 5px;
   padding-bottom: 5px;
@@ -123,4 +124,15 @@
   text-transform: uppercase;
   width: 36px;
   margin-left: 10px;
+}
+
+.text-on-card {
+  color: #fff;
+  background-color: rgb(255 107 8 / 84%);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 20px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
 }

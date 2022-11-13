@@ -7,3 +7,7 @@ export function spinnerOn() {
 export function spinnerOff() {
   spinner.classList.add('visually-hidden');
 }
+
+// export function toggleSpinner(type) {
+//   spinner.classList[type]('visually-hidden');
+// }
