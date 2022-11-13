@@ -23,7 +23,6 @@ export default function clickOnTheCard(e) {
   };
   onBtn();
   function fetchTrailer() {
-    console.log(movieId);
     const URL = `${BASE_URL}${movieId}/videos?api_key=${API_KEY}&language=en-US`;
 
     return fetch(URL)
@@ -35,12 +34,9 @@ export default function clickOnTheCard(e) {
       })
       .then(data => {
         if (data.results[0]) {
-          console.log(data.results);
           const trailerKey = data.results[0].key;
-          console.log(trailerKey);
           createTrailer(trailerKey);
         } else {
-          console.log('No triler');
           return;
         }
       });

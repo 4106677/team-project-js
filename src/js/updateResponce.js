@@ -8,9 +8,9 @@ async function updateResponce(data, page) {
   // console.log(objIdGenres);
 
   const newObj = data.map(item => {
-    const arrQ = localStorage.getItem('queue');
+    const arrQ = localStorage.getItem('queue') || [];
     const queue = arrQ.includes(item.id);
-    const arrW = localStorage.getItem('watched');
+    const arrW = localStorage.getItem('watched') || [];
     const watched = arrW.includes(item.id);
     return {
       year: parseInt(item.release_date) || 'Date not specified',
