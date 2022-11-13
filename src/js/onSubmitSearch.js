@@ -5,7 +5,7 @@ import checkInputData from './checkInputData';
 import smoothScroll from './smoothScrool';
 import { renderDefaultMovies } from './renderDefaultMovies';
 
-import { spinnerOff } from './loader';
+import { spinnerOff, spinnerOn } from './loader';
 const form = document.querySelector('.search__form');
 form.addEventListener('submit', onClickSubmit);
 refs.loadMore.addEventListener('click', onLoadMore);
