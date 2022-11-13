@@ -9,12 +9,12 @@ queueButton.addEventListener('click', getQueueFilms);
 
 function getQueueFilms() {
   const getFilms = localStorage.getItem(LOCAL_STORAGE_QUEUE);
-  const data = JSON.parse(getFilms);
+  let data = JSON.parse(getFilms);
 
   if (data === null) {
     data = [];
   }
   gallery.innerHTML = '';
- 
+
   renderOneMovieCard({ results: data }, true);
 }
