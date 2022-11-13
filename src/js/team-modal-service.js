@@ -14,7 +14,7 @@ function openTeamModal() {
   teamList.innerHTML = markup;
   document.querySelectorAll('.team-img-card');
   document.querySelector('.team-modal').classList.add('is-open');
-  // document.querySelector('.team-modal').classList.remove('visually-hidden');
+  document.querySelector('.team-modal').classList.remove('visually-hidden');
   document.body.style.overflow = 'hidden';
   document.body.style.height = '100wh';
   document.addEventListener('keyup', closeTeamModalEsc);
@@ -22,7 +22,7 @@ function openTeamModal() {
 
 function closeTeamModal() {
   document.querySelector('.team-modal').classList.remove('is-open');
-  // document.querySelector('.team-modal').classList.add('visually-hidden');
+  document.querySelector('.team-modal').classList.add('visually-hidden');
   document.querySelectorAll('.team-img-card');
   document.body.style.overflow = 'auto';
   document.body.style.height = 'auto';
