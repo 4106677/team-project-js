@@ -49,17 +49,17 @@ function writeInDataBase(
 }
 
 // Чтение из базы данных
-function readFromDataBase(uid, target) {
-  const app = initializeApp(firebaseConfig);
-  const database = getDatabase(app);
-  const topUserPostsRef = query(ref(database, 'films/' + uid + '/' + target));
+// function readFromDataBase(uid, target) {
+//   const app = initializeApp(firebaseConfig);
+//   const database = getDatabase(app);
+//   const topUserPostsRef = query(ref(database, 'films/' + uid + '/' + target));
 
-  onValue(topUserPostsRef, snapshot => {
-    const data = snapshot.val();
-    console.log(data);
-    return data;
-  });
-}
+//   onValue(topUserPostsRef, snapshot => {
+//     const data = snapshot.val();
+//     console.log(data);
+//     return data;
+//   });
+// }
 
 // Чтение из базы данных и запись в localStorage
 function setDataToLocalStorage(uid) {
@@ -93,7 +93,7 @@ function deleteFromDB(uid, target, filmId) {
 
 export {
   writeInDataBase,
-  readFromDataBase,
+  // readFromDataBase,
   setDataToLocalStorage,
   deleteFromDB,
 };

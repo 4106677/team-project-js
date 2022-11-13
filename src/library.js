@@ -15,7 +15,7 @@ import './js/theme';
 if (!localStorage.getItem('genres')) getAllgenres();
 
 // функция LogOut
-// 
+//
 if (localStorage.getItem('userEmail')) {
   const logOutRef = document.querySelector('#logout');
   logOutRef.addEventListener('click', () => {
@@ -80,10 +80,11 @@ function readFromDataBase(uid, target) {
       const data = Object.values(snapshot.val());
       listSectionRef.innerHTML = oneMovieCardTmp(data);
     } catch {
-      if (target === "watched") {
+      if (target === 'watched') {
         listSectionRef.innerHTML = '<p>Watched library is empty</p>';
       } else {
         listSectionRef.innerHTML = '<p>Queue library is empty</p>';
       }
     }
   });
+}
