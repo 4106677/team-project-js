@@ -130,11 +130,8 @@ function createLightbox() {
 
 function closeLightbox(e) {
   const basicLb = document.querySelector('.basicLightbox');
-  console.log(e.target);
 
   if (e.target === basicLb) {
-    console.log(e.target);
-    console.log(basicLb);
     body.classList.remove('overflow-hidden');
     instance_2.close();
   } else return;
@@ -207,10 +204,14 @@ function isMovieInBase(movieId) {
   const watchedBd = JSON.parse(localStorage.getItem('watched'));
   const queueBd = JSON.parse(localStorage.getItem('queue'));
 
-  if (watchedBd.includes(movieId.toString())) {
+  if (watchedBd === null) {
+    return;
+  } else if (watchedBd.includes(movieId.toString())) {
     return 'watched';
   }
-  if (queueBd.includes(movieId.toString())) {
+  if (queueBd === null) {
+    return;
+  } else if (queueBd.includes(movieId.toString())) {
     return 'queue';
   }
 }
