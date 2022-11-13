@@ -39,11 +39,11 @@
   margin: 0 auto;
   display: block;
 
-  color: #fff;
-  background: #ff6b01;
+  color: var(--accent-color);
+  background: #303133;
   border: 0;
   border-radius: 5px;
-  outline: none;
+  outline: 3px solid var(--accent-color);
   font-family: Roboto, sans-serif;
   font-size: 1rem;
   font-weight: 700;

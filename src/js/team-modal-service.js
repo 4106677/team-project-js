@@ -1,41 +1,46 @@
 import { arrCards } from './arrTeamForRender';
 import icons from '/src/images/icons.svg';
-class TeamModalService {
-  constructor() {
-    this.modalTeam = document.querySelector('.students-team');
-    this.closeBtn = document.querySelector('.team-close-btn');
-    this.overlayTeam = document.querySelector('.team-modal-overlay');
-  }
 
-  openTeamModal() {
-    const markup = renderTeamMarkup(arrCards);
-    teamList.innerHTML = markup;
-    document.querySelectorAll('.team-img-card');
-    // .forEach(el => el.classList.add('slide-team'))
-    document.querySelector('.team-modal').classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-    document.body.style.height = '100wh';
-  }
+const modalTeam = document.querySelector('.students-team');
+const closeBtn = document.querySelector('.team-close-btn');
+const overlayTeam = document.querySelector('.team-modal-overlay');
 
-  closeTeamModal() {
-    document.querySelector('.team-modal').classList.remove('is-open');
-    document.querySelectorAll('.team-img-card');
-    // .forEach(el => el.classList.remove('slide-team'))
-    document.body.style.overflow = 'auto';
-    document.body.style.height = 'auto';
-  }
+modalTeam.addEventListener('click', openTeamModal);
+closeBtn.addEventListener('click', closeTeamModal);
+overlayTeam.addEventListener('click', e => onOverlay(e));
 
-  onOverlay(e) {
-    if (e.target === e.currentTarget) {
-      this.closeTeamModal();
-    }
-  }
-  eventListenerCreator() {
-    this.modalTeam.addEventListener('click', this.openTeamModal);
-    this.closeBtn.addEventListener('click', this.closeTeamModal);
-    this.overlayTeam.addEventListener('click', e => this.onOverlay(e));
+function openTeamModal() {
+  const markup = renderTeamMarkup(arrCards);
+  teamList.innerHTML = markup;
+  document.querySelectorAll('.team-img-card');
+  document.querySelector('.team-modal').classList.add('is-open');
+  // document.querySelector('.team-modal').classList.remove('visually-hidden');
+  document.body.style.overflow = 'hidden';
+  document.body.style.height = '100wh';
+  document.addEventListener('keyup', closeTeamModalEsc);
+}
+
+function closeTeamModal() {
+  document.querySelector('.team-modal').classList.remove('is-open');
+  // document.querySelector('.team-modal').classList.add('visually-hidden');
+  document.querySelectorAll('.team-img-card');
+  document.body.style.overflow = 'auto';
+  document.body.style.height = 'auto';
+}
+
+function onOverlay(e) {
+  if (e.target === e.currentTarget) {
+    closeTeamModal();
   }
 }
+
+function closeTeamModalEsc(e) {
+  if (e.code === 'Escape') {
+    closeTeamModal();
+    document.removeEventListener('keyup', closeTeamModalEsc);
+  }
+}
+
 const teamList = document.querySelector('.team-modal-content-box');
 
 function renderTeamMarkup(cards) {
@@ -48,6 +53,7 @@ function renderTeamMarkup(cards) {
       </div>
       <div class="team-card-box">
       <h3  class="team-card-text">${item.name}</h3>
+      <p class="team-card-text-work">${item.work}</p>
        <ul class="social-network list">
             <li class="social-network__item">
               <a href="${item.git}" class="social-network__link" aria-label="GitHab" target="_blank" rel="noopener noreferrer">
@@ -69,5 +75,3 @@ function renderTeamMarkup(cards) {
     )
     .join(' ');
 }
-
-export const teamModalService = new TeamModalService();

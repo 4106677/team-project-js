@@ -1,19 +1,19 @@
 <header class="header">
-  <a id="page-top"></a>
+  <a id="page-top" aria-label="button anchor"></a>
   <div class="container">
     <div class="navigation">
-      <a class="logo" href="./index.html"><svg class="icon-film" width="24" height="24">
+      <a class="logo" href="./index.html"><svg class="icon-film" width="24" height="24" aria-label="logo film">
           <use href="/src/images/icons.svg#icon-film"></use>
         </svg>
         <span class="logo-text">Filmoteka</span></a>
       <div class="navigation__pages">
         <ul class="nav list">
           <li class="nav__item">
-            <a class="current nav__item-link" href="./index.html">Home</a>
+            <a class="current nav__item-link" href="./index.html" aria-label="page home">Home</a>
           </li>
 
           <li class="nav__item" id="nav-library" hidden>
-            <a class="nav__item-link" href="./library.html ">My Library</a>
+            <a class="nav__item-link" href="./library.html " aria-label="page my library">My Library</a>
           </li>
           <li class="nav__item login" id="login">Login</li>
           <li class="nav__item login" id="registration">Registration</li>
@@ -24,15 +24,15 @@
     </div>
 
     <form class="search__form">
-      <button type="submit" class="search__btn">
+      <button type="submit" class="search__btn" aria-label="button search movies">
         <svg class="icon-search" width="12" height="12">
           <use href="/src/images/icons.svg#icon-search"></use>
         </svg>
       </button>
-      <input placeholder="Movie search" id="search-form" class="search__input" />
+      <input placeholder="Movie search" id="search-form" class="search__input" aria-label="search movies"/>
     </form>
     <div>
-      <button class="toggle-theme-btn">
+      <button class="toggle-theme-btn" aria-label="theme change button">
         <span class="text_theme-btn"></span>
         <svg width="25px" height="25px">
           <use class="moon toggle-theme-image" href="/src/images/icons.svg#moon"></use>

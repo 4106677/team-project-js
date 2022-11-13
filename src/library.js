@@ -3,7 +3,7 @@
 import { getId } from './js/trailer';
 import { setDataToLocalStorage } from './js/apps/dataBaseApi';
 import { openLoginModal } from './js/modal-of-login';
-import { teamModalService } from './js/team-modal-service';
+import './js/team-modal-service';
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from './js/apps/fireBaseConfig';
 import { getDatabase, ref, set, query, onValue } from 'firebase/database';
@@ -15,7 +15,7 @@ import './js/theme';
 if (!localStorage.getItem('genres')) getAllgenres();
 
 // функция LogOut
-// 
+//
 if (localStorage.getItem('userEmail')) {
   const logOutRef = document.querySelector('#logout');
   logOutRef.addEventListener('click', () => {
@@ -29,8 +29,6 @@ if (localStorage.getItem('userEmail')) {
   // Если пользователь не авторизирован его преребрасывает на главную страницу
   location.href = './index.html';
 }
-
-teamModalService.eventListenerCreator();
 
 const listSectionRef = document.querySelector('.movies-popular-list');
 const inputWatchedRef = document.querySelector('#watched');
@@ -80,10 +78,11 @@ function readFromDataBase(uid, target) {
       const data = Object.values(snapshot.val());
       listSectionRef.innerHTML = oneMovieCardTmp(data);
     } catch {
-      if (target === "watched") {
+      if (target === 'watched') {
         listSectionRef.innerHTML = '<p>Watched library is empty</p>';
       } else {
         listSectionRef.innerHTML = '<p>Queue library is empty</p>';
       }
     }
   });
+}
