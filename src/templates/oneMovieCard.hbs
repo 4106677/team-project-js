@@ -29,8 +29,19 @@
     {{else}}
         <img  src="https://phonoteka.org/uploads/posts/2021-05/1620113958_20-phonoteka_org-p-kinoplyonka-s-prozrachnim-fonom-24.png" alt="Poster not found for movie: {{title}}" class="movie-card__img poster" loading='lazy'/>
     {{/if}}
-    {{#if queue}}
-    <div class=" text-on-card"> 
+
+ 
+    <div class="laber">
+    <p></p>
+       {{#if queue}}<p class="text-on-card">In queue</p>{{/if}}
+       {{#if watched}} <p class="text-on-card">Watched</p> {{/if}}
+    </div>
+    
+    
+
+
+    {{!-- {{#if queue}}
+    <div class="text-on-card"> 
       <p>In queue</p>
     </div>
     {{/if}}
@@ -38,7 +49,7 @@
     <div class=" text-on-card"> 
       <p>Watched</p>
     </div>
-    {{/if}}
+    {{/if}} --}}
    
         <h2 class="movie-card__title">
           {{#if title}}{{title}}
