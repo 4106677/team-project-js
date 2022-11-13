@@ -6,7 +6,12 @@ async function updateResponce(data, page) {
   // const objIdGenres = await getGenresId();
   const objIdGenres = JSON.parse(localStorage.getItem('genres'));
   // console.log(objIdGenres);
+
   const newObj = data.map(item => {
+    const arrQ = localStorage.getItem('queue');
+    const queue = arrQ.includes(item.id);
+    const arrW = localStorage.getItem('watched');
+    const watched = arrW.includes(item.id);
     return {
       year: parseInt(item.release_date) || 'Date not specified',
       poster: item.poster_path,
@@ -14,7 +19,8 @@ async function updateResponce(data, page) {
       original_title: item.original_title,
       vote: item.vote_average.toFixed(1),
       popularity: item.popularity.toFixed(1),
-
+      queue: queue,
+      watched: watched,
       id: item.id,
       genres: item.genre_ids
         .map(id => {
@@ -33,6 +39,7 @@ async function updateResponce(data, page) {
         }, []),
     };
   });
+
   return createGallery(newObj, page);
 }
 
