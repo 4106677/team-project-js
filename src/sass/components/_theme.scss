@@ -39,12 +39,12 @@ body.dark {
 
   @media screen and (min-width: 768px) {
     top: 135px;
-    right: 5%;
+    right: 6%;
   }
 
   @media screen and (min-width: 1280px) {
     top: 135px;
-    right: 3%;
+    right: 3.5%;
   }
 
   transform: translate(50%, 0);
@@ -154,14 +154,24 @@ body.dark {
   color: rgb(185, 163, 136);
 }
 
+.dark .queue.in-library {
+  color: var(--accent-color);
+  background-color: none;
+  border: 1px solid var(--accent-color);
+}
 .dark .queue {
+  color: #303133;
   background-color: var(--light-color-dark-them);
 }
 .dark .storage__btn {
   border: 1px solid var(--accent-color);
   color: var(--accent-color);
 }
-
+.dark .gba-active {
+  color: var(--accent-color);
+  border: 1px solid var(--light-color-dark-them);
+  background-color: #4b4d52;
+}
 .dark .close-icon-movie {
   fill: black;
 

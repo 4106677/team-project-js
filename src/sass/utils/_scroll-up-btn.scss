@@ -18,23 +18,23 @@
         position: absolute;
         display: block;
         right: 370px;
-        bottom: 89px;
+        bottom: 55px;
         min-width: 29px;
         min-height: 29px;
         padding: 5px;
         border-radius: 50%;
 
         @media screen and (min-width: 768px) {
-            bottom: 81px;
-            right: 160px;
+            bottom: 40px;
+            right: 110px;
             min-width: 34px;
             min-height: 34px;
         }
 
         @media screen and (min-width: 1280px) {
 
-            bottom: 47px;
-            right: -72px;
+            bottom: 40px;
+            right: -160px;
             min-width: 39px;
             min-height: 39px;
         }
