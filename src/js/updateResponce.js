@@ -2,9 +2,11 @@ import createGallery from './createGallery';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import refs from './refs';
 import smoothScroll from './smoothScrool';
+import getAllgenres from '../js/apps/getAllGenres';
 
 async function updateResponce(data, page) {
   // const objIdGenres = await getGenresId();
+  if (!localStorage.getItem('genres')) await getAllgenres();
   const objIdGenres = JSON.parse(localStorage.getItem('genres'));
   // console.log(objIdGenres);
 
