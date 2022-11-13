@@ -4,7 +4,9 @@
   --light-color-dark-them: #ffe4c4;
   --accent-color: #ff6b01;
 }
-
+body {
+  transition: background .2s linear;
+}
 body.dark {
   background-color: var(--dark-body-theme);
   --accent-color: #ff6b01;
@@ -201,6 +203,13 @@ body.dark {
 .dark .scroll-up__icon {
   top: 4px;
   left: 6px;
+}
+.dark .load-more {
+ 
+  color: var(--light-color-dark-them);
+  background: none;
+ 
+  outline: 3px solid var(--light-color-dark-them)
 }
 
 .dark .scroll-up__button {

@@ -1,6 +1,6 @@
 <div class='container'>
   <div class='movie'>
-    <button type='button' class='close-icon button' id='close-btn'>
+    <button type='button' class='close-icon button' id='close-btn' aria-label="button close">
       <svg width='30' height='30'>
         <use xlink:href='#close'></use>
       </svg>
@@ -47,7 +47,7 @@
           />
         </picture>
       
-            <button class="trailer__button" type="button">
+            <button class="trailer__button" type="button" aria-label="button trailer">
                 {{!-- <div class="trailer__div"></div> --}}
           <svg class="icon-video" aria-hidden="true" width="45" height="25"
          version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32">
@@ -93,8 +93,8 @@
         >About</span>
         {{overview}}</div>
       <div class='buttons'>
-        <button type='submit' class='watched'>add to watched</button>
-        <button type='submit' class='queue'>add to queue</button>
+        <button type='submit' class='watched' aria-label="add to watched">add to watched</button>
+        <button type='submit' class='queue' aria-label="add to queue">add to queue</button>
       </div>
 
     </div>

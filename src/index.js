@@ -31,8 +31,7 @@ import oneMovieCard from '/src/templates/oneMovieCard.hbs';
 import refs from './js/refs';
 import fetchSearchFilm from './js/fetchAPI';
 import response from './js/onSubmitSearch';
-import { teamModalService } from './js/team-modal-service';
-teamModalService.eventListenerCreator();
+import './js/team-modal-service';
 
 // Модалка с подробный описанием  фильма
 modalDetailMovie();
