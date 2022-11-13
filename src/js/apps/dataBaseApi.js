@@ -33,8 +33,6 @@ function writeInDataBase(
   vote_average,
   release_date
 ) {
-  console.log('target', target);
-  console.log('target', uid);
   const app = initializeApp(firebaseConfig);
   const database = getDatabase(app);
 
@@ -72,6 +70,8 @@ function setDataToLocalStorage(uid) {
     const data = snapshot.val();
     if (data) {
       localStorage.setItem('watched', JSON.stringify(Object.keys(data)));
+    } else {
+      localStorage.setItem('watched', JSON.stringify([]));
     }
   });
 
@@ -79,6 +79,8 @@ function setDataToLocalStorage(uid) {
     const data = snapshot.val();
     if (data) {
       localStorage.setItem('queue', JSON.stringify(Object.keys(data)));
+    } else {
+      localStorage.setItem('queue', JSON.stringify([]));
     }
   });
 }

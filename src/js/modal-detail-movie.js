@@ -15,6 +15,7 @@ let watchedBtnRef = null;
 let queueBtnRef = null;
 let closeBtn = null;
 let instance_2 = null;
+let label = null;
 
 // делигирование события на карточки с фильмами
 export default function modalDetailMovie() {
@@ -136,6 +137,12 @@ function deleteItemfromWatchedDb() {
   deleteFromDB(props.userId, 'watched', props.filmId);
   watchedBtnRef.innerText = 'add to watched';
   watchedBtnRef.classList.remove('in-library');
+
+  // при удалении фильма в базу отображаю ярлык на карточке фильма
+  label = document.querySelector(`li[data-id = "${props['filmId']}"]`);
+  label.children[1].innerHTML = '';
+
+  watchedBtnRef.removeEventListener('click', deleteItemfromWatchedDb);
   watchedBtnRef.addEventListener('click', addMovieToWatchedBase); // слушатель на добавление фильма
 }
 
@@ -144,6 +151,11 @@ function deleteItemfromQueueDb() {
   deleteFromDB(props.userId, 'queue', props.filmId);
   queueBtnRef.innerText = 'add to queue';
   queueBtnRef.classList.remove('in-library');
+
+  // при удалении фильма в базу отображаю ярлык на карточке фильма
+  label = document.querySelector(`li[data-id = "${props['filmId']}"]`);
+  label.children[1].innerHTML = '';
+
   queueBtnRef.addEventListener('click', addMovieToQueuedBase); // слушатель на добавление фильма
 }
 
@@ -162,8 +174,17 @@ function addMovieToWatchedBase() {
   watchedBtnRef.innerText = 'delete from watched';
   watchedBtnRef.classList.add('in-library');
 
-  watchedBtnRef.removeEventListener('click', addMovieToWatchedBase);
+  // при добавлении фильма в базу отображаю ярлык на карточке фильма
+
+  label = document.querySelector(`li[data-id = "${props['filmId']}"]`);
+  label.children[1].insertAdjacentHTML(
+    'afterbegin',
+    '<p class="text-on-card">Watched</p>'
+  );
+  console.dir(label.children[1]);
+
   watchedBtnRef.addEventListener('click', deleteItemfromWatchedDb, props); // слушатель на удаление фильма
+  watchedBtnRef.removeEventListener('click', addMovieToWatchedBase);
 
   // если фильм добавляется в WatchedBase он должен удалиться из QueueD
   deleteItemfromQueueDb();
@@ -183,6 +204,10 @@ function addMovieToQueuedBase() {
   );
   queueBtnRef.innerText = 'delete from queue';
   queueBtnRef.classList.add('in-library');
+
+  // при добавлении фильма в базу отображаю ярлык на карточке фильма
+  label = document.querySelector(`li[data-id = "${props['filmId']}"]`);
+  label.children[1].innerHTML = "<p class='text-on-card'>In queue</p>";
 
   queueBtnRef.removeEventListener('click', addMovieToQueuedBase);
   queueBtnRef.addEventListener('click', deleteItemfromQueueDb); // слушатель на удаление фильма

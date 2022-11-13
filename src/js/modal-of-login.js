@@ -132,13 +132,13 @@ function singIn(e) {
       location.reload();
     } else if (user === 'auth/user-not-found') {
       document.querySelector('.error-message').innerHTML =
-        'Пользователя с таким именем не существует !!!!';
+        'User with this name does not exist !!!!';
     } else if (user === 'auth/wrong-password') {
       document.querySelector('.error-message').innerHTML =
-        'Не правильный пароль !!!!';
+        'Wrong password !!!!';
     } else {
       document.querySelector('.error-message').innerHTML =
-        'Ошибка входа в аккаунт !!!!';
+        'Account login error !!!!';
     }
   });
 
