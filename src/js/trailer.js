@@ -1,5 +1,5 @@
 import * as basicLightbox from 'basiclightbox';
-import { API_KEY } from './apps/fetchApi';
+
 const BASE_URL = 'https://api.themoviedb.org/3/movie/';
 let movieId = '';
 let button = null;
@@ -21,7 +21,7 @@ export default function clickOnTheCard(e) {
   };
   onBtn();
   function fetchTrailer() {
-    const URL = `${BASE_URL}${movieId}/videos?api_key=${API_KEY}&language=en-US`;
+    const URL = `${BASE_URL}${movieId}/videos?api_key=3ab3f6572c3def6f6cf5801fb6522013&language=en-US`;
 
     return fetch(URL)
       .then(response => {
