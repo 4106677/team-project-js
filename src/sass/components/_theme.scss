@@ -255,38 +255,38 @@ body.dark {
    background: none repeat scroll 0 0 var(--dark-body-theme);
 }
 
-// body.light::-webkit-scrollbar {
-//   width: 12;
-// }
+body.light::-webkit-scrollbar {
+  width: 12;
+}
 
-// body.light::-webkit-scrollbar-track {
-//   background: #4b4d52;
-//   margin-top: 0px;
-//   margin-bottom: 0px;
-//   border-radius: 2px;
-//   opacity: 0;
-// }
+body.light::-webkit-scrollbar-track {
+  background: #4b4d52;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  border-radius: 2px;
+  opacity: 0;
+}
 
-// body.light::-webkit-scrollbar-thumb {
-//   background: #fff;
-//   border-radius: 2px;
-//   border: 2px solid #ff6b01;
-// }
+body.light::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 2px;
+  border: 2px solid #ff6b01;
+}
 
-// body.dark::-webkit-scrollbar {
-//   width: 12;
-// }
+body.dark::-webkit-scrollbar {
+  width: 12;
+}
 
-// body.dark::-webkit-scrollbar-track {
-//   background: #4b4d52;
-//   margin-top: 1px;
-//   margin-bottom: 1px;
-//   border-radius: 2px;
-//   opacity: 0;
-// }
+body.dark::-webkit-scrollbar-track {
+  background: #4b4d52;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  border-radius: 2px;
+  opacity: 0;
+}
 
-// body.dark::-webkit-scrollbar-thumb {
-//   background: #303133;
-//   border-radius: 2px;
-//   border: 2px solid #ff6b01;
-// }
+body.dark::-webkit-scrollbar-thumb {
+  background: #303133;
+  border-radius: 2px;
+  border: 2px solid #ff6b01;
+}

@@ -2,24 +2,24 @@
 <html lang="en">
 
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="film library section library" />
-  <meta name="theme-color" content="#317EFB" />
   <title>Filmoteka</title>
   <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon_io/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon_io/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon_io/favicon-16x16.png">
   <link rel="mask-icon" href="./images//favicon_io/favicon.ico" color="#5bbad5">
-  <link rel="canonical" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./sass/index.scss" />
-
+  <!-- <script type="module" src="./index.js"></script> -->
+  <script type="module" src="./library.js"></script>
 
 </head>
 
 <body>
   <header class="header__lib header">
-    <a href="#" id="page-top" aria-label="button anchor"></a>
+    <a id="page-top" aria-label="button anchor"></a>
     <div class="container">
       <div class="header__lib-nav navigation">
         <a class="logo" href="./index.html"><svg class="icon-film" width="24" height="24" aria-label="logo film">
@@ -30,7 +30,7 @@
           <ul class="nav list">
             <li class="nav__item"><a class="nav__item-link" href="./index.html" aria-label="page home">Home</a></li>
             <li class="nav__item" id="nav-library" hidden>
-              <a class="current nav__item-link" href="./library.html" aria-label="page my library">My Library</a>
+              <a class="current nav__item-link" href="./library.html"aria-label="page my library">My Library</a>
             </li>
             <li class="nav__item login" id="login">Login</li>
             <li class="nav__item login" id="registration">Registration</li>
@@ -45,14 +45,14 @@
             <li class="storage__item list">
               <label class="storage__label">
                 <input id="watched" type="radio" name="storage__btn" value="Watched"
-                  class="storage__input visually-hidden" checked aria-label="watched" />
+                  class="storage__input visually-hidden" checked aria-label="watched"/>
                 <span class="storage__btn" id="js-WatchedButton">Watched</span>
               </label>
             </li>
             <li class="storage__item list">
               <label class="storage__label">
-                <input id="queue" type="radio" name="storage__btn" value="Queue" class="storage__input visually-hidden"
-                  aria-label="queue" />
+                <input id="queue" type="radio" name="storage__btn" value="Queue"
+                  class="storage__input visually-hidden" aria-label="queue"/>
                 <span class="storage__btn" id="js-QueueButton">Queue</span>
               </label>
             </li>
@@ -60,8 +60,7 @@
         </div>
       </form>
       <div>
-        <button type="button" class="toggle-theme-btn" aria-label="theme change button"><span
-            class="text_theme-btn"></span>
+        <button class="toggle-theme-btn" aria-label="theme change button"><span class="text_theme-btn"></span>
           <svg width="25px" height="25px">
             <use class="moon toggle-theme-image" href="/src/images/icons.svg#moon"></use>
             <use class="sun toggle-theme-image" href="/src/images/icons.svg#sun"></use>
@@ -84,7 +83,9 @@
   <include src="./partials/team-modal.html"></include>
   <include src="./partials/btnUp.html"></include>
 
-  <script type="module" src="./library.js"></script>
+  <script src="./js/btnUp.js"></script>
+  <script src="./js/lazyScrol.js"></script>
+
 </body>
 
 </html>
