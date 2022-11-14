@@ -49,7 +49,7 @@ function renderTeamMarkup(cards) {
       item =>
         `<div class="team-img-card ${item.card}">
       <div class="img-container">
-        <img src="${item.img}" alt="${item.name}"/>
+        <img src="${item.img}" alt="${item.name}" loading="lazy"/>
       </div>
       <div class="team-card-box">
       <h3  class="team-card-text">${item.name}</h3>

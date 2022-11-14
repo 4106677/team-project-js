@@ -26,24 +26,10 @@
   }
 }
 
-// .movie-img-wrapper {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   margin-bottom: 10px;
-
-//   @include tablet {
-//     margin-bottom: 8px;
-//   }
-
-//   @include desktop {
-//     margin-bottom: 12px;
-//   }
-// }
-
 .movie-card__img {
   display: block;
   border-radius: 5px;
+  object-fit: cover;
   width: 100%;
   margin-bottom: 10px;
 
@@ -77,19 +63,6 @@
   }
 }
 
-// .movie-card__box {
-//   display: flex;
-//   align-items: baseline;
-//   padding-left: 5px;
-
-//   @include tablet {
-//     padding-bottom: 10px;
-//   }
-
-//   @include desktop {
-//     padding-bottom: 10px;
-//   }
-// }
 
 .movie-card__info {
   padding-left: 5px;
