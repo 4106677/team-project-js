@@ -36,5 +36,3 @@ import './js/team-modal-service';
 // Модалка с подробный описанием  фильма
 modalDetailMovie();
 import './js/theme';
-import './js/btnUp.js';
-import './js/lazyScrol.js';
